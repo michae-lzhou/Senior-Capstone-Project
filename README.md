@@ -1,6 +1,9 @@
 Tufts University
+
 Michael Zhou, Michael Hu, Ayah Harper, Shona Horton
+
 Fall 2024 - Spring 2025
+
 
 
 Problem Statement:
