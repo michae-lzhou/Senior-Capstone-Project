@@ -1,11 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://cw1g5rldv1n1q"]
+[gd_scene load_steps=8 format=3 uid="uid://cw1g5rldv1n1q"]
 
 [ext_resource type="Texture2D" uid="uid://co3e6vr73o2x4" path="res://assets/sky-sunset.jpg" id="1_0qn8r"]
 [ext_resource type="Script" path="res://spawner.gd" id="1_dodrj"]
 [ext_resource type="PackedScene" uid="uid://cueb1l6sixcs5" path="res://scenes/bad_circle.tscn" id="2_s10ul"]
 [ext_resource type="PackedScene" uid="uid://3j1r4canrull" path="res://scenes/good_circle.tscn" id="4_yijg4"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_f1rx6"]
+
 [sub_resource type="GDScript" id="GDScript_ja7xc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pbcn7"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_dodrj")
@@ -21,9 +25,20 @@ stretch_mode = 1
 [node name="BadCircle" parent="." instance=ExtResource("2_s10ul")]
 position = Vector2(556, 275)
 
+[node name="Sprite2D2" type="Sprite2D" parent="BadCircle"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="BadCircle"]
+shape = SubResource("CircleShape2D_f1rx6")
+one_way_collision_margin = 2.0
+
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 script = SubResource("GDScript_ja7xc")
 
 [node name="GoodCircle" parent="." instance=ExtResource("4_yijg4")]
 position = Vector2(557, 274)
+
+[node name="Sprite2D2" type="Sprite2D" parent="GoodCircle"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="GoodCircle"]
+shape = SubResource("CircleShape2D_pbcn7")

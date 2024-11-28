@@ -10,7 +10,7 @@ _Fall 2024 - Spring 2025_
 
     We will study the research done by Professor Intriligator and Professor
     Fadardi on visual attention retraining to create a game that will translate
-    the experimental results into real-life end users.
+    the experimental results into real-life end users!
 
 **Sponsor**
 
@@ -76,3 +76,4 @@ _Fall 2024 - Spring 2025_
     Design and implement a fully functional game that can be improved upon by
     future cohorts if necessary
     Provide necessary documentation on our process
+
