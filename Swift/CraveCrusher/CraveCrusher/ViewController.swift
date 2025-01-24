@@ -8,13 +8,13 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    @IBOutlet weak var gameTitle: UILabel!
-    
-    @IBAction func playButton(_ sender: Any) {
-        print("user clicked play")
-    }
-    
+//
+//    @IBOutlet weak var gameTitle: UILabel!
+////    
+//    @IBAction func playButton(_ sender: Any) {
+//        print("user clicked play")
+//    }
+////    
     
     override func viewDidLoad() {
         super.viewDidLoad()
