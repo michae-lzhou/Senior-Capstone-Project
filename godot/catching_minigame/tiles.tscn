@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://byoq2umvywdmt"]
+
+[ext_resource type="Script" path="res://tiles.gd" id="1_4dirx"]
+[ext_resource type="Texture2D" uid="uid://cencuyk527c12" path="res://icon.svg" id="1_l3d1d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ee1ov"]
+size = Vector2(32, 32)
+
+[node name="falling_tiles" type="CharacterBody2D"]
+script = ExtResource("1_4dirx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1408, 560)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_l3d1d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1408, 560)
+shape = SubResource("RectangleShape2D_ee1ov")
