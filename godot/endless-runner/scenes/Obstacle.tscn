@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://slotggfw4v37"]
+
+[ext_resource type="Texture2D" uid="uid://b3a2k4mo7h7up" path="res://assets/Burger Sample/burger-sample.png" id="1_t83df"]
+[ext_resource type="Script" path="res://scripts/Obstacle.gd" id="2_32y4w"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2emcl"]
+radius = 92.2659
+
+[node name="Obstacle" type="Area2D"]
+script = ExtResource("2_32y4w")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_t83df")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+shape = SubResource("CircleShape2D_2emcl")
