@@ -1,0 +1,72 @@
+[gd_scene load_steps=12 format=3 uid="uid://dfwp28jrqjqcu"]
+
+[ext_resource type="Script" path="res://scripts/Player.gd" id="1_528d2"]
+[ext_resource type="Texture2D" uid="uid://0yivwdbvobt3" path="res://assets/kenney_platformer-characters/PNG/Adventurer/Poses/adventurer_back.png" id="1_tfahs"]
+[ext_resource type="Texture2D" uid="uid://bk562ybu681k7" path="res://assets/galaxy.jpg" id="2_6ddmm"]
+[ext_resource type="Script" path="res://scripts/Background.gd" id="3_pj6a4"]
+[ext_resource type="Script" path="res://scripts/Spawner.gd" id="5_e53gi"]
+[ext_resource type="Script" path="res://scripts/GameManager.gd" id="6_a58wt"]
+[ext_resource type="PackedScene" uid="uid://slotggfw4v37" path="res://scenes/Obstacle.tscn" id="6_iybo3"]
+[ext_resource type="PackedScene" uid="uid://5xkv7sy2wdi3" path="res://scenes/Reward.tscn" id="7_v3w4g"]
+[ext_resource type="FontFile" uid="uid://dcbo4v5a6sqid" path="res://assets/TitanOne-Regular.ttf" id="9_2jegr"]
+[ext_resource type="Script" path="res://scripts/Label.gd" id="10_pyi12"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_17w65"]
+size = Vector2(112, 215)
+
+[node name="EndlessRunner" type="Node2D"]
+position = Vector2(0, 2)
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("1_528d2")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("1_tfahs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(-1, 18)
+shape = SubResource("RectangleShape2D_17w65")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("3_pj6a4")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(550, -137)
+scale = Vector2(2, 2)
+texture = ExtResource("2_6ddmm")
+region_rect = Rect2(0, 0, 640, 428)
+
+[node name="Spawner" type="Node2D" parent="."]
+script = ExtResource("5_e53gi")
+obstacle_scene = ExtResource("6_iybo3")
+reward_scene = ExtResource("7_v3w4g")
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("6_a58wt")
+
+[node name="ScoreLabel" type="Label" parent="HUD"]
+z_index = 1
+layout_mode = 0
+offset_left = 462.0
+offset_top = 22.0
+offset_right = 668.0
+offset_bottom = 80.0
+theme_override_fonts/font = ExtResource("9_2jegr")
+theme_override_font_sizes/font_size = 50
+script = ExtResource("10_pyi12")
+
+[node name="Lane1" type="Marker2D" parent="."]
+position = Vector2(216, 950)
+
+[node name="Lane2" type="Marker2D" parent="."]
+position = Vector2(540, 950)
+
+[node name="Lane3" type="Marker2D" parent="."]
+position = Vector2(864, 950)

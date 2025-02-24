@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://dr7gv7fnb6n6a"]
+
+[ext_resource type="FontFile" uid="uid://dcbo4v5a6sqid" path="res://assets/TitanOne-Regular.ttf" id="1_8vn8l"]
+[ext_resource type="Script" path="res://scripts/Main.gd" id="1_c1pm2"]
+[ext_resource type="Texture2D" uid="uid://bk562ybu681k7" path="res://assets/galaxy.jpg" id="2_6nyto"]
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_c1pm2")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1090.0
+offset_bottom = 1928.0
+texture = ExtResource("2_6nyto")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 718.0
+offset_right = 1068.0
+offset_bottom = 862.0
+theme_override_fonts/font = ExtResource("1_8vn8l")
+theme_override_font_sizes/font_size = 100
+text = "CRAVE CRUSHER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Subtitle" type="Label" parent="."]
+layout_mode = 0
+offset_left = 386.0
+offset_top = 898.0
+offset_right = 1186.0
+offset_bottom = 956.0
+theme_override_font_sizes/font_size = 25
+text = "Swipe to dodge the junk food!"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 447.0
+offset_top = 1138.0
+offset_right = 673.0
+offset_bottom = 1201.0
+theme_override_font_sizes/font_size = 40
+text = "Start Game"
