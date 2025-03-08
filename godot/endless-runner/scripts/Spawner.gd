@@ -5,6 +5,9 @@ extends Node2D
 @export var spawn_rate: float = 1.5
 @export var min_spawn_rate: float = 0.7
 @export var difficulty_increase: float = 0.995
+@export var base_fall_speed: float = 300.0  # Starting fall speed
+var current_fall_speed: float = base_fall_speed
+var grapes_collected: int = 0
 
 # Add score tracking
 var score: int = 0
@@ -28,6 +31,9 @@ func spawn_object():
 	var scene = obstacle_scene if is_obstacle else reward_scene
 	
 	var obj = scene.instantiate()
+	
+	# Set the current fall speed for this object
+	obj.fall_speed = current_fall_speed
 	
 	var lane_index = rng.randi() % lanes.size()
 	obj.position = Vector2(lanes[lane_index], -100)
@@ -60,6 +66,9 @@ func _on_object_hit(body, obj, is_obstacle):
 			body.hit_good_object()
 			print("Got grape - gain points!")
 			score += 5  # Gain 5 points
+			grapes_collected += 1
+			# Increase fall speed with each grape collected
+			current_fall_speed = base_fall_speed + (grapes_collected * 10)  # Increase by 15 units per grape
 				
 		score_changed.emit(score)  # Emit signal with new score
 		obj.queue_free()  # Remove the object

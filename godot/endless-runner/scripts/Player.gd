@@ -17,7 +17,7 @@ func _ready():
 		get_parent().get_node("Lane2").position,
 		get_parent().get_node("Lane3").position
 	]
-	position = Vector2(lanes[current_lane].x, 900)
+	position = Vector2(lanes[current_lane].x, 1200)
 
 # Handle keyboard input
 func _input(event):

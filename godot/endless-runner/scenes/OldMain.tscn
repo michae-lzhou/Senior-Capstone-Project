@@ -9,6 +9,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Button" type="Button" parent="Control"]
+layout_mode = 0
 offset_left = 469.0
 offset_top = 855.0
 offset_right = 565.0

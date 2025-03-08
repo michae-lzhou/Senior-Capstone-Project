@@ -1,0 +1,56 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvvlvmw86rlr5"]
+
+[ext_resource type="Script" path="res://scripts/ScoreTimerUI.gd" id="1_rb8fy"]
+
+[node name="ScoreTimerUI" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rb8fy")
+
+[node name="Time Left" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.775
+anchor_top = 0.012
+anchor_right = 0.847
+anchor_bottom = 0.04
+offset_left = -2.00006
+offset_top = 0.959999
+offset_right = 0.239929
+offset_bottom = 0.199997
+text = "00:00
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.164
+anchor_top = 0.011
+anchor_right = 0.246
+anchor_bottom = 0.041
+offset_left = -0.12001
+offset_top = -0.120001
+offset_right = 0.320007
+offset_bottom = -0.720001
+text = "SCORE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.289
+anchor_top = 0.009
+anchor_right = 0.741
+anchor_bottom = 0.044
+offset_left = -0.119995
+offset_top = -0.280001
+offset_right = -0.28009
+offset_bottom = 0.519997

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dfwp28jrqjqcu"]
+[gd_scene load_steps=13 format=3 uid="uid://dfwp28jrqjqcu"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_528d2"]
 [ext_resource type="Texture2D" uid="uid://0yivwdbvobt3" path="res://assets/kenney_platformer-characters/PNG/Adventurer/Poses/adventurer_back.png" id="1_tfahs"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://5xkv7sy2wdi3" path="res://scenes/Reward.tscn" id="7_v3w4g"]
 [ext_resource type="FontFile" uid="uid://dcbo4v5a6sqid" path="res://assets/TitanOne-Regular.ttf" id="9_2jegr"]
 [ext_resource type="Script" path="res://scripts/Label.gd" id="10_pyi12"]
+[ext_resource type="PackedScene" uid="uid://dvvlvmw86rlr5" path="res://scenes/ScoreTimerUI.tscn" id="11_2kydk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_17w65"]
 size = Vector2(112, 215)
@@ -70,3 +71,18 @@ position = Vector2(540, 950)
 
 [node name="Lane3" type="Marker2D" parent="."]
 position = Vector2(864, 950)
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScoreTimerUI" parent="CanvasLayer" instance=ExtResource("11_2kydk")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_left = -540.0
+offset_top = 2.0
+offset_right = -540.0
+offset_bottom = 2.0
+grow_vertical = 1
