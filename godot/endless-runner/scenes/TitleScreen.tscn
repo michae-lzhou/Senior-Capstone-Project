@@ -47,7 +47,7 @@ offset_bottom = 1191.0
 theme_override_font_sizes/font_size = 30
 text = "Swipe to dodge the junk food!"
 
-[node name="Button" type="Button" parent="."]
+[node name="StartButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 366.0
 offset_top = 1165.0
@@ -60,7 +60,7 @@ flat = true
 icon_alignment = 1
 expand_icon = true
 
-[node name="Stats" type="Button" parent="."]
+[node name="StatsButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 905.0
 offset_top = -14.0
@@ -71,7 +71,7 @@ flat = true
 icon_alignment = 1
 expand_icon = true
 
-[node name="Profile" type="Button" parent="."]
+[node name="ProfileButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 2.0
 offset_top = -15.0

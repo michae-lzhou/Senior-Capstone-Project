@@ -1,0 +1,149 @@
+[gd_scene load_steps=10 format=3 uid="uid://cpsee446mn68o"]
+
+[ext_resource type="Texture2D" uid="uid://bk562ybu681k7" path="res://assets/galaxy.jpg" id="1_ogedu"]
+[ext_resource type="Script" path="res://scripts/GameSelection.gd" id="1_pq154"]
+[ext_resource type="FontFile" uid="uid://d153mdm4tperu" path="res://assets/Rubik_Distressed/RubikDistressed-Regular.ttf" id="2_nhb7j"]
+[ext_resource type="Texture2D" uid="uid://3hcxqwu5dyjt" path="res://assets/kenney_game-icons/PNG/White/2x/buttonStart.png" id="3_05shl"]
+[ext_resource type="Texture2D" uid="uid://bah8fbnfmgvul" path="res://assets/kenney_game-icons/PNG/White/2x/gamepad1.png" id="4_r75ov"]
+[ext_resource type="Texture2D" uid="uid://5qil3bqp7w3t" path="res://assets/kenney_game-icons/PNG/White/2x/gamepad2.png" id="5_8i8sm"]
+[ext_resource type="Texture2D" uid="uid://do1ifhsoi10h7" path="res://assets/kenney_game-icons/PNG/White/2x/gamepad3.png" id="6_pt3fl"]
+[ext_resource type="Texture2D" uid="uid://bdv358ydbuupt" path="res://assets/kenney_game-icons/PNG/White/2x/gamepad4.png" id="7_c8mr8"]
+[ext_resource type="Texture2D" uid="uid://c34w3kxvgnb5g" path="res://assets/kenney_game-icons/PNG/White/2x/exitLeft.png" id="8_qaiii"]
+
+[node name="GameSelection" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_pq154")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1090.0
+offset_bottom = 1928.0
+texture = ExtResource("1_ogedu")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 28.0
+offset_right = 1068.0
+offset_bottom = 505.0
+theme_override_fonts/font = ExtResource("2_nhb7j")
+theme_override_font_sizes/font_size = 100
+text = "Select Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Game1Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 442.0
+offset_right = 437.0
+offset_bottom = 733.0
+theme_override_font_sizes/font_size = 50
+theme_override_icons/icon = ExtResource("3_05shl")
+icon = ExtResource("4_r75ov")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Game1" type="Label" parent="Game1Button"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = -90.0
+offset_right = 1173.0
+offset_bottom = 387.0
+theme_override_fonts/font = ExtResource("2_nhb7j")
+theme_override_font_sizes/font_size = 100
+text = "Endless
+Runner"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Game2Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 730.0
+offset_right = 437.0
+offset_bottom = 1021.0
+theme_override_font_sizes/font_size = 50
+theme_override_icons/icon = ExtResource("3_05shl")
+icon = ExtResource("5_8i8sm")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Game2" type="Label" parent="Game2Button"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = -74.0
+offset_right = 1173.0
+offset_bottom = 403.0
+theme_override_fonts/font = ExtResource("2_nhb7j")
+theme_override_font_sizes/font_size = 100
+text = "Game 2
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Game3Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 1018.0
+offset_right = 437.0
+offset_bottom = 1309.0
+theme_override_font_sizes/font_size = 50
+theme_override_icons/icon = ExtResource("3_05shl")
+icon = ExtResource("6_pt3fl")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Game3" type="Label" parent="Game3Button"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = -82.0
+offset_right = 1173.0
+offset_bottom = 395.0
+theme_override_fonts/font = ExtResource("2_nhb7j")
+theme_override_font_sizes/font_size = 100
+text = "Game 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Game4Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 1306.0
+offset_right = 437.0
+offset_bottom = 1597.0
+theme_override_font_sizes/font_size = 50
+theme_override_icons/icon = ExtResource("3_05shl")
+icon = ExtResource("7_c8mr8")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Game4" type="Label" parent="Game4Button"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = -74.0
+offset_right = 1173.0
+offset_bottom = 403.0
+theme_override_fonts/font = ExtResource("2_nhb7j")
+theme_override_font_sizes/font_size = 100
+text = "Game 4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 26.0
+offset_right = 197.0
+offset_bottom = 191.0
+theme_override_font_sizes/font_size = 50
+theme_override_icons/icon = ExtResource("3_05shl")
+icon = ExtResource("8_qaiii")
+flat = true
+icon_alignment = 1
+expand_icon = true

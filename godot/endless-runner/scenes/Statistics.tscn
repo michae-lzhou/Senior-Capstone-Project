@@ -1,0 +1,257 @@
+[gd_scene load_steps=15 format=3 uid="uid://c0nk261tmvf6m"]
+
+[ext_resource type="Texture2D" uid="uid://bk562ybu681k7" path="res://assets/galaxy.jpg" id="1_8spis"]
+[ext_resource type="Script" path="res://scenes/Statistics.gd" id="1_ss7q5"]
+[ext_resource type="Texture2D" uid="uid://3hcxqwu5dyjt" path="res://assets/kenney_game-icons/PNG/White/2x/buttonStart.png" id="3_nysp5"]
+[ext_resource type="Texture2D" uid="uid://c34w3kxvgnb5g" path="res://assets/kenney_game-icons/PNG/White/2x/exitLeft.png" id="3_obt72"]
+[ext_resource type="Texture2D" uid="uid://mjfn27fhdvhv" path="res://assets/kenney_game-icons/PNG/White/2x/button3.png" id="4_3ka1f"]
+[ext_resource type="FontFile" uid="uid://d153mdm4tperu" path="res://assets/Rubik_Distressed/RubikDistressed-Regular.ttf" id="5_gvapx"]
+[ext_resource type="Script" path="res://scripts/Configuration.gd" id="6_mtqeu"]
+[ext_resource type="Texture2D" uid="uid://b6onxqe4gxcvd" path="res://assets/kenney_game-icons/PNG/White/2x/left.png" id="7_hw5l4"]
+[ext_resource type="Texture2D" uid="uid://dwi4l1jm01fo8" path="res://assets/kenney_game-icons/PNG/White/2x/movie.png" id="8_yo13a"]
+[ext_resource type="Texture2D" uid="uid://cm3ablcos8ytg" path="res://assets/kenney_game-icons/PNG/White/2x/right.png" id="9_qv2f6"]
+[ext_resource type="Script" path="res://scripts/Accessibility.gd" id="10_xts11"]
+[ext_resource type="Texture2D" uid="uid://d2nih2gqu6gku" path="res://assets/kenney_game-icons/PNG/White/2x/checkmark.png" id="11_2qayi"]
+[ext_resource type="Texture2D" uid="uid://s16sriuxhbn8" path="res://assets/kenney_game-icons/PNG/White/2x/cross.png" id="12_mwya6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jor0j"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="Statistics" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ss7q5")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1090.0
+offset_bottom = 1928.0
+texture = ExtResource("1_8spis")
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 26.0
+offset_right = 197.0
+offset_bottom = 191.0
+theme_override_font_sizes/font_size = 50
+theme_override_icons/icon = ExtResource("3_nysp5")
+icon = ExtResource("3_obt72")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Streak" type="TextureRect" parent="."]
+offset_left = 412.0
+offset_top = 62.0
+offset_right = 678.0
+offset_bottom = 328.0
+texture = ExtResource("4_3ka1f")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_top = 400.0
+offset_right = 1090.0
+offset_bottom = 409.0
+
+[node name="Title" type="Label" parent="."]
+offset_left = 23.0
+offset_top = 101.0
+offset_right = 1068.0
+offset_bottom = 578.0
+theme_override_fonts/font = ExtResource("5_gvapx")
+theme_override_font_sizes/font_size = 75
+text = "DAY STREAK!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Title" type="Label" parent="Title"]
+offset_left = 1.0
+offset_top = 205.0
+offset_right = 1046.0
+offset_bottom = 682.0
+theme_override_fonts/font = ExtResource("5_gvapx")
+theme_override_font_sizes/font_size = 50
+text = "Endless Runner"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TabContainer" type="TabContainer" parent="."]
+offset_left = 79.0
+offset_top = 610.0
+offset_right = 1016.0
+offset_bottom = 1732.0
+theme_override_fonts/font = ExtResource("5_gvapx")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/panel = SubResource("StyleBoxFlat_jor0j")
+current_tab = 0
+
+[node name="Improvements" type="VBoxContainer" parent="TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Spacer" type="Control" parent="TabContainer/Improvements"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+
+[node name="Text" type="HBoxContainer" parent="TabContainer/Improvements"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="TabContainer/Improvements/Text"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+
+[node name="SinceTheBeginning" type="Label" parent="TabContainer/Improvements/Text"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_gvapx")
+theme_override_font_sizes/font_size = 25
+text = "Since the beginning, your..."
+
+[node name="Spacer2" type="Control" parent="TabContainer/Improvements"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+
+[node name="Insights" type="VBoxContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+script = ExtResource("6_mtqeu")
+metadata/_tab_index = 1
+
+[node name="Spacer" type="Control" parent="TabContainer/Insights"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+
+[node name="Salient Label" type="Label" parent="TabContainer/Insights"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_gvapx")
+theme_override_font_sizes/font_size = 40
+text = "Salient"
+horizontal_alignment = 1
+
+[node name="SalientBox" type="CenterContainer" parent="TabContainer/Insights"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Insights/SalientBox"]
+layout_mode = 2
+
+[node name="SalientLeftButton" type="Button" parent="TabContainer/Insights/SalientBox/HBoxContainer"]
+layout_mode = 2
+theme_override_icons/icon = ExtResource("7_hw5l4")
+
+[node name="SalientImage" type="TextureRect" parent="TabContainer/Insights/SalientBox/HBoxContainer"]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+texture = ExtResource("8_yo13a")
+
+[node name="SalientRightButton" type="Button" parent="TabContainer/Insights/SalientBox/HBoxContainer"]
+layout_mode = 2
+theme_override_icons/icon = ExtResource("9_qv2f6")
+
+[node name="Spacer2" type="Control" parent="TabContainer/Insights"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+
+[node name="Control Label" type="Label" parent="TabContainer/Insights"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_gvapx")
+theme_override_font_sizes/font_size = 40
+text = "Control"
+horizontal_alignment = 1
+
+[node name="ControlBox" type="CenterContainer" parent="TabContainer/Insights"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Insights/ControlBox"]
+layout_mode = 2
+
+[node name="ControlLeftButton" type="Button" parent="TabContainer/Insights/ControlBox/HBoxContainer"]
+layout_mode = 2
+theme_override_icons/icon = ExtResource("7_hw5l4")
+
+[node name="ControlImage" type="TextureRect" parent="TabContainer/Insights/ControlBox/HBoxContainer"]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+texture = ExtResource("8_yo13a")
+
+[node name="ControlRightButton" type="Button" parent="TabContainer/Insights/ControlBox/HBoxContainer"]
+layout_mode = 2
+theme_override_icons/icon = ExtResource("9_qv2f6")
+
+[node name="Graph" type="VBoxContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+script = ExtResource("10_xts11")
+sprite_on = ExtResource("11_2qayi")
+sprite_off = ExtResource("12_mwya6")
+metadata/_tab_index = 2
+
+[node name="Spacer" type="Control" parent="TabContainer/Graph"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+
+[node name="Colorblind Field" type="HBoxContainer" parent="TabContainer/Graph"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="TabContainer/Graph/Colorblind Field"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="Colorblind" type="Label" parent="TabContainer/Graph/Colorblind Field"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_gvapx")
+theme_override_font_sizes/font_size = 40
+text = "Colorblind       "
+
+[node name="Spacer2" type="Control" parent="TabContainer/Graph/Colorblind Field"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="ColorblindButton" type="TextureButton" parent="TabContainer/Graph/Colorblind Field"]
+layout_mode = 2
+
+[node name="Spacer2" type="Control" parent="TabContainer/Graph"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+
+[node name="Music Field" type="HBoxContainer" parent="TabContainer/Graph"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="TabContainer/Graph/Music Field"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="Music" type="Label" parent="TabContainer/Graph/Music Field"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_gvapx")
+theme_override_font_sizes/font_size = 40
+text = "Music                     "
+
+[node name="Spacer2" type="Control" parent="TabContainer/Graph/Music Field"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="MusicButton" type="TextureButton" parent="TabContainer/Graph/Music Field"]
+layout_mode = 2
+
+[node name="Spacer3" type="Control" parent="TabContainer/Graph"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+
+[node name="Sound Effect Field" type="HBoxContainer" parent="TabContainer/Graph"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="TabContainer/Graph/Sound Effect Field"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="SoundEffect" type="Label" parent="TabContainer/Graph/Sound Effect Field"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_gvapx")
+theme_override_font_sizes/font_size = 40
+text = "Sound Effect "
+
+[node name="Spacer2" type="Control" parent="TabContainer/Graph/Sound Effect Field"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="SoundEffectButton" type="TextureButton" parent="TabContainer/Graph/Sound Effect Field"]
+layout_mode = 2
