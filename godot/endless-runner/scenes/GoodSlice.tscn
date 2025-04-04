@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bguv8g7nogoii"]
+
+[ext_resource type="Script" path="res://scenes/GoodSlice.gd" id="1_tw85h"]
+[ext_resource type="Texture2D" uid="uid://cw5tagvajfjhf" path="res://assets/fruit1/T_fruit_10.png" id="2_lyw3s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8ik4m"]
+radius = 58.0086
+
+[node name="GoodSlice" type="RigidBody2D"]
+script = ExtResource("1_tw85h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_lyw3s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 26)
+shape = SubResource("CircleShape2D_8ik4m")
