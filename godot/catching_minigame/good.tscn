@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwx24u1xsnvqh"]
+
+[ext_resource type="Texture2D" uid="uid://d272dsr76f18t" path="res://T_fruit_32.png" id="1_fc5bg"]
+[ext_resource type="Script" path="res://good.gd" id="1_ss088"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jnkgt"]
+radius = 14.0
+
+[node name="good" type="Area2D"]
+position = Vector2(138, -57)
+script = ExtResource("1_ss088")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4.29153e-06, 1.90735e-06)
+scale = Vector2(0.189453, 0.185547)
+texture = ExtResource("1_fc5bg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 1)
+shape = SubResource("CircleShape2D_jnkgt")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

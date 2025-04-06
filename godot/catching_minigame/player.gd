@@ -1,11 +1,23 @@
-extends CharacterBody2D
+extends Area2D
 
-var speed = 300
+@export var speed:int = 400
 
-func get_input():
-	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	velocity = input_dir * speed
+var velocity = Vector2()
+var screen_size
 
-func _physics_process(delta):
-	get_input()
-	move_and_collide(velocity * delta)
+func _ready():
+	screen_size = get_viewport_rect().size
+
+func _process(delta: float):
+	velocity = Vector2.ZERO
+	if Input.is_action_pressed("ui_left"):
+		velocity.x -= 1
+	if Input.is_action_pressed("ui_right"):
+		velocity.x += 1
+	
+	if (velocity.length() > 0):
+		velocity = velocity * speed
+
+	position += velocity * delta
+	position.x = clamp(position.x, 30, screen_size.x - 30)
+	position.y = clamp(position.y, 0, screen_size.y)
