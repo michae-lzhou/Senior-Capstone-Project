@@ -1,7 +1,7 @@
 extends Area2D
 
 # Add a signal for scoring
-signal score_point
+signal lose_point
 
 func _process(delta: float):
 	position.y += randi_range(5, 10)
@@ -11,7 +11,7 @@ func _process(delta: float):
 		queue_free()
 
 func _on_area_entered(area: Area2D):
-	# If the player catches the object, emit the score signal
+	# If the player collides with the bad object, emit the lose_point signal
 	if area.name == "Player":
-		emit_signal("score_point")
+		emit_signal("lose_point")
 	queue_free()
