@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bc1vs44o0x1ir"]
+
+[ext_resource type="FontFile" uid="uid://dcbo4v5a6sqid" path="res://assets/TitanOne-Regular.ttf" id="1_scyj5"]
+[ext_resource type="Script" path="res://scripts/FloatingText.gd" id="1_tmcwr"]
+
+[node name="FloatingText" type="Label"]
+theme_override_fonts/font = ExtResource("1_scyj5")
+theme_override_font_sizes/font_size = 24
+script = ExtResource("1_tmcwr")

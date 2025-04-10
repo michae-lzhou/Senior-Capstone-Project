@@ -12,7 +12,8 @@ func _on_game1_pressed():
 	get_tree().change_scene_to_file("res://scenes/EndlessRunner.tscn")
 	
 func _on_game2_pressed():
-	print("Starting Game: [placeholder_2]...")
+	print("Starting Game: Slice Warrior...")
+	get_tree().change_scene_to_file("res://scenes/SliceWarrior.tscn")
 	
 func _on_game3_pressed():
 	print("Starting Game: [placeholder_3]...")
