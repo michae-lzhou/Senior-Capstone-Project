@@ -68,4 +68,5 @@ func on_sliced():
 	queue_free()
 
 func end_game():
-	get_tree().change_scene_to_file("res://scenes/GameSelection.tscn")  # or Results screen
+	get_tree().change_scene_to_file("res://scenes/EndGame.tscn")
+	#get_tree().change_scene_to_file("res://scenes/GameSelection.tscn")  # or Results screen

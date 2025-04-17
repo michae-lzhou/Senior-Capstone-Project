@@ -16,7 +16,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+# Called every frame. '_delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	count+=1
 	if score_progress_bar.value < score_progress_bar.max_value * 0.85:

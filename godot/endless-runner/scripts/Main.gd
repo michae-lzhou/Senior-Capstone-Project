@@ -7,6 +7,7 @@ func _ready():
 
 func _on_start_game_pressed():
 	get_tree().change_scene_to_file("res://scenes/GameSelection.tscn")
+	#get_tree().change_scene_to_file("res://scenes/EndGame.tscn")
 	
 func _on_statistics_pressed():
 	get_tree().change_scene_to_file("res://scenes/Statistics.tscn")

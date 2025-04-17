@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c0nk261tmvf6m"]
+[gd_scene load_steps=21 format=3 uid="uid://c0nk261tmvf6m"]
 
 [ext_resource type="Texture2D" uid="uid://bk562ybu681k7" path="res://assets/galaxy.jpg" id="1_8spis"]
 [ext_resource type="Script" path="res://scripts/Statistics.gd" id="1_ss7q5"]
@@ -10,9 +10,14 @@
 [ext_resource type="Texture2D" uid="uid://g6u1i6e2dwsn" path="res://assets/light_gray_bar.png" id="8_7xtky"]
 [ext_resource type="Texture2D" uid="uid://cow1nk6u483oh" path="res://assets/white_bar.png" id="9_ke8o7"]
 [ext_resource type="Texture2D" uid="uid://csplm0kms482p" path="res://assets/dotted_overlay.png" id="9_ktfwq"]
-[ext_resource type="Script" path="res://scripts/G1ScoreGraph.gd" id="15_46gm7"]
-[ext_resource type="Script" path="res://scripts/G1SpeedGraph.gd" id="16_d0xli"]
-[ext_resource type="Script" path="res://scripts/G1FocusGraph.gd" id="17_sgy3w"]
+[ext_resource type="PackedScene" uid="uid://c77ug7joe5mcb" path="res://scenes/G1Score.tscn" id="11_p7utj"]
+[ext_resource type="Script" path="res://scripts/GraphRenderer.gd" id="12_sfxj2"]
+[ext_resource type="PackedScene" uid="uid://1ovkqrpyecyn" path="res://scenes/G2Score.tscn" id="14_0xhey"]
+[ext_resource type="Script" path="res://scripts/G2ProgressBars.gd" id="14_bld2j"]
+[ext_resource type="PackedScene" uid="uid://glv6xkr6in8e" path="res://scenes/G3Score.tscn" id="16_jbvx5"]
+[ext_resource type="Script" path="res://scripts/G3ProgressBars.gd" id="18_m8yy8"]
+[ext_resource type="PackedScene" uid="uid://cr1vjq4kg8kue" path="res://scenes/G4Score.tscn" id="18_xispq"]
+[ext_resource type="Script" path="res://scripts/G4ProgessBars.gd" id="22_5636g"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jor0j"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -78,7 +83,7 @@ offset_bottom = 1754.0
 horizontal_scroll_mode = 0
 
 [node name="Control" type="Control" parent="ScrollContainer"]
-custom_minimum_size = Vector2(1090, 2500)
+custom_minimum_size = Vector2(1090, 5000)
 layout_mode = 2
 
 [node name="Game 1" type="Label" parent="ScrollContainer/Control"]
@@ -89,7 +94,7 @@ offset_right = 1069.0
 offset_bottom = 191.0
 theme_override_fonts/font = ExtResource("5_gvapx")
 theme_override_font_sizes/font_size = 50
-text = "Endless Runner"
+text = "Game 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -303,8 +308,8 @@ Score
 
                                                     Sessions"
 
-[node name="ScoreGraph" type="Line2D" parent="ScrollContainer/Control/Game 1/TabContainer/Graph/ColorRect/GraphsContainer/\'              Score              \'/ScoreGraphLabels"]
-script = ExtResource("15_46gm7")
+[node name="Control" parent="ScrollContainer/Control/Game 1/TabContainer/Graph/ColorRect/GraphsContainer/\'              Score              \'/ScoreGraphLabels" instance=ExtResource("11_p7utj")]
+layout_mode = 2
 
 [node name="\'              Speed              \'" type="VBoxContainer" parent="ScrollContainer/Control/Game 1/TabContainer/Graph/ColorRect/GraphsContainer"]
 visible = false
@@ -335,8 +340,13 @@ Score
 
                                                     Sessions"
 
-[node name="SpeedGraph" type="Line2D" parent="ScrollContainer/Control/Game 1/TabContainer/Graph/ColorRect/GraphsContainer/\'              Speed              \'/SpeedGraphLabel"]
-script = ExtResource("16_d0xli")
+[node name="Control" type="Control" parent="ScrollContainer/Control/Game 1/TabContainer/Graph/ColorRect/GraphsContainer/\'              Speed              \'/SpeedGraphLabel"]
+layout_mode = 2
+
+[node name="SpeedGraph" type="Line2D" parent="ScrollContainer/Control/Game 1/TabContainer/Graph/ColorRect/GraphsContainer/\'              Speed              \'/SpeedGraphLabel/Control"]
+position = Vector2(-557, 0)
+script = ExtResource("12_sfxj2")
+data_key = "G1Speed"
 
 [node name="\'              Focus              \'" type="VBoxContainer" parent="ScrollContainer/Control/Game 1/TabContainer/Graph/ColorRect/GraphsContainer"]
 visible = false
@@ -367,8 +377,13 @@ Score
 
                                                     Sessions"
 
-[node name="FocusGraph" type="Line2D" parent="ScrollContainer/Control/Game 1/TabContainer/Graph/ColorRect/GraphsContainer/\'              Focus              \'/FocusGraphLabel"]
-script = ExtResource("17_sgy3w")
+[node name="Control" type="Control" parent="ScrollContainer/Control/Game 1/TabContainer/Graph/ColorRect/GraphsContainer/\'              Focus              \'/FocusGraphLabel"]
+layout_mode = 2
+
+[node name="FocusGraph" type="Line2D" parent="ScrollContainer/Control/Game 1/TabContainer/Graph/ColorRect/GraphsContainer/\'              Focus              \'/FocusGraphLabel/Control"]
+position = Vector2(-557, 0)
+script = ExtResource("12_sfxj2")
+data_key = "G1Focus"
 
 [node name="Spacer" type="Control" parent="ScrollContainer/Control"]
 custom_minimum_size = Vector2(0, 35)
@@ -464,7 +479,7 @@ layout_mode = 2
 
 [node name="Progress Bars" type="HBoxContainer" parent="ScrollContainer/Control/Game 2/TabContainer/Improvements"]
 layout_mode = 2
-script = ExtResource("7_t41jg")
+script = ExtResource("14_bld2j")
 
 [node name="Spacer" type="Control" parent="ScrollContainer/Control/Game 2/TabContainer/Improvements/Progress Bars"]
 custom_minimum_size = Vector2(45, 0)
@@ -598,8 +613,8 @@ Score
 
                                                     Sessions"
 
-[node name="ScoreGraph" type="Line2D" parent="ScrollContainer/Control/Game 2/TabContainer/Graph/ColorRect/GraphsContainer/\'              Score              \'/ScoreGraphLabels"]
-script = ExtResource("15_46gm7")
+[node name="Control" parent="ScrollContainer/Control/Game 2/TabContainer/Graph/ColorRect/GraphsContainer/\'              Score              \'/ScoreGraphLabels" instance=ExtResource("14_0xhey")]
+layout_mode = 2
 
 [node name="\'              Speed              \'" type="VBoxContainer" parent="ScrollContainer/Control/Game 2/TabContainer/Graph/ColorRect/GraphsContainer"]
 visible = false
@@ -630,8 +645,13 @@ Score
 
                                                     Sessions"
 
-[node name="SpeedGraph" type="Line2D" parent="ScrollContainer/Control/Game 2/TabContainer/Graph/ColorRect/GraphsContainer/\'              Speed              \'/SpeedGraphLabel"]
-script = ExtResource("16_d0xli")
+[node name="Control" type="Control" parent="ScrollContainer/Control/Game 2/TabContainer/Graph/ColorRect/GraphsContainer/\'              Speed              \'/SpeedGraphLabel"]
+layout_mode = 2
+
+[node name="SpeedGraph" type="Line2D" parent="ScrollContainer/Control/Game 2/TabContainer/Graph/ColorRect/GraphsContainer/\'              Speed              \'/SpeedGraphLabel/Control"]
+position = Vector2(-557, 0)
+script = ExtResource("12_sfxj2")
+data_key = "G2Speed"
 
 [node name="\'              Focus              \'" type="VBoxContainer" parent="ScrollContainer/Control/Game 2/TabContainer/Graph/ColorRect/GraphsContainer"]
 visible = false
@@ -662,5 +682,628 @@ Score
 
                                                     Sessions"
 
-[node name="FocusGraph" type="Line2D" parent="ScrollContainer/Control/Game 2/TabContainer/Graph/ColorRect/GraphsContainer/\'              Focus              \'/FocusGraphLabel"]
-script = ExtResource("17_sgy3w")
+[node name="Control" type="Control" parent="ScrollContainer/Control/Game 2/TabContainer/Graph/ColorRect/GraphsContainer/\'              Focus              \'/FocusGraphLabel"]
+layout_mode = 2
+
+[node name="FocusGraph" type="Line2D" parent="ScrollContainer/Control/Game 2/TabContainer/Graph/ColorRect/GraphsContainer/\'              Focus              \'/FocusGraphLabel/Control"]
+position = Vector2(-557, 0)
+script = ExtResource("12_sfxj2")
+data_key = "G2Focus"
+
+[node name="Spacer2" type="Control" parent="ScrollContainer/Control"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 3
+anchors_preset = 0
+offset_bottom = 35.0
+
+[node name="Game 3" type="Label" parent="ScrollContainer/Control"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 2436.0
+offset_right = 1069.0
+offset_bottom = 2553.0
+theme_override_fonts/font = ExtResource("5_gvapx")
+theme_override_font_sizes/font_size = 50
+text = "Game 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TabContainer" type="TabContainer" parent="ScrollContainer/Control/Game 3"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 136.0
+offset_right = 992.0
+offset_bottom = 1258.0
+theme_override_fonts/font = ExtResource("5_gvapx")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/panel = SubResource("StyleBoxFlat_jor0j")
+current_tab = 1
+
+[node name="Improvements" type="VBoxContainer" parent="ScrollContainer/Control/Game 3/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Spacer" type="Control" parent="ScrollContainer/Control/Game 3/TabContainer/Improvements"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+
+[node name="Text" type="HBoxContainer" parent="ScrollContainer/Control/Game 3/TabContainer/Improvements"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="ScrollContainer/Control/Game 3/TabContainer/Improvements/Text"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+
+[node name="SinceTheBeginning" type="Label" parent="ScrollContainer/Control/Game 3/TabContainer/Improvements/Text"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_gvapx")
+theme_override_font_sizes/font_size = 25
+text = "Since the beginning, your..."
+
+[node name="Spacer2" type="Control" parent="ScrollContainer/Control/Game 3/TabContainer/Improvements"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+
+[node name="Text2" type="HBoxContainer" parent="ScrollContainer/Control/Game 3/TabContainer/Improvements"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="ScrollContainer/Control/Game 3/TabContainer/Improvements/Text2"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+
+[node name="ScoreTitle" type="Label" parent="ScrollContainer/Control/Game 3/TabContainer/Improvements/Text2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "SCORE
+"
+
+[node name="Spacer2" type="Control" parent="ScrollContainer/Control/Game 3/TabContainer/Improvements/Text2"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="SpeedTitle" type="Label" parent="ScrollContainer/Control/Game 3/TabContainer/Improvements/Text2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "SPEED
+"
+
+[node name="Spacer3" type="Control" parent="ScrollContainer/Control/Game 3/TabContainer/Improvements/Text2"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="FocuseTitle" type="Label" parent="ScrollContainer/Control/Game 3/TabContainer/Improvements/Text2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "FOCUS
+"
+
+[node name="Spacer3" type="Control" parent="ScrollContainer/Control/Game 3/TabContainer/Improvements"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="Progress Bars" type="HBoxContainer" parent="ScrollContainer/Control/Game 3/TabContainer/Improvements"]
+layout_mode = 2
+script = ExtResource("18_m8yy8")
+
+[node name="Spacer" type="Control" parent="ScrollContainer/Control/Game 3/TabContainer/Improvements/Progress Bars"]
+custom_minimum_size = Vector2(45, 0)
+layout_mode = 2
+
+[node name="ScoreProgressBar" type="TextureProgressBar" parent="ScrollContainer/Control/Game 3/TabContainer/Improvements/Progress Bars"]
+custom_minimum_size = Vector2(150, 400)
+layout_mode = 2
+fill_mode = 3
+texture_under = ExtResource("8_7xtky")
+texture_over = ExtResource("9_ktfwq")
+texture_progress = ExtResource("9_ke8o7")
+
+[node name="Level" type="Label" parent="ScrollContainer/Control/Game 3/TabContainer/Improvements/Progress Bars"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Advanced
+
+
+
+Intermediate"
+
+[node name="Spacer2" type="Control" parent="ScrollContainer/Control/Game 3/TabContainer/Improvements/Progress Bars"]
+custom_minimum_size = Vector2(45, 0)
+layout_mode = 2
+
+[node name="SpeedProgressBar" type="TextureProgressBar" parent="ScrollContainer/Control/Game 3/TabContainer/Improvements/Progress Bars"]
+custom_minimum_size = Vector2(150, 400)
+layout_mode = 2
+fill_mode = 3
+texture_under = ExtResource("8_7xtky")
+texture_over = ExtResource("9_ktfwq")
+texture_progress = ExtResource("9_ke8o7")
+
+[node name="Level2" type="Label" parent="ScrollContainer/Control/Game 3/TabContainer/Improvements/Progress Bars"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Advanced
+
+
+
+Intermediate"
+
+[node name="Spacer3" type="Control" parent="ScrollContainer/Control/Game 3/TabContainer/Improvements/Progress Bars"]
+custom_minimum_size = Vector2(45, 0)
+layout_mode = 2
+
+[node name="FocusProgressBar" type="TextureProgressBar" parent="ScrollContainer/Control/Game 3/TabContainer/Improvements/Progress Bars"]
+custom_minimum_size = Vector2(150, 400)
+layout_mode = 2
+fill_mode = 3
+texture_under = ExtResource("8_7xtky")
+texture_over = ExtResource("9_ktfwq")
+texture_progress = ExtResource("9_ke8o7")
+
+[node name="Level3" type="Label" parent="ScrollContainer/Control/Game 3/TabContainer/Improvements/Progress Bars"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Advanced
+
+
+
+Intermediate"
+
+[node name="Spacer4" type="Control" parent="ScrollContainer/Control/Game 3/TabContainer/Improvements/Progress Bars"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="Graph" type="VBoxContainer" parent="ScrollContainer/Control/Game 3/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Spacer" type="Control" parent="ScrollContainer/Control/Game 3/TabContainer/Graph"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+
+[node name="Text" type="HBoxContainer" parent="ScrollContainer/Control/Game 3/TabContainer/Graph"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="ScrollContainer/Control/Game 3/TabContainer/Graph/Text"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+
+[node name="AcrossSessions" type="Label" parent="ScrollContainer/Control/Game 3/TabContainer/Graph/Text"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_gvapx")
+theme_override_font_sizes/font_size = 25
+text = "Across sessions..."
+
+[node name="Spacer2" type="Control" parent="ScrollContainer/Control/Game 3/TabContainer/Graph"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="ScrollContainer/Control/Game 3/TabContainer/Graph"]
+custom_minimum_size = Vector2(0, 750)
+layout_mode = 2
+color = Color(0.372549, 0.372549, 0.372549, 1)
+
+[node name="GraphsContainer" type="TabContainer" parent="ScrollContainer/Control/Game 3/TabContainer/Graph/ColorRect"]
+layout_mode = 2
+offset_top = 4.0
+offset_right = 937.0
+offset_bottom = 49.0
+theme_override_fonts/font = ExtResource("5_gvapx")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/panel = SubResource("StyleBoxFlat_8cpex")
+tab_alignment = 1
+current_tab = 0
+
+[node name="\'              Score              \'" type="VBoxContainer" parent="ScrollContainer/Control/Game 3/TabContainer/Graph/ColorRect/GraphsContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="ScoreGraphLabels" type="HBoxContainer" parent="ScrollContainer/Control/Game 3/TabContainer/Graph/ColorRect/GraphsContainer/\'              Score              \'"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="ScrollContainer/Control/Game 3/TabContainer/Graph/ColorRect/GraphsContainer/\'              Score              \'/ScoreGraphLabels"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/Control/Game 3/TabContainer/Graph/ColorRect/GraphsContainer/\'              Score              \'/ScoreGraphLabels"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "
+
+
+
+
+
+Score
+
+
+
+
+
+                                                    Sessions"
+
+[node name="Control" parent="ScrollContainer/Control/Game 3/TabContainer/Graph/ColorRect/GraphsContainer/\'              Score              \'/ScoreGraphLabels" instance=ExtResource("16_jbvx5")]
+layout_mode = 2
+
+[node name="\'              Speed              \'" type="VBoxContainer" parent="ScrollContainer/Control/Game 3/TabContainer/Graph/ColorRect/GraphsContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="SpeedGraphLabel" type="HBoxContainer" parent="ScrollContainer/Control/Game 3/TabContainer/Graph/ColorRect/GraphsContainer/\'              Speed              \'"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="ScrollContainer/Control/Game 3/TabContainer/Graph/ColorRect/GraphsContainer/\'              Speed              \'/SpeedGraphLabel"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/Control/Game 3/TabContainer/Graph/ColorRect/GraphsContainer/\'              Speed              \'/SpeedGraphLabel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "
+
+
+
+
+
+Score
+
+
+
+
+
+                                                    Sessions"
+
+[node name="Control" type="Control" parent="ScrollContainer/Control/Game 3/TabContainer/Graph/ColorRect/GraphsContainer/\'              Speed              \'/SpeedGraphLabel"]
+layout_mode = 2
+
+[node name="SpeedGraph" type="Line2D" parent="ScrollContainer/Control/Game 3/TabContainer/Graph/ColorRect/GraphsContainer/\'              Speed              \'/SpeedGraphLabel/Control"]
+position = Vector2(-557, 0)
+script = ExtResource("12_sfxj2")
+data_key = "G3Speed"
+
+[node name="\'              Focus              \'" type="VBoxContainer" parent="ScrollContainer/Control/Game 3/TabContainer/Graph/ColorRect/GraphsContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="FocusGraphLabel" type="HBoxContainer" parent="ScrollContainer/Control/Game 3/TabContainer/Graph/ColorRect/GraphsContainer/\'              Focus              \'"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="ScrollContainer/Control/Game 3/TabContainer/Graph/ColorRect/GraphsContainer/\'              Focus              \'/FocusGraphLabel"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/Control/Game 3/TabContainer/Graph/ColorRect/GraphsContainer/\'              Focus              \'/FocusGraphLabel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "
+
+
+
+
+
+Score
+
+
+
+
+
+                                                    Sessions"
+
+[node name="Control" type="Control" parent="ScrollContainer/Control/Game 3/TabContainer/Graph/ColorRect/GraphsContainer/\'              Focus              \'/FocusGraphLabel"]
+layout_mode = 2
+
+[node name="FocusGraph" type="Line2D" parent="ScrollContainer/Control/Game 3/TabContainer/Graph/ColorRect/GraphsContainer/\'              Focus              \'/FocusGraphLabel/Control"]
+position = Vector2(-557, 0)
+script = ExtResource("12_sfxj2")
+data_key = "G3Focus"
+
+[node name="Spacer3" type="Control" parent="ScrollContainer/Control"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 3
+anchors_preset = 0
+offset_bottom = 35.0
+
+[node name="Game 4" type="Label" parent="ScrollContainer/Control"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 3654.0
+offset_right = 1069.0
+offset_bottom = 3771.0
+theme_override_fonts/font = ExtResource("5_gvapx")
+theme_override_font_sizes/font_size = 50
+text = "Game 4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TabContainer" type="TabContainer" parent="ScrollContainer/Control/Game 4"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 136.0
+offset_right = 992.0
+offset_bottom = 1258.0
+theme_override_fonts/font = ExtResource("5_gvapx")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/panel = SubResource("StyleBoxFlat_jor0j")
+current_tab = 1
+
+[node name="Improvements" type="VBoxContainer" parent="ScrollContainer/Control/Game 4/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Spacer" type="Control" parent="ScrollContainer/Control/Game 4/TabContainer/Improvements"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+
+[node name="Text" type="HBoxContainer" parent="ScrollContainer/Control/Game 4/TabContainer/Improvements"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="ScrollContainer/Control/Game 4/TabContainer/Improvements/Text"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+
+[node name="SinceTheBeginning" type="Label" parent="ScrollContainer/Control/Game 4/TabContainer/Improvements/Text"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_gvapx")
+theme_override_font_sizes/font_size = 25
+text = "Since the beginning, your..."
+
+[node name="Spacer2" type="Control" parent="ScrollContainer/Control/Game 4/TabContainer/Improvements"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+
+[node name="Text2" type="HBoxContainer" parent="ScrollContainer/Control/Game 4/TabContainer/Improvements"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="ScrollContainer/Control/Game 4/TabContainer/Improvements/Text2"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+
+[node name="ScoreTitle" type="Label" parent="ScrollContainer/Control/Game 4/TabContainer/Improvements/Text2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "SCORE
+"
+
+[node name="Spacer2" type="Control" parent="ScrollContainer/Control/Game 4/TabContainer/Improvements/Text2"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="SpeedTitle" type="Label" parent="ScrollContainer/Control/Game 4/TabContainer/Improvements/Text2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "SPEED
+"
+
+[node name="Spacer3" type="Control" parent="ScrollContainer/Control/Game 4/TabContainer/Improvements/Text2"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="FocuseTitle" type="Label" parent="ScrollContainer/Control/Game 4/TabContainer/Improvements/Text2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "FOCUS
+"
+
+[node name="Spacer3" type="Control" parent="ScrollContainer/Control/Game 4/TabContainer/Improvements"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="Progress Bars" type="HBoxContainer" parent="ScrollContainer/Control/Game 4/TabContainer/Improvements"]
+layout_mode = 2
+script = ExtResource("22_5636g")
+
+[node name="Spacer" type="Control" parent="ScrollContainer/Control/Game 4/TabContainer/Improvements/Progress Bars"]
+custom_minimum_size = Vector2(45, 0)
+layout_mode = 2
+
+[node name="ScoreProgressBar" type="TextureProgressBar" parent="ScrollContainer/Control/Game 4/TabContainer/Improvements/Progress Bars"]
+custom_minimum_size = Vector2(150, 400)
+layout_mode = 2
+fill_mode = 3
+texture_under = ExtResource("8_7xtky")
+texture_over = ExtResource("9_ktfwq")
+texture_progress = ExtResource("9_ke8o7")
+
+[node name="Level" type="Label" parent="ScrollContainer/Control/Game 4/TabContainer/Improvements/Progress Bars"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Advanced
+
+
+
+Intermediate"
+
+[node name="Spacer2" type="Control" parent="ScrollContainer/Control/Game 4/TabContainer/Improvements/Progress Bars"]
+custom_minimum_size = Vector2(45, 0)
+layout_mode = 2
+
+[node name="SpeedProgressBar" type="TextureProgressBar" parent="ScrollContainer/Control/Game 4/TabContainer/Improvements/Progress Bars"]
+custom_minimum_size = Vector2(150, 400)
+layout_mode = 2
+fill_mode = 3
+texture_under = ExtResource("8_7xtky")
+texture_over = ExtResource("9_ktfwq")
+texture_progress = ExtResource("9_ke8o7")
+
+[node name="Level2" type="Label" parent="ScrollContainer/Control/Game 4/TabContainer/Improvements/Progress Bars"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Advanced
+
+
+
+Intermediate"
+
+[node name="Spacer3" type="Control" parent="ScrollContainer/Control/Game 4/TabContainer/Improvements/Progress Bars"]
+custom_minimum_size = Vector2(45, 0)
+layout_mode = 2
+
+[node name="FocusProgressBar" type="TextureProgressBar" parent="ScrollContainer/Control/Game 4/TabContainer/Improvements/Progress Bars"]
+custom_minimum_size = Vector2(150, 400)
+layout_mode = 2
+fill_mode = 3
+texture_under = ExtResource("8_7xtky")
+texture_over = ExtResource("9_ktfwq")
+texture_progress = ExtResource("9_ke8o7")
+
+[node name="Level3" type="Label" parent="ScrollContainer/Control/Game 4/TabContainer/Improvements/Progress Bars"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Advanced
+
+
+
+Intermediate"
+
+[node name="Spacer4" type="Control" parent="ScrollContainer/Control/Game 4/TabContainer/Improvements/Progress Bars"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="Graph" type="VBoxContainer" parent="ScrollContainer/Control/Game 4/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Spacer" type="Control" parent="ScrollContainer/Control/Game 4/TabContainer/Graph"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+
+[node name="Text" type="HBoxContainer" parent="ScrollContainer/Control/Game 4/TabContainer/Graph"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="ScrollContainer/Control/Game 4/TabContainer/Graph/Text"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+
+[node name="AcrossSessions" type="Label" parent="ScrollContainer/Control/Game 4/TabContainer/Graph/Text"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_gvapx")
+theme_override_font_sizes/font_size = 25
+text = "Across sessions..."
+
+[node name="Spacer2" type="Control" parent="ScrollContainer/Control/Game 4/TabContainer/Graph"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="ScrollContainer/Control/Game 4/TabContainer/Graph"]
+custom_minimum_size = Vector2(0, 750)
+layout_mode = 2
+color = Color(0.372549, 0.372549, 0.372549, 1)
+
+[node name="GraphsContainer" type="TabContainer" parent="ScrollContainer/Control/Game 4/TabContainer/Graph/ColorRect"]
+layout_mode = 2
+offset_top = 4.0
+offset_right = 937.0
+offset_bottom = 49.0
+theme_override_fonts/font = ExtResource("5_gvapx")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/panel = SubResource("StyleBoxFlat_8cpex")
+tab_alignment = 1
+current_tab = 0
+
+[node name="\'              Score              \'" type="VBoxContainer" parent="ScrollContainer/Control/Game 4/TabContainer/Graph/ColorRect/GraphsContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="ScoreGraphLabels" type="HBoxContainer" parent="ScrollContainer/Control/Game 4/TabContainer/Graph/ColorRect/GraphsContainer/\'              Score              \'"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="ScrollContainer/Control/Game 4/TabContainer/Graph/ColorRect/GraphsContainer/\'              Score              \'/ScoreGraphLabels"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/Control/Game 4/TabContainer/Graph/ColorRect/GraphsContainer/\'              Score              \'/ScoreGraphLabels"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "
+
+
+
+
+
+Score
+
+
+
+
+
+                                                    Sessions"
+
+[node name="Control" parent="ScrollContainer/Control/Game 4/TabContainer/Graph/ColorRect/GraphsContainer/\'              Score              \'/ScoreGraphLabels" instance=ExtResource("18_xispq")]
+layout_mode = 2
+
+[node name="\'              Speed              \'" type="VBoxContainer" parent="ScrollContainer/Control/Game 4/TabContainer/Graph/ColorRect/GraphsContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="SpeedGraphLabel" type="HBoxContainer" parent="ScrollContainer/Control/Game 4/TabContainer/Graph/ColorRect/GraphsContainer/\'              Speed              \'"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="ScrollContainer/Control/Game 4/TabContainer/Graph/ColorRect/GraphsContainer/\'              Speed              \'/SpeedGraphLabel"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/Control/Game 4/TabContainer/Graph/ColorRect/GraphsContainer/\'              Speed              \'/SpeedGraphLabel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "
+
+
+
+
+
+Score
+
+
+
+
+
+                                                    Sessions"
+
+[node name="Control" type="Control" parent="ScrollContainer/Control/Game 4/TabContainer/Graph/ColorRect/GraphsContainer/\'              Speed              \'/SpeedGraphLabel"]
+layout_mode = 2
+
+[node name="SpeedGraph" type="Line2D" parent="ScrollContainer/Control/Game 4/TabContainer/Graph/ColorRect/GraphsContainer/\'              Speed              \'/SpeedGraphLabel/Control"]
+position = Vector2(-557, 0)
+script = ExtResource("12_sfxj2")
+data_key = "G4Speed"
+
+[node name="\'              Focus              \'" type="VBoxContainer" parent="ScrollContainer/Control/Game 4/TabContainer/Graph/ColorRect/GraphsContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="FocusGraphLabel" type="HBoxContainer" parent="ScrollContainer/Control/Game 4/TabContainer/Graph/ColorRect/GraphsContainer/\'              Focus              \'"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="ScrollContainer/Control/Game 4/TabContainer/Graph/ColorRect/GraphsContainer/\'              Focus              \'/FocusGraphLabel"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/Control/Game 4/TabContainer/Graph/ColorRect/GraphsContainer/\'              Focus              \'/FocusGraphLabel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "
+
+
+
+
+
+Score
+
+
+
+
+
+                                                    Sessions"
+
+[node name="Control" type="Control" parent="ScrollContainer/Control/Game 4/TabContainer/Graph/ColorRect/GraphsContainer/\'              Focus              \'/FocusGraphLabel"]
+layout_mode = 2
+
+[node name="FocusGraph" type="Line2D" parent="ScrollContainer/Control/Game 4/TabContainer/Graph/ColorRect/GraphsContainer/\'              Focus              \'/FocusGraphLabel/Control"]
+position = Vector2(-557, 0)
+script = ExtResource("12_sfxj2")
+data_key = "G4Focus"

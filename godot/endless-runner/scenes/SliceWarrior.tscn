@@ -33,6 +33,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="ScoreLabel" type="Label" parent="HUD"]
+layout_mode = 0
 offset_right = 1081.0
 offset_bottom = 180.0
 theme_override_fonts/font = ExtResource("5_i4y7v")
