@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c0nk261tmvf6m"]
+[gd_scene load_steps=18 format=3 uid="uid://c0nk261tmvf6m"]
 
 [ext_resource type="Texture2D" uid="uid://bk562ybu681k7" path="res://assets/galaxy.jpg" id="1_8spis"]
 [ext_resource type="Script" path="res://scripts/Statistics.gd" id="1_ss7q5"]
@@ -6,18 +6,15 @@
 [ext_resource type="Texture2D" uid="uid://c34w3kxvgnb5g" path="res://assets/kenney_game-icons/PNG/White/2x/exitLeft.png" id="3_obt72"]
 [ext_resource type="Texture2D" uid="uid://mjfn27fhdvhv" path="res://assets/kenney_game-icons/PNG/White/2x/button3.png" id="4_3ka1f"]
 [ext_resource type="FontFile" uid="uid://d153mdm4tperu" path="res://assets/Rubik_Distressed/RubikDistressed-Regular.ttf" id="5_gvapx"]
-[ext_resource type="Script" path="res://scripts/G1ProgressBars.gd" id="7_t41jg"]
+[ext_resource type="Script" path="res://scripts/ProgressBars.gd" id="7_t41jg"]
 [ext_resource type="Texture2D" uid="uid://g6u1i6e2dwsn" path="res://assets/light_gray_bar.png" id="8_7xtky"]
 [ext_resource type="Texture2D" uid="uid://cow1nk6u483oh" path="res://assets/white_bar.png" id="9_ke8o7"]
 [ext_resource type="Texture2D" uid="uid://csplm0kms482p" path="res://assets/dotted_overlay.png" id="9_ktfwq"]
 [ext_resource type="PackedScene" uid="uid://c77ug7joe5mcb" path="res://scenes/G1Score.tscn" id="11_p7utj"]
 [ext_resource type="Script" path="res://scripts/GraphRenderer.gd" id="12_sfxj2"]
 [ext_resource type="PackedScene" uid="uid://1ovkqrpyecyn" path="res://scenes/G2Score.tscn" id="14_0xhey"]
-[ext_resource type="Script" path="res://scripts/G2ProgressBars.gd" id="14_bld2j"]
 [ext_resource type="PackedScene" uid="uid://glv6xkr6in8e" path="res://scenes/G3Score.tscn" id="16_jbvx5"]
-[ext_resource type="Script" path="res://scripts/G3ProgressBars.gd" id="18_m8yy8"]
 [ext_resource type="PackedScene" uid="uid://cr1vjq4kg8kue" path="res://scenes/G4Score.tscn" id="18_xispq"]
-[ext_resource type="Script" path="res://scripts/G4ProgessBars.gd" id="22_5636g"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jor0j"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -175,6 +172,7 @@ layout_mode = 2
 [node name="Progress Bars" type="HBoxContainer" parent="ScrollContainer/Control/Game 1/TabContainer/Improvements"]
 layout_mode = 2
 script = ExtResource("7_t41jg")
+game_number = 1
 
 [node name="Spacer" type="Control" parent="ScrollContainer/Control/Game 1/TabContainer/Improvements/Progress Bars"]
 custom_minimum_size = Vector2(45, 0)
@@ -479,7 +477,8 @@ layout_mode = 2
 
 [node name="Progress Bars" type="HBoxContainer" parent="ScrollContainer/Control/Game 2/TabContainer/Improvements"]
 layout_mode = 2
-script = ExtResource("14_bld2j")
+script = ExtResource("7_t41jg")
+game_number = 2
 
 [node name="Spacer" type="Control" parent="ScrollContainer/Control/Game 2/TabContainer/Improvements/Progress Bars"]
 custom_minimum_size = Vector2(45, 0)
@@ -784,7 +783,8 @@ layout_mode = 2
 
 [node name="Progress Bars" type="HBoxContainer" parent="ScrollContainer/Control/Game 3/TabContainer/Improvements"]
 layout_mode = 2
-script = ExtResource("18_m8yy8")
+script = ExtResource("7_t41jg")
+game_number = 3
 
 [node name="Spacer" type="Control" parent="ScrollContainer/Control/Game 3/TabContainer/Improvements/Progress Bars"]
 custom_minimum_size = Vector2(45, 0)
@@ -1093,7 +1093,8 @@ layout_mode = 2
 
 [node name="Progress Bars" type="HBoxContainer" parent="ScrollContainer/Control/Game 4/TabContainer/Improvements"]
 layout_mode = 2
-script = ExtResource("22_5636g")
+script = ExtResource("7_t41jg")
+game_number = 4
 
 [node name="Spacer" type="Control" parent="ScrollContainer/Control/Game 4/TabContainer/Improvements/Progress Bars"]
 custom_minimum_size = Vector2(45, 0)

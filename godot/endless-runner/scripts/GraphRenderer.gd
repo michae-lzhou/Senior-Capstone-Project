@@ -4,7 +4,7 @@ extends Line2D
 var GLOBAL_X_SCALE: float = 2.0
 var GLOBAL_Y_SCALE: float = 2.0
 # Base dimensions before scaling
-var BASE_GRAPH_WIDTH: float = 380
+var BASE_GRAPH_WIDTH: float = 370
 var BASE_GRAPH_HEIGHT: float = 220
 # Offset for shifting the graph
 var offset_x: float = 125  # Horizontal shift
@@ -16,13 +16,27 @@ func _ready():
 		return
 		
 	var data_array = GSession.get(data_key)
-	if data_array == null or typeof(data_array) != TYPE_ARRAY:
-		push_warning("Invalid or missing data for key: %s" % data_key)
+	
+	draw_axes()
+	
+	if data_array == null or typeof(data_array) != TYPE_ARRAY or data_array.size() < 1:
+		push_warning("Invalid, missing, or too few data points for key: %s" % data_key)
 		return
 		
-	draw_axes()
-	draw_graph(data_array)
+	if data_array.size() == 1:
+		plot_one()
+		return
+
 	draw_shading(data_array)
+	draw_graph(data_array)
+	
+func plot_one():
+	# Instance a dot and position it
+	var dot = preload("res://scripts/Dot.gd").new()
+	dot.position = Vector2(500, 275)
+	dot.radius = 4 * GLOBAL_X_SCALE
+	dot.color = Color(1, 1, 1)
+	add_child(dot)
 
 func get_scaled_points(data_points: Array) -> Array:
 	var scaled_points = []
@@ -65,11 +79,21 @@ func draw_graph(data_points: Array):
 	var graph = Line2D.new()
 	graph.width = 3 * GLOBAL_X_SCALE
 	graph.default_color = Color(0, 0.5, 1)
+
+	var scaled_points = get_scaled_points(data_points)
 	
-	for point in get_scaled_points(data_points):
+	add_child(graph)
+
+	for point in scaled_points:
 		graph.add_point(point)
 		
-	add_child(graph)
+		# Instance a dot and position it
+		var dot = preload("res://scripts/Dot.gd").new()
+		dot.position = point
+		dot.radius = 4 * GLOBAL_X_SCALE
+		dot.color = Color(1, 1, 1)
+		add_child(dot)
+
 
 func draw_shading(data_points: Array):
 	var polygon = Polygon2D.new()
@@ -98,7 +122,7 @@ func draw_shading(data_points: Array):
 func draw_axes():
 	# Fixed x-axis start position
 	var x_start = offset_x + 10 * GLOBAL_X_SCALE
-	var x_end = offset_x + BASE_GRAPH_WIDTH * GLOBAL_X_SCALE
+	var x_end = offset_x + (BASE_GRAPH_WIDTH + 10) * GLOBAL_X_SCALE
 	var y_axis_height = 200 * GLOBAL_Y_SCALE
 	
 	# Draw X-axis

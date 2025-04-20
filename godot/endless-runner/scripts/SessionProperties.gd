@@ -5,8 +5,9 @@ var good_misses: int = 0
 var bad_misses: int = 0
 var good_hits: int = 0
 var bad_hits: int = 0
-var reaction_time: Array = []
-var session_score: int = 41234
+var good_reaction_time: Array = []
+var bad_reaction_time: Array = []
+var session_score: int = 0
 var game: int = 0
 
 var G1Score: Array = [
@@ -29,24 +30,12 @@ var G1Focus: Array = [
 ]
 
 var G2Score: Array = [
-	Vector2(1, 900), Vector2(2, 950), Vector2(3, 970), Vector2(4, 1000),
-	Vector2(5, 990), Vector2(6, 1010), Vector2(7, 1040), Vector2(8, 1060),
-	Vector2(9, 1100), Vector2(10, 1150), Vector2(11, 1180), Vector2(12, 1250),
-	Vector2(13, 1300), Vector2(14, 1330), Vector2(15, 1350)
 ]
 
 var G2Speed: Array = [
-	Vector2(1, 950), Vector2(2, 980), Vector2(3, 1000), Vector2(4, 1020),
-	Vector2(5, 1080), Vector2(6, 1120), Vector2(7, 1170), Vector2(8, 1230),
-	Vector2(9, 1250), Vector2(10, 1280), Vector2(11, 1290), Vector2(12, 1350),
-	Vector2(13, 1370), Vector2(14, 1390), Vector2(15, 1410)
 ]
 
 var G2Focus: Array = [
-	Vector2(1, 1200), Vector2(2, 1220), Vector2(3, 1240), Vector2(4, 1260),
-	Vector2(5, 1280), Vector2(6, 1300), Vector2(7, 1350), Vector2(8, 1370),
-	Vector2(9, 1380), Vector2(10, 1400), Vector2(11, 1410), Vector2(12, 1440),
-	Vector2(13, 1460), Vector2(14, 1490), Vector2(15, 1500)
 ]
 
 var G3Score: Array = [
@@ -91,34 +80,21 @@ var G4Focus: Array = [
 	Vector2(13, 1280), Vector2(14, 1300), Vector2(15, 1330)
 ]
 
-# Optional: A method to reset everything (could be useful between levels or for debugging)
 func reset():
 	good_misses = 0
 	bad_misses = 0
 	good_hits = 0
 	bad_hits = 0
-	reaction_time.clear()
+	good_reaction_time.clear()
+	bad_reaction_time.clear()
 	session_score = 0
 	game = 0
 
-	G1Score = []
-	G1Speed = []
-	G1Focus = []
-	G2Score = []
-	G2Speed = []
-	G2Focus = []
-	G3Score = []
-	G3Speed = []
-	G3Focus = []
-	G4Score = []
-	G4Speed = []
-	G4Focus = []
-
-# Optional: Print method for debugging
 func print_stats():
 	print("Good Hits:", good_hits)
 	print("Bad Hits:", bad_hits)
 	print("Good Misses:", good_misses)
 	print("Bad Misses:", bad_misses)
-	print("Reaction Times:", reaction_time)
+	print("Good Reaction Times:", good_reaction_time)
+	print("Bad Reaction Times:", bad_reaction_time)
 	print("Session Score:", session_score)

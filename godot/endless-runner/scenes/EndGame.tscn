@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://daqr7b8yk3pul"]
+[gd_scene load_steps=8 format=3 uid="uid://daqr7b8yk3pul"]
 
 [ext_resource type="Script" path="res://scripts/EndGame.gd" id="1_40fhf"]
 [ext_resource type="Texture2D" uid="uid://bk562ybu681k7" path="res://assets/galaxy.jpg" id="2_ksfgo"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://3hcxqwu5dyjt" path="res://assets/kenney_game-icons/PNG/White/2x/buttonStart.png" id="4_vhc2c"]
 [ext_resource type="Texture2D" uid="uid://c5dcqjkd3g730" path="res://assets/kenney_game-icons/PNG/White/1x/leaderboardsComplex.png" id="5_0ranw"]
 [ext_resource type="Texture2D" uid="uid://c34w3kxvgnb5g" path="res://assets/kenney_game-icons/PNG/White/2x/exitLeft.png" id="6_yxo5a"]
+[ext_resource type="Texture2D" uid="uid://xcygoqcmxb1l" path="res://assets/kenney_game-icons/PNG/White/2x/return.png" id="7_lm5s1"]
 
 [node name="EndGame" type="Control"]
 layout_mode = 3
@@ -27,39 +28,26 @@ texture = ExtResource("2_ksfgo")
 [node name="Score" type="Label" parent="."]
 layout_mode = 0
 offset_left = 23.0
-offset_top = 197.0
+offset_top = 270.0
 offset_right = 1068.0
-offset_bottom = 674.0
+offset_bottom = 747.0
 theme_override_fonts/font = ExtResource("3_n2l25")
 theme_override_font_sizes/font_size = 150
 text = "score"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="High Score" type="Label" parent="."]
+[node name="High_Score" type="Label" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 144.0
-offset_top = 543.0
+offset_top = 680.0
 offset_right = 944.0
-offset_bottom = 603.0
+offset_bottom = 740.0
 theme_override_fonts/font = ExtResource("3_n2l25")
 theme_override_font_sizes/font_size = 50
 text = "New High Score!!!"
 horizontal_alignment = 1
-
-[node name="StartButton" type="Button" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 366.0
-offset_top = 1165.0
-offset_right = 757.0
-offset_bottom = 1456.0
-theme_override_font_sizes/font_size = 50
-theme_override_icons/icon = ExtResource("4_vhc2c")
-icon = ExtResource("4_vhc2c")
-flat = true
-icon_alignment = 1
-expand_icon = true
 
 [node name="StatsButton" type="Button" parent="."]
 layout_mode = 0
@@ -74,8 +62,9 @@ expand_icon = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_top = -64.0
+offset_right = 633.0
+offset_bottom = 1322.0
 
 [node name="Spacer" type="Control" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 800)
@@ -120,3 +109,27 @@ icon = ExtResource("6_yxo5a")
 flat = true
 icon_alignment = 1
 expand_icon = true
+
+[node name="PlayAgainButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 350.0
+offset_top = 1357.0
+offset_right = 741.0
+offset_bottom = 1648.0
+theme_override_font_sizes/font_size = 50
+theme_override_icons/icon = ExtResource("4_vhc2c")
+icon = ExtResource("7_lm5s1")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Play Again" type="Label" parent="."]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 1632.0
+offset_right = 944.0
+offset_bottom = 1692.0
+theme_override_fonts/font = ExtResource("3_n2l25")
+theme_override_font_sizes/font_size = 50
+text = "Play Again"
+horizontal_alignment = 1

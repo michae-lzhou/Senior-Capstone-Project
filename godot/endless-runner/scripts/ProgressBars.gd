@@ -1,4 +1,5 @@
 extends HBoxContainer
+@export var game_number: int = 0  # The key to use in GSession
 
 @onready var score_progress_bar: TextureProgressBar = $ScoreProgressBar
 #var score_fill_speed: float = 100.0

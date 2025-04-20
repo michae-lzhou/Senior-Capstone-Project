@@ -1,6 +1,7 @@
 extends Control
 
 func _ready():
+	GSession.reset()
 	$Game1Button.pressed.connect(_on_game1_pressed)
 	$Game2Button.pressed.connect(_on_game2_pressed)
 	$Game3Button.pressed.connect(_on_game3_pressed)
