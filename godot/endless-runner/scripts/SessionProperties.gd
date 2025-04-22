@@ -20,8 +20,33 @@ var session_score: int = 0
 var game: int = 0
 var salient_idx = 0
 
-#GStats = {1 : {"score":[], pos:[], neg:[]}, 2 : {score:[], pos:[], neg:[]}}
-#to access: GSession.gstats[Gsession.game]["score"]
+var GStats = {
+	1 : {
+		 "score":    [],
+		 "speed":    [],
+		 "pos_hit":  [],
+		 "neg_miss": []
+		},
+	2 : {
+		 "score":    [],
+		 "speed":    [],
+		 "pos_hit":  [],
+		 "neg_miss": []
+		},
+	3 : {
+		 "score":    [],
+		 "speed":    [],
+		 "pos_hit":  [],
+		 "neg_miss": []
+		},
+	4 : {
+		 "score":    [],
+		 "speed":    [],
+		 "pos_hit":  [],
+		 "neg_miss": []
+		}
+}
+#to access: GSession.GStats[GSession.game]["score"]
 
 var G1Score: Array = [
 	#1100, 1120, 1130, 1170, 1150, 1180, 1200, 1250
@@ -82,6 +107,7 @@ var G4PosHitPercent: Array = [
 var G4NegMissPercent: Array = [
 ]
 
+# resets game session relevant information
 func reset():
 	good_misses = 0
 	bad_misses = 0
@@ -92,11 +118,12 @@ func reset():
 	session_score = 0
 	game = 0
 
+# purely for debugging purposes
 func print_G2():
-	print("Scores:", G2Score)
-	print("Pos hit:", G2PosHitPercent)
-	print("Neg missed:", G2NegMissPercent)
-	print("Speed:", G2Speed)
+	print("Scores:", GStats[2]["score"])
+	print("Speed:", GStats[2]["speed"])
+	print("Pos hit:", GStats[2]["pos_hit"])
+	print("Neg missed:", GStats[2]["neg_miss"])
 	
 func print_stats():
 	print("Good Hits:", good_hits)
@@ -106,6 +133,3 @@ func print_stats():
 	print("Good Reaction Times:", good_reaction_time)
 	print("Bad Reaction Times:", bad_reaction_time)
 	print("Session Score:", session_score)
-	print("Average Reaction Speed:", G2Speed)
-	print("Good Hit Percent:", G2PosHitPercent)
-	print("Bad Hit Percent:", G2NegMissPercent)

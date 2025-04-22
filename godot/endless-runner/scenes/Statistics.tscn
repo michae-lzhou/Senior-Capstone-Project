@@ -136,7 +136,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Spacer" type="Control" parent="ScrollContainer/Control/Game 1/TabContainer/Improvements/Text2"]
-custom_minimum_size = Vector2(75, 0)
+custom_minimum_size = Vector2(235, 0)
 layout_mode = 2
 
 [node name="ScoreTitle" type="Label" parent="ScrollContainer/Control/Game 1/TabContainer/Improvements/Text2"]
@@ -156,10 +156,12 @@ text = "SPEED
 "
 
 [node name="Spacer3" type="Control" parent="ScrollContainer/Control/Game 1/TabContainer/Improvements/Text2"]
+visible = false
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 
 [node name="FocuseTitle" type="Label" parent="ScrollContainer/Control/Game 1/TabContainer/Improvements/Text2"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "FOCUS
@@ -175,7 +177,7 @@ script = ExtResource("7_t41jg")
 game_number = 1
 
 [node name="Spacer" type="Control" parent="ScrollContainer/Control/Game 1/TabContainer/Improvements/Progress Bars"]
-custom_minimum_size = Vector2(45, 0)
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 
 [node name="ScoreProgressBar" type="TextureProgressBar" parent="ScrollContainer/Control/Game 1/TabContainer/Improvements/Progress Bars"]
@@ -217,10 +219,12 @@ text = "Advanced
 Intermediate"
 
 [node name="Spacer3" type="Control" parent="ScrollContainer/Control/Game 1/TabContainer/Improvements/Progress Bars"]
+visible = false
 custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
 
 [node name="FocusProgressBar" type="TextureProgressBar" parent="ScrollContainer/Control/Game 1/TabContainer/Improvements/Progress Bars"]
+visible = false
 custom_minimum_size = Vector2(150, 400)
 layout_mode = 2
 fill_mode = 3
@@ -229,6 +233,7 @@ texture_over = ExtResource("9_ktfwq")
 texture_progress = ExtResource("9_ke8o7")
 
 [node name="Level3" type="Label" parent="ScrollContainer/Control/Game 1/TabContainer/Improvements/Progress Bars"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Advanced
@@ -344,7 +349,7 @@ layout_mode = 2
 [node name="SpeedGraph" type="Line2D" parent="ScrollContainer/Control/Game 1/TabContainer/Graph/ColorRect/GraphsContainer/\'              Speed              \'/SpeedGraphLabel/Control"]
 position = Vector2(-557, 0)
 script = ExtResource("12_sfxj2")
-data_key = "G1Speed"
+data_key = "GSession.GStats[1][\"speed\"]"
 
 [node name="Spacer" type="Control" parent="ScrollContainer/Control"]
 custom_minimum_size = Vector2(0, 35)
@@ -405,7 +410,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Spacer" type="Control" parent="ScrollContainer/Control/Game 2/TabContainer/Improvements/Text2"]
-custom_minimum_size = Vector2(75, 0)
+custom_minimum_size = Vector2(235, 0)
 layout_mode = 2
 
 [node name="ScoreTitle" type="Label" parent="ScrollContainer/Control/Game 2/TabContainer/Improvements/Text2"]
@@ -425,10 +430,12 @@ text = "SPEED
 "
 
 [node name="Spacer3" type="Control" parent="ScrollContainer/Control/Game 2/TabContainer/Improvements/Text2"]
+visible = false
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 
 [node name="FocuseTitle" type="Label" parent="ScrollContainer/Control/Game 2/TabContainer/Improvements/Text2"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "FOCUS
@@ -444,7 +451,7 @@ script = ExtResource("7_t41jg")
 game_number = 2
 
 [node name="Spacer" type="Control" parent="ScrollContainer/Control/Game 2/TabContainer/Improvements/Progress Bars"]
-custom_minimum_size = Vector2(45, 0)
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 
 [node name="ScoreProgressBar" type="TextureProgressBar" parent="ScrollContainer/Control/Game 2/TabContainer/Improvements/Progress Bars"]
@@ -486,10 +493,12 @@ text = "Advanced
 Intermediate"
 
 [node name="Spacer3" type="Control" parent="ScrollContainer/Control/Game 2/TabContainer/Improvements/Progress Bars"]
+visible = false
 custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
 
 [node name="FocusProgressBar" type="TextureProgressBar" parent="ScrollContainer/Control/Game 2/TabContainer/Improvements/Progress Bars"]
+visible = false
 custom_minimum_size = Vector2(150, 400)
 layout_mode = 2
 fill_mode = 3
@@ -498,6 +507,7 @@ texture_over = ExtResource("9_ktfwq")
 texture_progress = ExtResource("9_ke8o7")
 
 [node name="Level3" type="Label" parent="ScrollContainer/Control/Game 2/TabContainer/Improvements/Progress Bars"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Advanced
@@ -613,7 +623,7 @@ layout_mode = 2
 [node name="SpeedGraph" type="Line2D" parent="ScrollContainer/Control/Game 2/TabContainer/Graph/ColorRect/GraphsContainer/\'              Speed              \'/SpeedGraphLabel/Control"]
 position = Vector2(-557, 0)
 script = ExtResource("12_sfxj2")
-data_key = "G2Speed"
+data_key = "GSession.GStats[2][\"speed\"]"
 
 [node name="Spacer2" type="Control" parent="ScrollContainer/Control"]
 custom_minimum_size = Vector2(0, 35)
@@ -674,7 +684,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Spacer" type="Control" parent="ScrollContainer/Control/Game 3/TabContainer/Improvements/Text2"]
-custom_minimum_size = Vector2(75, 0)
+custom_minimum_size = Vector2(235, 0)
 layout_mode = 2
 
 [node name="ScoreTitle" type="Label" parent="ScrollContainer/Control/Game 3/TabContainer/Improvements/Text2"]
@@ -694,10 +704,12 @@ text = "SPEED
 "
 
 [node name="Spacer3" type="Control" parent="ScrollContainer/Control/Game 3/TabContainer/Improvements/Text2"]
+visible = false
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 
 [node name="FocuseTitle" type="Label" parent="ScrollContainer/Control/Game 3/TabContainer/Improvements/Text2"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "FOCUS
@@ -713,7 +725,7 @@ script = ExtResource("7_t41jg")
 game_number = 3
 
 [node name="Spacer" type="Control" parent="ScrollContainer/Control/Game 3/TabContainer/Improvements/Progress Bars"]
-custom_minimum_size = Vector2(45, 0)
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 
 [node name="ScoreProgressBar" type="TextureProgressBar" parent="ScrollContainer/Control/Game 3/TabContainer/Improvements/Progress Bars"]
@@ -755,10 +767,12 @@ text = "Advanced
 Intermediate"
 
 [node name="Spacer3" type="Control" parent="ScrollContainer/Control/Game 3/TabContainer/Improvements/Progress Bars"]
+visible = false
 custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
 
 [node name="FocusProgressBar" type="TextureProgressBar" parent="ScrollContainer/Control/Game 3/TabContainer/Improvements/Progress Bars"]
+visible = false
 custom_minimum_size = Vector2(150, 400)
 layout_mode = 2
 fill_mode = 3
@@ -767,6 +781,7 @@ texture_over = ExtResource("9_ktfwq")
 texture_progress = ExtResource("9_ke8o7")
 
 [node name="Level3" type="Label" parent="ScrollContainer/Control/Game 3/TabContainer/Improvements/Progress Bars"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Advanced
@@ -776,6 +791,7 @@ text = "Advanced
 Intermediate"
 
 [node name="Spacer4" type="Control" parent="ScrollContainer/Control/Game 3/TabContainer/Improvements/Progress Bars"]
+visible = false
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 
@@ -886,7 +902,7 @@ layout_mode = 2
 [node name="SpeedGraph" type="Line2D" parent="ScrollContainer/Control/Game 3/TabContainer/Graph/ColorRect/GraphsContainer/\'              Speed              \'/SpeedGraphLabel/Control"]
 position = Vector2(-557, 0)
 script = ExtResource("12_sfxj2")
-data_key = "G3Speed"
+data_key = "GSession.GStats[3][\"speed\"]"
 
 [node name="Spacer3" type="Control" parent="ScrollContainer/Control"]
 custom_minimum_size = Vector2(0, 35)
@@ -947,7 +963,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Spacer" type="Control" parent="ScrollContainer/Control/Game 4/TabContainer/Improvements/Text2"]
-custom_minimum_size = Vector2(75, 0)
+custom_minimum_size = Vector2(235, 0)
 layout_mode = 2
 
 [node name="ScoreTitle" type="Label" parent="ScrollContainer/Control/Game 4/TabContainer/Improvements/Text2"]
@@ -967,10 +983,12 @@ text = "SPEED
 "
 
 [node name="Spacer3" type="Control" parent="ScrollContainer/Control/Game 4/TabContainer/Improvements/Text2"]
+visible = false
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 
 [node name="FocuseTitle" type="Label" parent="ScrollContainer/Control/Game 4/TabContainer/Improvements/Text2"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "FOCUS
@@ -986,7 +1004,7 @@ script = ExtResource("7_t41jg")
 game_number = 4
 
 [node name="Spacer" type="Control" parent="ScrollContainer/Control/Game 4/TabContainer/Improvements/Progress Bars"]
-custom_minimum_size = Vector2(45, 0)
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 
 [node name="ScoreProgressBar" type="TextureProgressBar" parent="ScrollContainer/Control/Game 4/TabContainer/Improvements/Progress Bars"]
@@ -1028,10 +1046,12 @@ text = "Advanced
 Intermediate"
 
 [node name="Spacer3" type="Control" parent="ScrollContainer/Control/Game 4/TabContainer/Improvements/Progress Bars"]
+visible = false
 custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
 
 [node name="FocusProgressBar" type="TextureProgressBar" parent="ScrollContainer/Control/Game 4/TabContainer/Improvements/Progress Bars"]
+visible = false
 custom_minimum_size = Vector2(150, 400)
 layout_mode = 2
 fill_mode = 3
@@ -1040,6 +1060,7 @@ texture_over = ExtResource("9_ktfwq")
 texture_progress = ExtResource("9_ke8o7")
 
 [node name="Level3" type="Label" parent="ScrollContainer/Control/Game 4/TabContainer/Improvements/Progress Bars"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Advanced
@@ -1049,6 +1070,7 @@ text = "Advanced
 Intermediate"
 
 [node name="Spacer4" type="Control" parent="ScrollContainer/Control/Game 4/TabContainer/Improvements/Progress Bars"]
+visible = false
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 
@@ -1159,4 +1181,4 @@ layout_mode = 2
 [node name="SpeedGraph" type="Line2D" parent="ScrollContainer/Control/Game 4/TabContainer/Graph/ColorRect/GraphsContainer/\'              Speed              \'/SpeedGraphLabel/Control"]
 position = Vector2(-557, 0)
 script = ExtResource("12_sfxj2")
-data_key = "G4Speed"
+data_key = "GSession.GStats[4][\"speed\"]"

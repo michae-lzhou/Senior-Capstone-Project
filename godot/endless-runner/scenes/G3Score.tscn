@@ -9,4 +9,4 @@ anchors_preset = 0
 [node name="Score" type="Line2D" parent="."]
 position = Vector2(-557, 0)
 script = ExtResource("1_u56dq")
-data_key = "G3Score"
+data_key = "GSession.GStats[3][\"score\"]"

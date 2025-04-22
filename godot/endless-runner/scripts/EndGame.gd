@@ -58,19 +58,19 @@ func _load_graph_for_game(game_name: int) -> void:
 	match game_name:
 		1:
 			graph_path = "res://scenes/G1Score.tscn"
-			score_array = GSession.G1Score
+			score_array = GSession.GStats[1]["score"]
 			play_again_game = "res://scenes/EndlessRunner.tscn"
 		2:
 			graph_path = "res://scenes/G2Score.tscn"
-			score_array = GSession.G2Score
+			score_array = GSession.GStats[2]["score"]
 			play_again_game = "res://scenes/SliceWarrior.tscn"
 		3:
 			graph_path = "res://scenes/G3Score.tscn"
-			score_array = GSession.G3Score
+			score_array = GSession.GStats[3]["score"]
 			#play_again_game = "res://scenes/game3.tscn"
 		4:
 			graph_path = "res://scenes/G4Score.tscn"
-			score_array = GSession.G4Score
+			score_array = GSession.GStats[4]["score"]
 			#play_again_game = "res://scenes/gmae4.tscn"
 		_:
 			graph_path = ""  # Optional, since it's initialized above
