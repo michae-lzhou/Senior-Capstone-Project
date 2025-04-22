@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://bfph654k3nusb"]
+
+[ext_resource type="Texture2D" uid="uid://qgo0r6baw8hk" path="res://assets/shuffleboard.png" id="1_1il1u"]
+[ext_resource type="Script" path="res://scripts/SnapJudgement.gd" id="1_5b7f8"]
+[ext_resource type="Texture2D" uid="uid://b4st5lo8bgchl" path="res://assets/ChatGPT Image Apr 18, 2025, 11_34_44 AM.png" id="2_yml8l"]
+[ext_resource type="Texture2D" uid="uid://p4j1dvbbav40" path="res://assets/ChatGPT Image Apr 18, 2025, 11_41_09 AM.png" id="3_ackro"]
+[ext_resource type="Texture2D" uid="uid://b88yrsigpdfv0" path="res://assets/fruit1/T_fruit_21.png" id="5_ep10u"]
+[ext_resource type="FontFile" uid="uid://dcbo4v5a6sqid" path="res://assets/TitanOne-Regular.ttf" id="8_fhdgj"]
+
+[node name="SnapJudgement" type="Node2D"]
+script = ExtResource("1_5b7f8")
+good_item_texture = ExtResource("2_yml8l")
+bad_item_texture = ExtResource("3_ackro")
+
+[node name="Shuffleboard" type="Sprite2D" parent="."]
+position = Vector2(535, 971)
+scale = Vector2(1.19336, 1.28255)
+texture = ExtResource("1_1il1u")
+
+[node name="Temptation" type="Sprite2D" parent="."]
+position = Vector2(514, 922)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_ep10u")
+
+[node name="ResultLabel" type="Label" parent="."]
+offset_left = 406.0
+offset_top = 666.0
+offset_right = 645.0
+offset_bottom = 805.0
+theme_override_fonts/font = ExtResource("8_fhdgj")
+theme_override_font_sizes/font_size = 60
+text = "YES!"
+horizontal_alignment = 1
+vertical_alignment = 1

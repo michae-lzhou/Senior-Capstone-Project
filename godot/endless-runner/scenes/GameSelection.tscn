@@ -48,14 +48,14 @@ expand_icon = true
 
 [node name="Game1" type="Label" parent="Game1Button"]
 layout_mode = 0
-offset_left = 128.0
+offset_left = 155.0
 offset_top = -90.0
-offset_right = 1173.0
+offset_right = 1200.0
 offset_bottom = 387.0
 theme_override_fonts/font = ExtResource("2_nhb7j")
 theme_override_font_sizes/font_size = 100
-text = "Endless
-Runner"
+text = "Snap
+Judgement"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -74,9 +74,9 @@ expand_icon = true
 
 [node name="Game2" type="Label" parent="Game2Button"]
 layout_mode = 0
-offset_left = 128.0
+offset_left = 138.0
 offset_top = -74.0
-offset_right = 1173.0
+offset_right = 1183.0
 offset_bottom = 403.0
 theme_override_fonts/font = ExtResource("2_nhb7j")
 theme_override_font_sizes/font_size = 100
@@ -106,7 +106,8 @@ offset_right = 1173.0
 offset_bottom = 395.0
 theme_override_fonts/font = ExtResource("2_nhb7j")
 theme_override_font_sizes/font_size = 100
-text = "Game 3"
+text = "Crave
+Catcher"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -131,7 +132,8 @@ offset_right = 1173.0
 offset_bottom = 403.0
 theme_override_fonts/font = ExtResource("2_nhb7j")
 theme_override_font_sizes/font_size = 100
-text = "Game 4"
+text = "Impulse
+Aisle"
 horizontal_alignment = 1
 vertical_alignment = 1
 

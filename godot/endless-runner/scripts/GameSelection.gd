@@ -8,16 +8,17 @@ func _ready():
 	$BackButton.pressed.connect(_on_back_pressed)
 
 func _on_game1_pressed():
-	print("Starting Game: Endless Runner...")
-	get_tree().change_scene_to_file("res://scenes/EndlessRunner.tscn")
+	print("Starting Game: Snap Judgement...")
+	get_tree().change_scene_to_file("res://scenes/SnapJudgement.tscn")
 	
 func _on_game2_pressed():
 	print("Starting Game: Slice Warrior...")
 	get_tree().change_scene_to_file("res://scenes/SliceWarrior.tscn")
 	
 func _on_game3_pressed():
-	print("Starting Game: [placeholder_3]...")
-	
+	print("Starting Game: Impulse Aisle...")
+	get_tree().change_scene_to_file("res://scenes/ImpulseAisle.tscn")
+
 func _on_game4_pressed():
 	print("Starting Game: [placeholder_4]...")
 	

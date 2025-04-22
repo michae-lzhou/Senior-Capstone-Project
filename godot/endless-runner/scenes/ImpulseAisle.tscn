@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://hciikw57fpr1"]
+
+[ext_resource type="Script" path="res://scripts/impulse_aisle.gd" id="1_oqpo3"]
+[ext_resource type="Texture2D" uid="uid://ox6jv4k2fmir" path="res://assets/impulseaisle.png" id="2_1sql8"]
+
+[node name="ImpulseAisle" type="Node2D"]
+script = ExtResource("1_oqpo3")
+
+[node name="BG1" type="Sprite2D" parent="."]
+position = Vector2(2063, 1079)
+texture = ExtResource("2_1sql8")
+
+[node name="BG2" type="Sprite2D" parent="."]
+position = Vector2(545, 1079)
+texture = ExtResource("2_1sql8")
