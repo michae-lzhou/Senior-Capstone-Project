@@ -6,7 +6,10 @@ func _ready():
 		#$"TabContainer/Account Info/Name Field/username_label".text = SessionProperties.username
 
 	$"Name Field/user_name".text = SessionProperties.username
-	$"Region Field/user_email".text = SessionProperties.email
+	var email = SessionProperties.email
+	if email.length() > 17:
+		email = email.substr(0, 17) + ".."
+	$"Region Field/user_email".text = email
 	$"Member Since Field/user_since".text = SessionProperties.member_since
 	
 	$logout_button.pressed.connect(_on_logout_button_pressed)
