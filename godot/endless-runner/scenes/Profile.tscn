@@ -73,9 +73,10 @@ offset_bottom = 1172.0
 theme_override_fonts/font = ExtResource("5_cehmr")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/panel = SubResource("StyleBoxFlat_me1oa")
-current_tab = 0
+current_tab = 1
 
 [node name="Account Info" type="VBoxContainer" parent="TabContainer"]
+visible = false
 layout_mode = 2
 script = ExtResource("7_g206g")
 metadata/_tab_index = 0
@@ -171,7 +172,6 @@ theme_override_font_sizes/font_size = 60
 text = "Log Out"
 
 [node name="Configuration" type="VBoxContainer" parent="TabContainer"]
-visible = false
 layout_mode = 2
 script = ExtResource("7_dc3co")
 metadata/_tab_index = 1
@@ -184,7 +184,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_cehmr")
 theme_override_font_sizes/font_size = 40
-text = "Salient"
+text = "Temptation"
 horizontal_alignment = 1
 
 [node name="SalientBox" type="CenterContainer" parent="TabContainer/Configuration"]
@@ -201,23 +201,27 @@ theme_override_icons/icon = ExtResource("8_popqi")
 custom_minimum_size = Vector2(400, 400)
 layout_mode = 2
 texture = ExtResource("9_j4fin")
+expand_mode = 2
 
 [node name="SalientRightButton" type="Button" parent="TabContainer/Configuration/SalientBox/HBoxContainer"]
 layout_mode = 2
 theme_override_icons/icon = ExtResource("10_keusy")
 
 [node name="Spacer2" type="Control" parent="TabContainer/Configuration"]
+visible = false
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 
 [node name="Control Label" type="Label" parent="TabContainer/Configuration"]
+visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_cehmr")
 theme_override_font_sizes/font_size = 40
-text = "Control"
+text = "Alternative"
 horizontal_alignment = 1
 
 [node name="ControlBox" type="CenterContainer" parent="TabContainer/Configuration"]
+visible = false
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Configuration/ControlBox"]
@@ -231,6 +235,7 @@ theme_override_icons/icon = ExtResource("8_popqi")
 custom_minimum_size = Vector2(400, 400)
 layout_mode = 2
 texture = ExtResource("9_j4fin")
+expand_mode = 2
 
 [node name="ControlRightButton" type="Button" parent="TabContainer/Configuration/ControlBox/HBoxContainer"]
 layout_mode = 2

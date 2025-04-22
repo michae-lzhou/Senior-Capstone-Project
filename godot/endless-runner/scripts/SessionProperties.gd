@@ -18,6 +18,7 @@ var good_reaction_time: Array = []
 var bad_reaction_time: Array = []
 var session_score: int = 0
 var game: int = 0
+var salient_idx = 0
 
 #GStats = {1 : {"score":[], pos:[], neg:[]}, 2 : {score:[], pos:[], neg:[]}}
 #to access: GSession.gstats[Gsession.game]["score"]

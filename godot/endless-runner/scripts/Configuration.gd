@@ -1,6 +1,6 @@
 extends VBoxContainer
 
-var salient_images = [preload("res://assets/kenney_platformer-characters/PNG/Adventurer/Poses/adventurer_action1.png"), preload("res://assets/kenney_platformer-characters/PNG/Female/Poses/female_action1.png"), preload("res://assets/kenney_platformer-characters/PNG/Player/Poses/player_action1.png")]
+var salient_images = [preload("res://assets/alcohol_icons/beer bottle.png"), preload("res://assets/cigarette_icons/pack of cigarettes.png")]
 var control_images = [preload("res://assets/fruit1/T_fruit_01.png"), preload("res://assets/fruit1/T_fruit_02.png"), preload("res://assets/fruit1/T_fruit_03.png")]
 
 var salient_index = 0
@@ -17,11 +17,13 @@ func update_images():
 	control_texture.texture = control_images[control_index]
 
 func _on_salient_left_pressed():
-	salient_index = (salient_index - 1) % salient_images.size()
+	salient_index = abs((salient_index - 1) % salient_images.size())
+	GSession.salient_idx = salient_index
 	update_images()
 
 func _on_salient_right_pressed():
 	salient_index = (salient_index + 1) % salient_images.size()
+	GSession.salient_idx = salient_index
 	update_images()
 
 func _on_control_left_pressed():

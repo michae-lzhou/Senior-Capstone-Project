@@ -7,7 +7,7 @@ var GLOBAL_Y_SCALE: float = 2.0
 var BASE_GRAPH_WIDTH: float = 370
 var BASE_GRAPH_HEIGHT: float = 220
 # Offset for shifting the graph
-var offset_x: float = 125  # Horizontal shift
+var offset_x: float = 135  # Horizontal shift
 var offset_y: float = 100  # Vertical shift from the top
 func _ready():
 	if data_key == "":
