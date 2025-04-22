@@ -17,15 +17,16 @@ func welcome_user(auth):
 		print("[WELCOME] retrieved username from session: " + username)
 		var hour = Time.get_time_dict_from_system()["hour"]
 		var time_of_day = "Day"
-		if  hour < 5 or hour >= 18:
-			time_of_day = "Evening"
+		if  hour < 6:
+			time_of_day = "Night"
 		elif hour < 12:
 			time_of_day = "Morning"
-		else:
+		elif hour < 17:
 			time_of_day = "Afternoon"
+		else:
+			time_of_day = "Evening"
 			
-		
-		$welcome_label.text = "Good " + time_of_day + ", " + username + "!"
+		$welcome_label.text = "Good " + time_of_day + ", " + username
 	else:
 		print("[WELCOME] failed to load username document for display")
 	print("END: [WELCOME]")
