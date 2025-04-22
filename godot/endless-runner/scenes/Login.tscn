@@ -1,13 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://wofrkfoar8rn"]
+[gd_scene load_steps=6 format=3 uid="uid://bnyojj1rdurmi"]
 
-[ext_resource type="Script" path="res://scripts/Main.gd" id="1_6trw6"]
+[ext_resource type="Script" path="res://login.gd" id="1_js8dy"]
 [ext_resource type="Texture2D" uid="uid://bk562ybu681k7" path="res://assets/galaxy.jpg" id="2_hs3ec"]
 [ext_resource type="FontFile" uid="uid://d153mdm4tperu" path="res://assets/Rubik_Distressed/RubikDistressed-Regular.ttf" id="3_n68bo"]
+[ext_resource type="Texture2D" uid="uid://c34w3kxvgnb5g" path="res://assets/kenney_game-icons/PNG/White/2x/exitLeft.png" id="4_4c17f"]
 [ext_resource type="Texture2D" uid="uid://3hcxqwu5dyjt" path="res://assets/kenney_game-icons/PNG/White/2x/buttonStart.png" id="4_0648p"]
-[ext_resource type="Texture2D" uid="uid://c5dcqjkd3g730" path="res://assets/kenney_game-icons/PNG/White/1x/leaderboardsComplex.png" id="5_l3f44"]
-[ext_resource type="Texture2D" uid="uid://deqett0nghudy" path="res://assets/kenney_game-icons/PNG/White/1x/singleplayer.png" id="6_vtvbq"]
 
-[node name="TitleScreen" type="Control"]
+[node name="LoginScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,7 +15,7 @@ offset_right = -1080.0
 offset_bottom = -1920.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_6trw6")
+script = ExtResource("1_js8dy")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
@@ -26,12 +25,12 @@ texture = ExtResource("2_hs3ec")
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 0
-offset_left = 23.0
-offset_top = 621.0
-offset_right = 1068.0
-offset_bottom = 1098.0
+offset_left = 22.0
+offset_top = 175.0
+offset_right = 1067.0
+offset_bottom = 652.0
 theme_override_fonts/font = ExtResource("3_n68bo")
-theme_override_font_sizes/font_size = 200
+theme_override_font_sizes/font_size = 180
 text = "CRAVE 
 CRUSHER"
 horizontal_alignment = 1
@@ -47,37 +46,74 @@ offset_bottom = 1191.0
 theme_override_font_sizes/font_size = 30
 text = "Swipe to dodge the junk food!"
 
-[node name="StartButton" type="Button" parent="."]
+[node name="SubmitButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 366.0
-offset_top = 1165.0
-offset_right = 757.0
-offset_bottom = 1456.0
+offset_left = 270.0
+offset_top = 1314.0
+offset_right = 813.0
+offset_bottom = 1506.0
+theme_override_font_sizes/font_size = 60
+text = "LOG IN"
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -4.0
+offset_right = 176.0
+offset_bottom = 161.0
 theme_override_font_sizes/font_size = 50
 theme_override_icons/icon = ExtResource("4_0648p")
-icon = ExtResource("4_0648p")
+icon = ExtResource("4_4c17f")
 flat = true
 icon_alignment = 1
 expand_icon = true
 
-[node name="StatsButton" type="Button" parent="."]
+[node name="email_ledit" type="LineEdit" parent="."]
 layout_mode = 0
-offset_left = 905.0
-offset_top = -14.0
-offset_right = 1063.0
-offset_bottom = 177.0
-icon = ExtResource("5_l3f44")
-flat = true
-icon_alignment = 1
-expand_icon = true
+offset_left = 195.0
+offset_top = 887.0
+offset_right = 929.0
+offset_bottom = 1051.0
+theme_override_font_sizes/font_size = 50
+placeholder_text = "Email"
 
-[node name="ProfileButton" type="Button" parent="."]
+[node name="pass_ledit" type="LineEdit" parent="."]
 layout_mode = 0
-offset_left = 2.0
-offset_top = -15.0
-offset_right = 170.0
-offset_bottom = 174.0
-icon = ExtResource("6_vtvbq")
-flat = true
-icon_alignment = 1
-expand_icon = true
+offset_left = 195.0
+offset_top = 1054.0
+offset_right = 929.0
+offset_bottom = 1218.0
+theme_override_font_sizes/font_size = 50
+placeholder_text = "Password"
+secret = true
+
+[node name="login_success_label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 209.0
+offset_top = 1224.0
+offset_right = 915.0
+offset_bottom = 1305.0
+theme_override_font_sizes/font_size = 30
+
+[node name="forgot_button_b" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 425.0
+offset_top = 1534.0
+offset_right = 662.0
+offset_bottom = 1594.0
+theme_override_font_sizes/font_size = 25
+text = "Forgot Password?"
+
+[node name="forgot_button" type="LinkButton" parent="."]
+layout_mode = 0
+offset_left = 411.0
+offset_top = 1526.0
+offset_right = 670.0
+offset_bottom = 1597.0
+theme_override_font_sizes/font_size = 30
+text = "Forgot Password?"
+
+[connection signal="pressed" from="SubmitButton" to="." method="_on_submit_button_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="forgot_button_b" to="." method="_on_forgot_button_pressed"]

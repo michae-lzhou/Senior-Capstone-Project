@@ -1,6 +1,12 @@
 extends Node
 class_name SessionProperties
 
+# profile data
+static var username: String = ""
+static var email: String = ""
+static var member_since: String = ""
+
+# game data
 var good_misses: int = 0
 var bad_misses: int = 0
 var good_hits: int = 0
