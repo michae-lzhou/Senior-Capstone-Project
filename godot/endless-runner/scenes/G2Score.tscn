@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://1ovkqrpyecyn"]
+
+[ext_resource type="Script" path="res://scripts/GraphRenderer.gd" id="1_7g533"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Score" type="Line2D" parent="."]
+position = Vector2(-557, 0)
+script = ExtResource("1_7g533")
+data_key = "G2Score"

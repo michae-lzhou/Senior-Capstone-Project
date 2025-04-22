@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://2ttkgeyqoidi"]
+
+[ext_resource type="Script" path="res://background.gd" id="1_3dd31"]
+[ext_resource type="Texture2D" uid="uid://77yt8rtfo770" path="res://galaxy.jpg" id="1_bvf8v"]
+[ext_resource type="PackedScene" uid="uid://cwx24u1xsnvqh" path="res://good.tscn" id="3_3txso"]
+[ext_resource type="PackedScene" uid="uid://dwm1pcolr45u8" path="res://player.tscn" id="4_rtvqd"]
+[ext_resource type="PackedScene" uid="uid://ca6x5uib7g44e" path="res://bad.tscn" id="5_nwupy"]
+
+[node name="Background" type="Node2D"]
+script = ExtResource("1_3dd31")
+
+[node name="background_sprite" type="Sprite2D" parent="."]
+position = Vector2(238.5, 427.5)
+scale = Vector2(0.745312, 2.01651)
+texture = ExtResource("1_bvf8v")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="good" parent="." instance=ExtResource("3_3txso")]
+position = Vector2(116, 103)
+
+[node name="Player" parent="." instance=ExtResource("4_rtvqd")]
+
+[node name="bad" parent="." instance=ExtResource("5_nwupy")]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

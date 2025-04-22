@@ -11,6 +11,13 @@ var lives = 3
 var trail_points = []
 const MAX_TRAIL_POINTS = 15
 
+const GOOD_HIT_REWARD = 10
+const GOOD_MISS_PENALTY = -5
+const BAD_HIT_PENALTY = -15
+const BAD_MISS_REWARD = 5
+
+var sliceable_count = 0  # Track the number of sliceable objects
+
 func _input(event):
 	if event is InputEventMouseMotion and event.button_mask & MOUSE_BUTTON_MASK_LEFT:
 		# Add trail point
@@ -36,25 +43,50 @@ func _input(event):
 		trail_points.clear()
 		slice_trail.points = []
 
-
 func _ready():
 	update_score()
 	spawner.start()
+	spawner.connect("spawn_limit_reached", Callable(self, "on_spawn_limit_reached"))
+	# Count initial sliceable objects
+	count_sliceable_objects()
 
 func update_score():
 	score_label.text = "Score: " + str(score)
 
 func on_good_sliced(pos: Vector2):
-	score += 10
+	GSession.good_hits += 1
+	var reaction_time = GSession.good_reaction_time[-1]
+	var score_change = int(GOOD_HIT_REWARD / (reaction_time + 0.1))
+	score += score_change
 	update_score()
-	show_floating_text("+10", pos, Color.GREEN)
+	show_floating_text("+" + str(score_change), pos, Color.GREEN)
+	
+func on_good_missed():
+	GSession.good_misses += 1
+	var score_change = GOOD_MISS_PENALTY
+	score += score_change
+	if score < 0:
+		score = 0
+	update_score()
+	show_floating_text(str(score_change), Vector2(675, 100), Color.RED)
 
 func on_bad_sliced(pos: Vector2):
-	score -= 10
-	update_score()
-	show_floating_text("-10", pos, Color.RED)
+	GSession.bad_hits += 1
+	var reaction_time = GSession.bad_reaction_time[-1]
+	var score_change = int(BAD_HIT_PENALTY / (reaction_time + 0.1))
+	score += score_change
 	if score < 0:
-		end_game()
+		score = 0
+	update_score()
+	show_floating_text(str(score_change), pos, Color.RED)
+	#end_game()
+
+func on_bad_missed():
+	GSession.bad_misses += 1
+	var score_change = BAD_MISS_REWARD
+	score += score_change
+	update_score()
+	show_floating_text("+" + str(score_change), Vector2(675, 100), Color.GREEN)
 
 func show_floating_text(text: String, pos: Vector2, color: Color):
 	var label = floating_text_scene.instantiate()
@@ -67,5 +99,67 @@ func on_sliced():
 	get_tree().current_scene.on_good_sliced(global_position)  # or on_bad_sliced
 	queue_free()
 
+# Called when spawn limit is reached
+func on_spawn_limit_reached():
+	# Check if there are any sliceable objects left
+	count_sliceable_objects()
+	
+	# If there are sliceable objects left, recursively call this function
+	if sliceable_count > 0:
+		# Wait for a short period and check again
+		await get_tree().create_timer(3.0).timeout
+		on_spawn_limit_reached()
+	else:
+		# No sliceable objects left, end the game
+		end_game()
+
+func calculate_average_speed_score(reaction_times: Array) -> int:
+	var min_reaction = 0.15  # Best possible reaction time
+	var max_reaction = 1.5   # Worst acceptable reaction time
+	var max_score = 100
+	
+	if reaction_times.size() == 0:
+		return max_score
+	
+	var total_score = 0
+	for time in reaction_times:
+		# Clamp time to the valid range
+		var clamped_time = clamp(time, min_reaction, max_reaction)
+		
+		# Normalize (0 = best, 1 = worst)
+		var normalized = inverse_lerp(min_reaction, max_reaction, clamped_time)
+		var inverted = 1.0 - normalized
+		var score = int(round(inverted * max_score))
+		
+		total_score += score
+	
+	var average_score = total_score / reaction_times.size()
+	return int(round(average_score))
+
 func end_game():
-	get_tree().change_scene_to_file("res://scenes/GameSelection.tscn")  # or Results screen
+	GSession.session_score = score
+	#var speed = calculate_average_speed_score(GSession.good_reaction_time + GSession.bad_reaction_time)
+	var new_arr = (GSession.good_reaction_time) #+ GSession.bad_reaction_time
+	var speed_sum = 0.0
+	
+	for num in new_arr:
+		speed_sum += num
+	var speed_avg = speed_sum / new_arr.size()
+	
+	#var session_number = 0
+	#if GSession.G2Score.size() != 0:
+		#session_number = GSession.G2Score[-1]
+	GSession.G2Score.append(score)
+	GSession.G2Speed.append(speed_avg)
+	GSession.G2PosHitPercent.append(GSession.good_hits / (GSession.good_hits + GSession.good_misses))
+	GSession.G2NegMissPercent.append(GSession.bad_misses / (GSession.bad_hits + GSession.bad_misses))
+	GSession.print_stats()
+	get_tree().change_scene_to_file("res://scenes/EndGame.tscn")
+
+# Count the number of sliceable objects in the scene
+func count_sliceable_objects():
+	sliceable_count = 0
+	# Go through all children and check for "sliceable" objects
+	for child in get_children():
+		if child.is_in_group("sliceable"):
+			sliceable_count += 1
