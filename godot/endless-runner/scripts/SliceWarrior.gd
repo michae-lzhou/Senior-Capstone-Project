@@ -138,15 +138,23 @@ func calculate_average_speed_score(reaction_times: Array) -> int:
 
 func end_game():
 	GSession.session_score = score
-	var speed = calculate_average_speed_score(GSession.good_reaction_time + GSession.bad_reaction_time)
-	var session_number = 0
-	if GSession.G2Score.size() != 0:
-		session_number = GSession.G2Score[-1].x
-	GSession.G2Score.append(Vector2(session_number + 1, score))
-	GSession.G2Speed.append(Vector2(session_number + 1, speed))
+	#var speed = calculate_average_speed_score(GSession.good_reaction_time + GSession.bad_reaction_time)
+	var new_arr = (GSession.good_reaction_time) #+ GSession.bad_reaction_time
+	var speed_sum = 0.0
+	
+	for num in new_arr:
+		speed_sum += num
+	var speed_avg = speed_sum / new_arr.size()
+	
+	#var session_number = 0
+	#if GSession.G2Score.size() != 0:
+		#session_number = GSession.G2Score[-1]
+	GSession.G2Score.append(score)
+	GSession.G2Speed.append(speed_avg)
+	GSession.G2PosHitPercent.append(GSession.good_hits / (GSession.good_hits + GSession.good_misses))
+	GSession.G2NegMissPercent.append(GSession.bad_misses / (GSession.bad_hits + GSession.bad_misses))
 	GSession.print_stats()
 	get_tree().change_scene_to_file("res://scenes/EndGame.tscn")
-	#get_tree().change_scene_to_file("res://scenes/GameSelection.tscn")  # or Results screen
 
 # Count the number of sliceable objects in the scene
 func count_sliceable_objects():

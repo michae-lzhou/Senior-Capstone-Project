@@ -64,12 +64,12 @@ func toggle_high_score_visibility(score_array: Array) -> void:
 	if score_array.size() == 0:
 		return
 
-	var last_y = score_array[-1].y
-	var max_y = score_array[0].y
+	var last_y = score_array[-1]
+	var max_y = score_array[0]
 	
 	for point in score_array:
-		if point.y > max_y:
-			max_y = point.y
+		if point > max_y:
+			max_y = point
 	
 	if last_y == max_y:
 		$High_Score.visible = true

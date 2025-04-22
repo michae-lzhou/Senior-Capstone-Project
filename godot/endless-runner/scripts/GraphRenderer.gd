@@ -9,7 +9,6 @@ var BASE_GRAPH_HEIGHT: float = 220
 # Offset for shifting the graph
 var offset_x: float = 125  # Horizontal shift
 var offset_y: float = 100  # Vertical shift from the top
-
 func _ready():
 	if data_key == "":
 		push_warning("No data_key provided.")
@@ -26,7 +25,6 @@ func _ready():
 	if data_array.size() == 1:
 		plot_one()
 		return
-
 	draw_shading(data_array)
 	draw_graph(data_array)
 	
@@ -37,16 +35,15 @@ func plot_one():
 	dot.radius = 4 * GLOBAL_X_SCALE
 	dot.color = Color(1, 1, 1)
 	add_child(dot)
-
 func get_scaled_points(data_points: Array) -> Array:
 	var scaled_points = []
 	
 	# Find min and max scores
-	var min_score = data_points[0].y
-	var max_score = data_points[0].y
-	for point in data_points:
-		min_score = min(min_score, point.y)
-		max_score = max(max_score, point.y)
+	var min_score = data_points[0]
+	var max_score = data_points[0]
+	for value in data_points:
+		min_score = min(min_score, value)
+		max_score = max(max_score, value)
 	
 	# Calculate actual graph dimensions
 	var graph_width = BASE_GRAPH_WIDTH * GLOBAL_X_SCALE
@@ -61,12 +58,11 @@ func get_scaled_points(data_points: Array) -> Array:
 	
 	# For each data point
 	for i in range(data_points.size()):
-		var point = data_points[i]
-		var score = point.y
+		var value = data_points[i]
 		
 		# Calculate position based on index rather than the x value
 		var scaled_x = (float(i) / max(1.0, float(data_points.size() - 1))) * graph_width
-		var scaled_y = lerp(min_y_scale, max_y_scale, inverse_lerp(min_score, max_score, score))
+		var scaled_y = lerp(min_y_scale, max_y_scale, inverse_lerp(min_score, max_score, value))
 		
 		scaled_points.append(Vector2(
 			x_start + scaled_x, 
@@ -74,16 +70,13 @@ func get_scaled_points(data_points: Array) -> Array:
 		))
 	
 	return scaled_points
-
 func draw_graph(data_points: Array):
 	var graph = Line2D.new()
 	graph.width = 3 * GLOBAL_X_SCALE
 	graph.default_color = Color(0, 0.5, 1)
-
 	var scaled_points = get_scaled_points(data_points)
 	
 	add_child(graph)
-
 	for point in scaled_points:
 		graph.add_point(point)
 		
@@ -93,8 +86,6 @@ func draw_graph(data_points: Array):
 		dot.radius = 4 * GLOBAL_X_SCALE
 		dot.color = Color(1, 1, 1)
 		add_child(dot)
-
-
 func draw_shading(data_points: Array):
 	var polygon = Polygon2D.new()
 	var scaled_points = get_scaled_points(data_points)
@@ -113,12 +104,11 @@ func draw_shading(data_points: Array):
 	# Add bottom-left corner
 	my_points.append(Vector2(scaled_points[0].x, bottom_y))
 	
-	# Set the polygon points - FIXED: was using "points" instead of "my_points"
+	# Set the polygon points
 	polygon.polygon = my_points
 	polygon.color = Color(0, 0.5, 1, 0.2)
 	
 	add_child(polygon)
-
 func draw_axes():
 	# Fixed x-axis start position
 	var x_start = offset_x + 10 * GLOBAL_X_SCALE

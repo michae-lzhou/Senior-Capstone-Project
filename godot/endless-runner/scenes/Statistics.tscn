@@ -346,43 +346,6 @@ position = Vector2(-557, 0)
 script = ExtResource("12_sfxj2")
 data_key = "G1Speed"
 
-[node name="\'              Focus              \'" type="VBoxContainer" parent="ScrollContainer/Control/Game 1/TabContainer/Graph/ColorRect/GraphsContainer"]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 2
-
-[node name="FocusGraphLabel" type="HBoxContainer" parent="ScrollContainer/Control/Game 1/TabContainer/Graph/ColorRect/GraphsContainer/\'              Focus              \'"]
-layout_mode = 2
-
-[node name="Spacer" type="Control" parent="ScrollContainer/Control/Game 1/TabContainer/Graph/ColorRect/GraphsContainer/\'              Focus              \'/FocusGraphLabel"]
-custom_minimum_size = Vector2(20, 0)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="ScrollContainer/Control/Game 1/TabContainer/Graph/ColorRect/GraphsContainer/\'              Focus              \'/FocusGraphLabel"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "
-
-
-
-
-
-Score
-
-
-
-
-
-                                                    Sessions"
-
-[node name="Control" type="Control" parent="ScrollContainer/Control/Game 1/TabContainer/Graph/ColorRect/GraphsContainer/\'              Focus              \'/FocusGraphLabel"]
-layout_mode = 2
-
-[node name="FocusGraph" type="Line2D" parent="ScrollContainer/Control/Game 1/TabContainer/Graph/ColorRect/GraphsContainer/\'              Focus              \'/FocusGraphLabel/Control"]
-position = Vector2(-557, 0)
-script = ExtResource("12_sfxj2")
-data_key = "G1Focus"
-
 [node name="Spacer" type="Control" parent="ScrollContainer/Control"]
 custom_minimum_size = Vector2(0, 35)
 layout_mode = 3
@@ -651,43 +614,6 @@ layout_mode = 2
 position = Vector2(-557, 0)
 script = ExtResource("12_sfxj2")
 data_key = "G2Speed"
-
-[node name="\'              Focus              \'" type="VBoxContainer" parent="ScrollContainer/Control/Game 2/TabContainer/Graph/ColorRect/GraphsContainer"]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 2
-
-[node name="FocusGraphLabel" type="HBoxContainer" parent="ScrollContainer/Control/Game 2/TabContainer/Graph/ColorRect/GraphsContainer/\'              Focus              \'"]
-layout_mode = 2
-
-[node name="Spacer" type="Control" parent="ScrollContainer/Control/Game 2/TabContainer/Graph/ColorRect/GraphsContainer/\'              Focus              \'/FocusGraphLabel"]
-custom_minimum_size = Vector2(20, 0)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="ScrollContainer/Control/Game 2/TabContainer/Graph/ColorRect/GraphsContainer/\'              Focus              \'/FocusGraphLabel"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "
-
-
-
-
-
-Score
-
-
-
-
-
-                                                    Sessions"
-
-[node name="Control" type="Control" parent="ScrollContainer/Control/Game 2/TabContainer/Graph/ColorRect/GraphsContainer/\'              Focus              \'/FocusGraphLabel"]
-layout_mode = 2
-
-[node name="FocusGraph" type="Line2D" parent="ScrollContainer/Control/Game 2/TabContainer/Graph/ColorRect/GraphsContainer/\'              Focus              \'/FocusGraphLabel/Control"]
-position = Vector2(-557, 0)
-script = ExtResource("12_sfxj2")
-data_key = "G2Focus"
 
 [node name="Spacer2" type="Control" parent="ScrollContainer/Control"]
 custom_minimum_size = Vector2(0, 35)
@@ -962,43 +888,6 @@ position = Vector2(-557, 0)
 script = ExtResource("12_sfxj2")
 data_key = "G3Speed"
 
-[node name="\'              Focus              \'" type="VBoxContainer" parent="ScrollContainer/Control/Game 3/TabContainer/Graph/ColorRect/GraphsContainer"]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 2
-
-[node name="FocusGraphLabel" type="HBoxContainer" parent="ScrollContainer/Control/Game 3/TabContainer/Graph/ColorRect/GraphsContainer/\'              Focus              \'"]
-layout_mode = 2
-
-[node name="Spacer" type="Control" parent="ScrollContainer/Control/Game 3/TabContainer/Graph/ColorRect/GraphsContainer/\'              Focus              \'/FocusGraphLabel"]
-custom_minimum_size = Vector2(20, 0)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="ScrollContainer/Control/Game 3/TabContainer/Graph/ColorRect/GraphsContainer/\'              Focus              \'/FocusGraphLabel"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "
-
-
-
-
-
-Score
-
-
-
-
-
-                                                    Sessions"
-
-[node name="Control" type="Control" parent="ScrollContainer/Control/Game 3/TabContainer/Graph/ColorRect/GraphsContainer/\'              Focus              \'/FocusGraphLabel"]
-layout_mode = 2
-
-[node name="FocusGraph" type="Line2D" parent="ScrollContainer/Control/Game 3/TabContainer/Graph/ColorRect/GraphsContainer/\'              Focus              \'/FocusGraphLabel/Control"]
-position = Vector2(-557, 0)
-script = ExtResource("12_sfxj2")
-data_key = "G3Focus"
-
 [node name="Spacer3" type="Control" parent="ScrollContainer/Control"]
 custom_minimum_size = Vector2(0, 35)
 layout_mode = 3
@@ -1271,40 +1160,3 @@ layout_mode = 2
 position = Vector2(-557, 0)
 script = ExtResource("12_sfxj2")
 data_key = "G4Speed"
-
-[node name="\'              Focus              \'" type="VBoxContainer" parent="ScrollContainer/Control/Game 4/TabContainer/Graph/ColorRect/GraphsContainer"]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 2
-
-[node name="FocusGraphLabel" type="HBoxContainer" parent="ScrollContainer/Control/Game 4/TabContainer/Graph/ColorRect/GraphsContainer/\'              Focus              \'"]
-layout_mode = 2
-
-[node name="Spacer" type="Control" parent="ScrollContainer/Control/Game 4/TabContainer/Graph/ColorRect/GraphsContainer/\'              Focus              \'/FocusGraphLabel"]
-custom_minimum_size = Vector2(20, 0)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="ScrollContainer/Control/Game 4/TabContainer/Graph/ColorRect/GraphsContainer/\'              Focus              \'/FocusGraphLabel"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "
-
-
-
-
-
-Score
-
-
-
-
-
-                                                    Sessions"
-
-[node name="Control" type="Control" parent="ScrollContainer/Control/Game 4/TabContainer/Graph/ColorRect/GraphsContainer/\'              Focus              \'/FocusGraphLabel"]
-layout_mode = 2
-
-[node name="FocusGraph" type="Line2D" parent="ScrollContainer/Control/Game 4/TabContainer/Graph/ColorRect/GraphsContainer/\'              Focus              \'/FocusGraphLabel/Control"]
-position = Vector2(-557, 0)
-script = ExtResource("12_sfxj2")
-data_key = "G4Focus"
