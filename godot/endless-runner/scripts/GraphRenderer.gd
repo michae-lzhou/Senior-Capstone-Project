@@ -1,5 +1,7 @@
 extends Line2D
-@export var data_key: String = ""  # The key to use in GSession
+#@export var data_key: String = ""  # The key to use in GSession
+@export var game_num: int = 0
+@export var stat_type: String = ""
 # Global scaling factors
 var GLOBAL_X_SCALE: float = 2.0
 var GLOBAL_Y_SCALE: float = 2.0
@@ -10,16 +12,17 @@ var BASE_GRAPH_HEIGHT: float = 220
 var offset_x: float = 135  # Horizontal shift
 var offset_y: float = 100  # Vertical shift from the top
 func _ready():
-	if data_key == "":
+	if stat_type == "" or game_num == 0:
 		push_warning("No data_key provided.")
 		return
 		
-	var data_array = GSession.get(data_key)
+	var data_array = GSession.GStats[game_num][stat_type]
+
 	
 	draw_axes()
 	
 	if data_array == null or typeof(data_array) != TYPE_ARRAY or data_array.size() < 1:
-		push_warning("Invalid, missing, or too few data points for key: %s" % data_key)
+		push_warning("Invalid, missing, or too few data points for game %d: %s" % [game_num, stat_type])
 		return
 		
 	if data_array.size() == 1:

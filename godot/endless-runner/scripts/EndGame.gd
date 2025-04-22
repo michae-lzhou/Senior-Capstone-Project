@@ -11,6 +11,8 @@ func _ready():
 	# Set the score label text
 	$Score.text = "%d" % GSession.session_score
 	
+	$Accuracy.text = "Alternatives Hit:                                       %.2f%%\nTemptations Avoided:                           %.2f%%" % [GSession.good_hit_percent * 100, GSession.bad_miss_percent * 100]
+	
 	var game_idx : int = GSession.game
 	# Load and display the appropriate graph
 	_load_graph_for_game(game_idx)

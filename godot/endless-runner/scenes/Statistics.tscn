@@ -349,7 +349,8 @@ layout_mode = 2
 [node name="SpeedGraph" type="Line2D" parent="ScrollContainer/Control/Game 1/TabContainer/Graph/ColorRect/GraphsContainer/\'              Speed              \'/SpeedGraphLabel/Control"]
 position = Vector2(-557, 0)
 script = ExtResource("12_sfxj2")
-data_key = "GSession.GStats[1][\"speed\"]"
+game_num = 1
+stat_type = "speed"
 
 [node name="Spacer" type="Control" parent="ScrollContainer/Control"]
 custom_minimum_size = Vector2(0, 35)
@@ -623,7 +624,8 @@ layout_mode = 2
 [node name="SpeedGraph" type="Line2D" parent="ScrollContainer/Control/Game 2/TabContainer/Graph/ColorRect/GraphsContainer/\'              Speed              \'/SpeedGraphLabel/Control"]
 position = Vector2(-557, 0)
 script = ExtResource("12_sfxj2")
-data_key = "GSession.GStats[2][\"speed\"]"
+game_num = 2
+stat_type = "speed"
 
 [node name="Spacer2" type="Control" parent="ScrollContainer/Control"]
 custom_minimum_size = Vector2(0, 35)
@@ -902,7 +904,8 @@ layout_mode = 2
 [node name="SpeedGraph" type="Line2D" parent="ScrollContainer/Control/Game 3/TabContainer/Graph/ColorRect/GraphsContainer/\'              Speed              \'/SpeedGraphLabel/Control"]
 position = Vector2(-557, 0)
 script = ExtResource("12_sfxj2")
-data_key = "GSession.GStats[3][\"speed\"]"
+game_num = 3
+stat_type = "speed"
 
 [node name="Spacer3" type="Control" parent="ScrollContainer/Control"]
 custom_minimum_size = Vector2(0, 35)
@@ -1181,4 +1184,5 @@ layout_mode = 2
 [node name="SpeedGraph" type="Line2D" parent="ScrollContainer/Control/Game 4/TabContainer/Graph/ColorRect/GraphsContainer/\'              Speed              \'/SpeedGraphLabel/Control"]
 position = Vector2(-557, 0)
 script = ExtResource("12_sfxj2")
-data_key = "GSession.GStats[4][\"speed\"]"
+game_num = 4
+stat_type = "speed"

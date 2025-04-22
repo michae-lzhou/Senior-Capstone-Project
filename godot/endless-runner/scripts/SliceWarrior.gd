@@ -149,10 +149,15 @@ func end_game():
 	#var session_number = 0
 	#if GSession.G2Score.size() != 0:
 		#session_number = GSession.G2Score[-1]
+	var pos_hit_percent = GSession.good_hits / (GSession.good_hits + GSession.good_misses)
+	var neg_miss_percent = GSession.bad_misses / (GSession.bad_hits + GSession.bad_misses)
+	
+	GSession.good_hit_percent = pos_hit_percent
+	GSession.bad_miss_percent = neg_miss_percent
 	GSession.GStats[2]["score"].append(score)
 	GSession.GStats[2]["speed"].append(speed_avg)
-	GSession.GStats[2]["pos_hit"].append(GSession.good_hits / (GSession.good_hits + GSession.good_misses))
-	GSession.GStats[2]["neg_miss"].append(GSession.bad_misses / (GSession.bad_hits + GSession.bad_misses))
+	GSession.GStats[2]["pos_hit"].append(pos_hit_percent)
+	GSession.GStats[2]["neg_miss"].append(neg_miss_percent)
 	GSession.print_stats()
 	get_tree().change_scene_to_file("res://scenes/EndGame.tscn")
 

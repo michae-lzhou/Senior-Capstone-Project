@@ -14,6 +14,8 @@ var good_misses: float = 0.0
 var bad_misses: float = 0.0
 var good_hits: float = 0.0
 var bad_hits: float = 0.0
+var good_hit_percent: float = 0.0
+var bad_miss_percent: float = 0.0
 var good_reaction_time: Array = []
 var bad_reaction_time: Array = []
 var session_score: int = 0
@@ -113,6 +115,8 @@ func reset():
 	bad_misses = 0
 	good_hits = 0
 	bad_hits = 0
+	good_hit_percent = 0
+	bad_miss_percent = 0
 	good_reaction_time.clear()
 	bad_reaction_time.clear()
 	session_score = 0
