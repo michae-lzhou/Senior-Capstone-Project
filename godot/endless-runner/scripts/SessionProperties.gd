@@ -1,6 +1,9 @@
 extends Node
 class_name SessionProperties
 
+# number of minigames
+var num_games = 4
+
 # user auth object, set after login
 var auth_m = null
 
@@ -48,66 +51,6 @@ var GStats = {
 		 "neg_miss": []
 		}
 }
-#to access: GSession.GStats[GSession.game]["score"]
-
-var G1Score: Array = [
-	#1100, 1120, 1130, 1170, 1150, 1180, 1200, 1250
-]
-
-var G1Speed: Array = [
-	#1100, 1120, 1130, 1170, 1780, 1180, 1200, 1250,
-	#1300, 1310, 1290, 1330, 1230, 1400, 1450, 1600
-]
-
-var G1PosHitPercent: Array = [
-]
-
-var G1NegMissPercent: Array = [
-]
-
-var G2Score: Array = [
-]
-
-var G2Speed: Array = [
-]
-
-var G2PosHitPercent: Array = [
-]
-
-var G2NegMissPercent: Array = [
-]
-
-var G3Score: Array = [
-	#980, 1000, 1040, 1060, 1080, 1100, 1120, 1140,
-	#1180, 1220, 1240, 1270, 1300, 1340, 1360, 1000
-]
-
-var G3Speed: Array = [
-	#980, 1000, 1040, 1060, 1080, 1100, 1120, 1140,
-	#1180, 1220, 1240, 1270, 1300, 1340, 1360, 1000
-]
-
-var G3PosHitPercent: Array = [
-]
-
-var G3NegMissPercent: Array = [
-]
-
-var G4Score: Array = [
-	#980, 1000, 1040, 1060, 1080, 1100, 1120, 1140,
-	#1180, 1220, 1240, 1270, 1300, 1340, 1360, 1000
-]
-
-var G4Speed: Array = [
-	#980, 1000, 1040, 1060, 1080, 1100, 1120, 1140,
-	#1180, 1220, 1240, 1270, 1300, 1340, 1360, 1000
-]
-
-var G4PosHitPercent: Array = [
-]
-
-var G4NegMissPercent: Array = [
-]
 
 # resets game session relevant information
 func reset():
@@ -137,3 +80,50 @@ func print_stats():
 	print("Good Reaction Times:", good_reaction_time)
 	print("Bad Reaction Times:", bad_reaction_time)
 	print("Session Score:", session_score)
+	
+# used on logout
+func wipe_session_data():
+	auth_m = null
+
+	username = ""
+	email = ""
+	member_since = ""
+	
+	good_misses = 0.0
+	bad_misses = 0.0
+	good_hits = 0.0
+	bad_hits = 0.0
+	good_hit_percent = 0.0
+	bad_miss_percent = 0.0
+	good_reaction_time = []
+	bad_reaction_time = []
+	session_score = 0
+	game = 0
+	salient_idx = 0
+
+	GStats = {
+	1 : {
+		 "score":    [],
+		 "speed":    [],
+		 "pos_hit":  [],
+		 "neg_miss": []
+		},
+	2 : {
+		 "score":    [],
+		 "speed":    [],
+		 "pos_hit":  [],
+		 "neg_miss": []
+		},
+	3 : {
+		 "score":    [],
+		 "speed":    [],
+		 "pos_hit":  [],
+		 "neg_miss": []
+		},
+	4 : {
+		 "score":    [],
+		 "speed":    [],
+		 "pos_hit":  [],
+		 "neg_miss": []
+		}
+	}

@@ -1,6 +1,5 @@
 extends VBoxContainer
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$"Name Field/user_name".text = GSession.username
@@ -14,5 +13,6 @@ func _ready():
 	
 func _on_logout_button_pressed():
 	Firebase.Auth.logout()
+	GSession.wipe_session_data()
 	get_tree().change_scene_to_file("res://scenes/LoggedOut.tscn")
 	

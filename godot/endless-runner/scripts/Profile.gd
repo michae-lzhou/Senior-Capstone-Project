@@ -13,8 +13,3 @@ func _ready() -> void:
 
 func _on_back_pressed():
 	get_tree().change_scene_to_file("res://scenes/TitleScreen.tscn")
-
-
-#func _on_logout_button_pressed():
-	#Firebase.Auth.logout()
-	#get_tree().change_scene_to_file("res://scenes/Splash.tscn")

@@ -17,21 +17,17 @@ func _ready():
 	# Load and display the appropriate graph
 	_load_graph_for_game(game_idx)
 	
-	print("START: [GAME END] uploading session results to cloud")
+	print("START: [GAME END] uploading session results for game", game_idx, " to cloud")
 	$save_status_label.text = "Saving score to cloud.."
 	
 	# upload to db
-	#print(GSession.G2Score)
-	#print(GSession.G2NegMissPercent)
-	#print(GSession.G2PosHitPercent)
-	#print(GSession.G2Speed)
 	var stats_path = db_utils.USER_COLLECTION + "/" + GSession.auth_m.localid + "/" + db_utils.STATS_COLLECTION
-		
+	
 	var payload = {
-		"scores" = GSession.G2Score,
-		"positive_hit_percents" = GSession.G2PosHitPercent,
-		"negative_miss_percents" = GSession.G2NegMissPercent,
-		"average_reaction_speeds" = GSession.G2Speed
+		"scores" = GSession.GStats[game_idx]["score"],
+		"average_reaction_speeds" = GSession.GStats[game_idx]["speed"],
+		"positive_hit_percents" = GSession.GStats[game_idx]["pos_hit"],
+		"negative_miss_percents" = GSession.GStats[game_idx]["neg_miss"]
 	}
 	
 	var res = await db_utils.push_to_db(GSession.auth_m, stats_path, "game" + str(game_idx), payload)
@@ -53,11 +49,11 @@ func _on_statistics_pressed():
 func _on_playagain_pressed():
 	get_tree().change_scene_to_file(play_again_game)
 
-func _load_graph_for_game(game_name: int) -> void:
+func _load_graph_for_game(game_idx: int) -> void:
 	var graph_path := ""  # Use := for type inference (optional)
 	var score_array
 
-	match game_name:
+	match game_idx:
 		1:
 			graph_path = "res://scenes/G1Score.tscn"
 			score_array = GSession.GStats[1]["score"]
@@ -86,7 +82,7 @@ func _load_graph_for_game(game_name: int) -> void:
 		var graph_instance = graph_scene.instantiate()
 		graph_holder.add_child(graph_instance)
 	else:
-		push_warning("No graph scene found for game: %s" % game_name)
+		push_warning("No graph scene found for game: %s" % game_idx)
 	
 func toggle_high_score_visibility(score_array: Array) -> void:
 	$High_Score.visible = false

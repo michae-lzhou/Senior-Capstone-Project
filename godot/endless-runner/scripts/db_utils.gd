@@ -76,44 +76,47 @@ static func pull_from_db(auth, collection_path : String, document_name : String,
 				print("[PULL] document added successfully: " + new_doc.doc_name)
 			return null
 
-# initializes session properties with user info
+# initializes session properties with user info and stats
 static func init_user_properties(auth):
-	print("START: [SET_USER_PROPERTIES] setting user info properties..")
+	print("START: [INIT_SESSION_INFO] setting user info properties..")
+	print("[INIT_SESSION_INFO] clearing any session data")
+	GSession.wipe_session_data()
+	print("[INIT_SESSION_INFO] successfully cleared session")
 	
-	print("[SET_USER_PROPERTIES] setting auth..")
+	print("[INIT_SESSION_INFO] setting auth..")
 	GSession.auth_m = auth
-	print("[SET_USER_PROPERTIES] succesfully set auth")
-
-	print("[SET_USER_PROPERTIES] setting username..")
+	print("[INIT_SESSION_INFO] succesfully set auth")
+		
+	print("[INIT_SESSION_INFO] setting username..")
 	GSession.username = await db_utils.pull_from_db(auth, USER_COLLECTION, auth.localid, "username")
-	print("[SET_USER_PROPERTIES] succesfully set username")
+	print("[INIT_SESSION_INFO] succesfully set username")
 	
-	print("[SET_USER_PROPERTIES] setting email..")
+	print("[INIT_SESSION_INFO] setting email..")
 	GSession.email = await db_utils.pull_from_db(auth, USER_COLLECTION, auth.localid, "email")
-	print("[SET_USER_PROPERTIES] sucessfuly set set email")
+	print("[INIT_SESSION_INFO] sucessfuly set set email")
 	
-	print("[SET_USER_PROPERTIES] setting member since date..")
+	print("[INIT_SESSION_INFO] setting member since date..")
 	GSession.member_since = await db_utils.pull_from_db(auth, USER_COLLECTION, auth.localid, "member_since")
-	print("[SET_USER_PROPERTIES] sucessfuly set set member since date")
+	print("[INIT_SESSION_INFO] sucessfuly set set member since date")
 	
 	var stats_path = db_utils.USER_COLLECTION + "/" + GSession.auth_m.localid + "/" + db_utils.STATS_COLLECTION
 	
-	print("[SET_USER_PROPERTIES] setting game2 stats..")
-	var G2Score_score = await db_utils.pull_from_db(auth, stats_path, "game2", score_key)
-	if G2Score_score:
-		GSession.G2Score = G2Score_score
-		GSession.G2PosHitPercent = await db_utils.pull_from_db(auth, stats_path, "game2", pos_key)
-		GSession.G2NegMissPercent = await db_utils.pull_from_db(auth, stats_path, "game2", neg_key)
-		GSession.G2Speed = await db_utils.pull_from_db(auth, stats_path, "game2", speed_key)
-		print("[SET_USER_PROPERTIES] sucessfully set game2 stats")
-	else:
-		print("[SET_USER_PROPERTIES] no game2 stats found in database, did not set")
+	print("[INIT_SESSION_INFO] setting game2 stats..")
+	for game_idx in range(1, (1 + GSession.num_games)):
+		var game_str = "game" + str(game_idx)
 		
-	#GSession.G2Score = await db_utils.pull_from_db(auth, stats_path, "game2", score_key)
-	#GSession.G2PosHitPercent = await db_utils.pull_from_db(auth, stats_path, "game2", pos_key)
-	#GSession.G2NegMissPercent = await db_utils.pull_from_db(auth, stats_path, "game2", neg_key)
-	#GSession.G2Speed = await db_utils.pull_from_db(auth, stats_path, "game2", speed_key)
+		var db_scores = await db_utils.pull_from_db(auth, stats_path, game_str, score_key)
+	
+		if db_scores:
+			GSession.GStats[game_idx]["score"] = db_scores
+			GSession.GStats[game_idx]["speed"] = await db_utils.pull_from_db(auth, stats_path, game_str, speed_key)
+			GSession.GStats[game_idx]["pos_hit"] = await db_utils.pull_from_db(auth, stats_path, game_str, pos_key)
+			GSession.GStats[game_idx]["neg_miss"] = await db_utils.pull_from_db(auth, stats_path, game_str, neg_key)
+			print("[INIT_SESSION_INFO] sucessfully set game2 stats")
+		else:
+			print("[INIT_SESSION_INFO] no ", game_str, " stats found in database, did not set")
+		
 	
 	GSession.print_G2()
 	
-	print("END: [SET_USER_PROPERTIES]")
+	print("END: [INIT_SESSION_INFO]")

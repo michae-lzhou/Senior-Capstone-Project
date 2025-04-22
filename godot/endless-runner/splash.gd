@@ -4,6 +4,7 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Firebase.Auth.login_succeeded.connect(_on_login_succeeded)
+	Firebase.Auth.login_failed.connect(on_login_failed)
 
 	if Firebase.Auth.check_auth_file():
 		print("[SPLASH] found auth file. Logging in..")
@@ -16,3 +17,9 @@ func _on_login_succeeded(auth):
 	Firebase.Auth.save_auth(auth)
 	await db_utils.init_user_properties(auth)
 	get_tree().change_scene_to_file("res://scenes/TitleScreen.tscn")
+
+func on_login_failed(error_code, message):
+	print("[SPLASH] FAILED: " + str(error_code))
+	print(str(message))
+	
+	get_tree().change_scene_to_file("res://scenes/Login.tscn")
