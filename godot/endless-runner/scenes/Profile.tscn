@@ -315,5 +315,3 @@ layout_mode = 2
 
 [node name="SoundEffectButton" type="TextureButton" parent="TabContainer/Accessibility/Sound Effect Field"]
 layout_mode = 2
-
-[connection signal="pressed" from="TabContainer/Account Info/logout_button" to="." method="_on_logout_button_pressed"]

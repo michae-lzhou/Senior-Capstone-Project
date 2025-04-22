@@ -11,7 +11,7 @@ func _ready():
 
 func welcome_user(auth):
 	print("START: [WELCOME] retriving username..")
-	var username = SessionProperties.username
+	var username = GSession.username
 	
 	if username:
 		print("[WELCOME] retrieved username from session: " + username)

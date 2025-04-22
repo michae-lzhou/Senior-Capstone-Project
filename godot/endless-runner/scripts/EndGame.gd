@@ -10,10 +10,38 @@ func _ready():
 
 	# Set the score label text
 	$Score.text = "%d" % GSession.session_score
-
+	
+	var game_idx : int = GSession.game
 	# Load and display the appropriate graph
-	_load_graph_for_game(GSession.game)
-
+	_load_graph_for_game(game_idx)
+	
+	print("START: [GAME END] uploading session results to cloud")
+	$save_status_label.text = "Saving score to cloud.."
+	
+	# upload to db
+	#print(GSession.G2Score)
+	#print(GSession.G2NegMissPercent)
+	#print(GSession.G2PosHitPercent)
+	#print(GSession.G2Speed)
+	var stats_path = db_utils.USER_COLLECTION + "/" + GSession.auth_m.localid + "/" + db_utils.STATS_COLLECTION
+		
+	var payload = {
+		"scores" = GSession.G2Score,
+		"positive_hit_percents" = GSession.G2PosHitPercent,
+		"negative_miss_percents" = GSession.G2NegMissPercent,
+		"average_reaction_speeds" = GSession.G2Speed
+	}
+	
+	var res = await db_utils.push_to_db(GSession.auth_m, stats_path, "game" + str(game_idx), payload)
+	
+	if res:
+		print("[GAME END] SUCCESS results uploaded to cloud")
+	else:
+		print("[GAME END] FAILED to upload results to cloud")
+	
+	print("END: [GAME END]")
+	$save_status_label.text = "Saved to cloud!"
+	
 func _on_back_pressed():
 	get_tree().change_scene_to_file("res://scenes/GameSelection.tscn")
 	

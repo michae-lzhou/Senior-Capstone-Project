@@ -10,7 +10,6 @@ func _ready() -> void:
 	$TabContainer/Configuration/ControlBox/HBoxContainer/ControlLeftButton.pressed.connect(config_script._on_control_left_pressed)
 	$TabContainer/Configuration/ControlBox/HBoxContainer/ControlRightButton.pressed.connect(config_script._on_control_right_pressed)
 	$BackButton.pressed.connect(_on_back_pressed)
-	#$"TabContainer/Account Info/logout_button".pressed.connect(_on_logout_button_pressed)
 
 func _on_back_pressed():
 	get_tree().change_scene_to_file("res://scenes/TitleScreen.tscn")

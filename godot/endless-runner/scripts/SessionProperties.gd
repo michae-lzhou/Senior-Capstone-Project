@@ -1,10 +1,13 @@
 extends Node
 class_name SessionProperties
 
-# profile data
-static var username: String = ""
-static var email: String = ""
-static var member_since: String = ""
+# user auth object, set after login
+var auth_m = null
+
+# profile data, set after login
+var username: String = ""
+var email: String = ""
+var member_since: String = ""
 
 # game data
 var good_misses: float = 0.0
@@ -16,13 +19,16 @@ var bad_reaction_time: Array = []
 var session_score: int = 0
 var game: int = 0
 
+#GStats = {1 : {"score":[], pos:[], neg:[]}, 2 : {score:[], pos:[], neg:[]}}
+#to access: GSession.gstats[Gsession.game]["score"]
+
 var G1Score: Array = [
-	1100, 1120, 1130, 1170, 1150, 1180, 1200, 1250
+	#1100, 1120, 1130, 1170, 1150, 1180, 1200, 1250
 ]
 
 var G1Speed: Array = [
-	1100, 1120, 1130, 1170, 1780, 1180, 1200, 1250,
-	1300, 1310, 1290, 1330, 1230, 1400, 1450, 1600
+	#1100, 1120, 1130, 1170, 1780, 1180, 1200, 1250,
+	#1300, 1310, 1290, 1330, 1230, 1400, 1450, 1600
 ]
 
 var G1PosHitPercent: Array = [
@@ -44,13 +50,13 @@ var G2NegMissPercent: Array = [
 ]
 
 var G3Score: Array = [
-	980, 1000, 1040, 1060, 1080, 1100, 1120, 1140,
-	1180, 1220, 1240, 1270, 1300, 1340, 1360, 1000
+	#980, 1000, 1040, 1060, 1080, 1100, 1120, 1140,
+	#1180, 1220, 1240, 1270, 1300, 1340, 1360, 1000
 ]
 
 var G3Speed: Array = [
-	980, 1000, 1040, 1060, 1080, 1100, 1120, 1140,
-	1180, 1220, 1240, 1270, 1300, 1340, 1360, 1000
+	#980, 1000, 1040, 1060, 1080, 1100, 1120, 1140,
+	#1180, 1220, 1240, 1270, 1300, 1340, 1360, 1000
 ]
 
 var G3PosHitPercent: Array = [
@@ -60,13 +66,13 @@ var G3NegMissPercent: Array = [
 ]
 
 var G4Score: Array = [
-	980, 1000, 1040, 1060, 1080, 1100, 1120, 1140,
-	1180, 1220, 1240, 1270, 1300, 1340, 1360, 1000
+	#980, 1000, 1040, 1060, 1080, 1100, 1120, 1140,
+	#1180, 1220, 1240, 1270, 1300, 1340, 1360, 1000
 ]
 
 var G4Speed: Array = [
-	980, 1000, 1040, 1060, 1080, 1100, 1120, 1140,
-	1180, 1220, 1240, 1270, 1300, 1340, 1360, 1000
+	#980, 1000, 1040, 1060, 1080, 1100, 1120, 1140,
+	#1180, 1220, 1240, 1270, 1300, 1340, 1360, 1000
 ]
 
 var G4PosHitPercent: Array = [
@@ -85,6 +91,12 @@ func reset():
 	session_score = 0
 	game = 0
 
+func print_G2():
+	print("Scores:", G2Score)
+	print("Pos hit:", G2PosHitPercent)
+	print("Neg missed:", G2NegMissPercent)
+	print("Speed:", G2Speed)
+	
 func print_stats():
 	print("Good Hits:", good_hits)
 	print("Bad Hits:", bad_hits)
