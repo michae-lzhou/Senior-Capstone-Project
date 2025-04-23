@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpgipud7t4oks"
-path="res://.godot/imported/cigar.png-8c9a6de31009b5eab17641eb2e70c7b4.ctex"
+uid="uid://d30edx6orilby"
+path="res://.godot/imported/mint.png-d722cd047a09ebd2d9f61a23bec406bc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cigarette_icons/cigar.png"
-dest_files=["res://.godot/imported/cigar.png-8c9a6de31009b5eab17641eb2e70c7b4.ctex"]
+source_file="res://assets/cigarette_alt_icons/mint.png"
+dest_files=["res://.godot/imported/mint.png-d722cd047a09ebd2d9f61a23bec406bc.ctex"]
 
 [params]
 

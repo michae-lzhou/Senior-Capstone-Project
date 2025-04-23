@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpgipud7t4oks"
-path="res://.godot/imported/cigar.png-8c9a6de31009b5eab17641eb2e70c7b4.ctex"
+uid="uid://pdgfb5yx353i"
+path="res://.godot/imported/green_overlay.png-88186136afd7cea9686bce9360ddd793.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cigarette_icons/cigar.png"
-dest_files=["res://.godot/imported/cigar.png-8c9a6de31009b5eab17641eb2e70c7b4.ctex"]
+source_file="res://assets/green_overlay.png"
+dest_files=["res://.godot/imported/green_overlay.png-88186136afd7cea9686bce9360ddd793.ctex"]
 
 [params]
 
