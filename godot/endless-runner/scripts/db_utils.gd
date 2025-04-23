@@ -83,6 +83,52 @@ static func init_user_properties(auth):
 	GSession.wipe_session_data()
 	print("[INIT_SESSION_INFO] successfully cleared session")
 	
+	print("[INIT_SESSION_INFO] pulling streak and last login time..")
+#	previous login time that counted towards streak
+	var prev_login = await db_utils.pull_from_db(auth, USER_COLLECTION, auth.localid, "last_login")
+	var prev_streak_login = await db_utils.pull_from_db(auth, USER_COLLECTION, auth.localid, "last_streak_login")
+	var streak = await db_utils.pull_from_db(auth, USER_COLLECTION, auth.localid, "streak")
+	
+	var curr_login = Time.get_unix_time_from_system()
+	
+	var payload = {"last_login" : curr_login}
+	var day_s = 86400
+	
+#	time threshold for streak expiration (in days)
+	var streak_thresh = 2
+	if prev_login and streak:
+		print("[INIT_SESSION_INFO] calculating current streak")
+#		find time since last login (max 48 hours: 12 am of day one to 11:59pm day two)
+		var days_since = (curr_login - prev_login) / day_s
+		var days_since_streak_count = (curr_login - prev_streak_login) / day_s
+		
+		print("[INIT_SESSION_INFO] days since last login: " + str(days_since))
+		print("[INIT_SESSION_INFO] days since last streak increase: " + str(days_since_streak_count))
+#		check time within 48 hours, and been at least a day since last streak increase
+		if days_since <= streak_thresh and days_since_streak_count >= 1:
+			print("[INIT_SESSION_INFO] adding to streak!")	
+			streak += 1
+			payload["last_streak_login"] = curr_login
+		elif days_since > streak_thresh:
+#			reset streak
+			print("[INIT_SESSION_INFO] too many days since last login")
+			streak = 1
+		else:
+#			otherwise, streak stays same, and we just update last login
+			print("[INIT_SESSION_INFO] has not been a day since last streak increase")
+			
+	else:
+		print("[INIT_SESSION_INFO] no previous login or streak, setting streak to 1")
+		payload["last_streak_login"] = curr_login
+		streak = 1
+		
+	payload["streak"] = streak
+	print("[INIT_SESSION_INFO] pushing current login and streak of " + str(streak) + " to db..")
+	await db_utils.push_to_db(auth, USER_COLLECTION, auth.localid, payload)
+	
+	GSession.streak = streak
+	print("[INIT_SESSION_INFO] successfully set streak in session")
+	
 	print("[INIT_SESSION_INFO] setting auth..")
 	GSession.auth_m = auth
 	print("[INIT_SESSION_INFO] succesfully set auth")

@@ -29,8 +29,10 @@ func _on_login_succeeded(auth):
 	$login_success_label.text = "Login successful!"
 	print("[LOGIN] logged in")
 	Firebase.Auth.save_auth(auth)
-	await db_utils.init_user_properties(auth)
-	get_tree().change_scene_to_file("res://scenes/TitleScreen.tscn")
+	get_tree().change_scene_to_file("res://scenes/Splash.tscn")
+	
+	#await db_utils.init_user_properties(auth)
+	#get_tree().change_scene_to_file("res://scenes/TitleScreen.tscn")
 
 func on_login_failed(error_code, message):
 	print("[LOGIN] FAILED: " + str(error_code))

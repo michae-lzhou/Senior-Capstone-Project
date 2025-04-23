@@ -11,6 +11,7 @@ var auth_m = null
 var username: String = ""
 var email: String = ""
 var member_since: String = ""
+var streak : int = 1
 
 # game data
 var good_misses: float = 0.0
