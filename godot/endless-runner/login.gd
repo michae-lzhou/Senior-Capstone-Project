@@ -13,10 +13,8 @@ func _ready() -> void:
 		print("[LOGIN] found auth file. Logging in..")
 		$login_success_label.text = "Login successful"
 
-
 func _on_back_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/LoggedOut.tscn")
-
 
 func _on_submit_button_pressed() -> void:
 	print("[LOGIN] logging in..")

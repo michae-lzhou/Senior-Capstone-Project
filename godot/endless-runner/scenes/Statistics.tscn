@@ -1191,9 +1191,9 @@ stat_type = "speed"
 
 [node name="streak_label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 258.0
-offset_top = 102.0
-offset_right = 868.0
+offset_left = 143.0
+offset_top = 77.0
+offset_right = 1009.0
 offset_bottom = 343.0
 theme_override_fonts/font = ExtResource("5_gvapx")
 theme_override_font_sizes/font_size = 100

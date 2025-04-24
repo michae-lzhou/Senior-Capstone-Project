@@ -89,6 +89,7 @@ func wipe_session_data():
 	username = ""
 	email = ""
 	member_since = ""
+	streak = 1
 	
 	good_misses = 0.0
 	bad_misses = 0.0
