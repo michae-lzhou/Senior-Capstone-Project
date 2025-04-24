@@ -56,7 +56,7 @@ func spawn_loop():
 		vx = randf_range(v_scale / -10.0, v_scale / -9.0)  # Negative X velocity
 
 	# Launch upward toward the top/mid screen with a slight arc
-	var vy = -randf_range(v_scale - 200, v_scale + 200)
+	var vy = -randf_range(v_scale - 100, v_scale + 100)
 	item.linear_velocity = Vector2(vx, vy)
 
 	get_parent().add_child(item)
