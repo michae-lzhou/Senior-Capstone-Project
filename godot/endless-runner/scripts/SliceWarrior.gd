@@ -30,6 +30,7 @@ func _input(event):
 		var space = get_world_2d().direct_space_state
 		var query = PhysicsPointQueryParameters2D.new()
 		query.position = event.position
+		#query.collision_mask = 1 << 1  # Only detects objects on layer 2
 
 		var result = space.intersect_point(query)
 
