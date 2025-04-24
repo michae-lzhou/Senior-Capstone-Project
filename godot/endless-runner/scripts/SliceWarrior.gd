@@ -113,29 +113,6 @@ func on_spawn_limit_reached():
 		# No sliceable objects left, end the game
 		end_game()
 
-func calculate_average_speed_score(reaction_times: Array) -> int:
-	var min_reaction = 0.15  # Best possible reaction time
-	var max_reaction = 1.5   # Worst acceptable reaction time
-	var max_score = 100
-	
-	if reaction_times.size() == 0:
-		return max_score
-	
-	var total_score = 0
-	for time in reaction_times:
-		# Clamp time to the valid range
-		var clamped_time = clamp(time, min_reaction, max_reaction)
-		
-		# Normalize (0 = best, 1 = worst)
-		var normalized = inverse_lerp(min_reaction, max_reaction, clamped_time)
-		var inverted = 1.0 - normalized
-		var score = int(round(inverted * max_score))
-		
-		total_score += score
-	
-	var average_score = total_score / reaction_times.size()
-	return int(round(average_score))
-
 func end_game():
 	GSession.session_score = score
 	#var speed = calculate_average_speed_score(GSession.good_reaction_time + GSession.bad_reaction_time)
