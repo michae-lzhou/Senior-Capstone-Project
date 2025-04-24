@@ -41,12 +41,15 @@ func _ready():
 	$save_status_label.text = "Saved to cloud!"
 	
 func _on_back_pressed():
+	GSession.reset()
 	get_tree().change_scene_to_file("res://scenes/GameSelection.tscn")
 	
 func _on_statistics_pressed():
+	GSession.reset()
 	get_tree().change_scene_to_file("res://scenes/Statistics.tscn")
 	
 func _on_playagain_pressed():
+	GSession.reset()
 	get_tree().change_scene_to_file(play_again_game)
 
 func _load_graph_for_game(game_idx: int) -> void:

@@ -64,7 +64,7 @@ func reset():
 	good_reaction_time.clear()
 	bad_reaction_time.clear()
 	session_score = 0
-	game = 0
+	#game = 0
 
 # purely for debugging purposes
 func print_G2():
