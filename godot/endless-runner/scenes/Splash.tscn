@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://disg3ym05fsaw"]
+[gd_scene load_steps=5 format=3 uid="uid://disg3ym05fsaw"]
 
 [ext_resource type="Script" path="res://splash.gd" id="1_bslv3"]
 [ext_resource type="Texture2D" uid="uid://bk562ybu681k7" path="res://assets/galaxy.jpg" id="2_jx06j"]
 [ext_resource type="FontFile" uid="uid://d153mdm4tperu" path="res://assets/Rubik_Distressed/RubikDistressed-Regular.ttf" id="3_yb6bw"]
+[ext_resource type="FontFile" uid="uid://dcbo4v5a6sqid" path="res://assets/TitanOne-Regular.ttf" id="4_o1del"]
 
 [node name="Splash" type="Control"]
 layout_mode = 3
@@ -54,10 +55,11 @@ text = "Swipe to dodge the junk food!"
 
 [node name="loading_label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 416.0
+offset_left = 24.0
 offset_top = 1124.0
-offset_right = 676.0
+offset_right = 1078.0
 offset_bottom = 1184.0
-theme_override_fonts/font = ExtResource("3_yb6bw")
+theme_override_fonts/font = ExtResource("4_o1del")
 theme_override_font_sizes/font_size = 50
-text = "Loading..."
+text = "Logging in.."
+horizontal_alignment = 1

@@ -4,9 +4,9 @@ extends Control
 func _ready() -> void:
 	var streak = GSession.streak
 	if streak >= 100:
-		$streak_label.text = str(GSession.streak) + "\n 🔥🔥 Day Streak!!! 🔥🔥"
+		$streak_label.text = "🔥🔥 " + str(GSession.streak) + " 🔥🔥" + "\nDay Streak!!!"
 	elif streak >= 10:
-		$streak_label.text = str(GSession.streak) + "\n 🔥 Day Streak!! 🔥"
+		$streak_label.text = "🔥 " + str(GSession.streak) + " 🔥" + "\nDay Streak!!"
 	else:
 		$streak_label.text = str(GSession.streak) + "\n Day Streak!"
 	$BackButton.pressed.connect(_on_back_pressed)

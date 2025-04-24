@@ -77,13 +77,15 @@ static func pull_from_db(auth, collection_path : String, document_name : String,
 			return null
 
 # initializes session properties with user info and stats
-static func init_user_properties(auth):
+static func init_user_properties(auth, loading_label):
 	print("START: [INIT_SESSION_INFO] setting user info properties..")
 	print("[INIT_SESSION_INFO] clearing any session data")
 	GSession.wipe_session_data()
 	print("[INIT_SESSION_INFO] successfully cleared session")
 	
+	loading_label.text = "Logging in.."
 	print("[INIT_SESSION_INFO] pulling streak and last login time..")
+	
 #	previous login time that counted towards streak
 	var prev_login = await db_utils.pull_from_db(auth, USER_COLLECTION, auth.localid, "last_login")
 	var prev_streak_login = await db_utils.pull_from_db(auth, USER_COLLECTION, auth.localid, "last_streak_login")
@@ -106,7 +108,7 @@ static func init_user_properties(auth):
 		print("[INIT_SESSION_INFO] days since last streak increase: " + str(days_since_streak_count))
 #		check time within 48 hours, and been at least a day since last streak increase
 		if days_since <= streak_thresh and days_since_streak_count >= 1:
-			print("[INIT_SESSION_INFO] adding to streak!")	
+			print("[INIT_SESSION_INFO] adding to streak!")
 			streak += 1
 			payload["last_streak_login"] = curr_login
 		elif days_since > streak_thresh:
@@ -129,6 +131,7 @@ static func init_user_properties(auth):
 	GSession.streak = streak
 	print("[INIT_SESSION_INFO] successfully set streak in session")
 	
+	loading_label.text = "Loading user info.."
 	print("[INIT_SESSION_INFO] setting auth..")
 	GSession.auth_m = auth
 	print("[INIT_SESSION_INFO] succesfully set auth")
@@ -145,6 +148,7 @@ static func init_user_properties(auth):
 	GSession.member_since = await db_utils.pull_from_db(auth, USER_COLLECTION, auth.localid, "member_since")
 	print("[INIT_SESSION_INFO] sucessfuly set set member since date")
 	
+	loading_label.text = "Loading user game stats.."
 	var stats_path = db_utils.USER_COLLECTION + "/" + GSession.auth_m.localid + "/" + db_utils.STATS_COLLECTION
 	
 	print("[INIT_SESSION_INFO] setting game2 stats..")
@@ -161,8 +165,7 @@ static func init_user_properties(auth):
 			print("[INIT_SESSION_INFO] sucessfully set game2 stats")
 		else:
 			print("[INIT_SESSION_INFO] no ", game_str, " stats found in database, did not set")
-		
-	
+	loading_label.text = "Done!"
 	GSession.print_G2()
 	
 	print("END: [INIT_SESSION_INFO]")

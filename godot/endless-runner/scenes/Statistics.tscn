@@ -272,7 +272,7 @@ layout_mode = 2
 [node name="ColorRect" type="ColorRect" parent="ScrollContainer/Control/Game 1/TabContainer/Graph"]
 custom_minimum_size = Vector2(0, 750)
 layout_mode = 2
-color = Color(0.372549, 0.372549, 0.372549, 1)
+color = Color(0.372549, 0.372549, 0.372549, 0)
 
 [node name="GraphsContainer" type="TabContainer" parent="ScrollContainer/Control/Game 1/TabContainer/Graph/ColorRect"]
 layout_mode = 2
@@ -1197,6 +1197,6 @@ offset_right = 1009.0
 offset_bottom = 343.0
 theme_override_fonts/font = ExtResource("5_gvapx")
 theme_override_font_sizes/font_size = 100
-text = "10
+text = "🔥🔥 10000 🔥🔥
 Day Streak!"
 horizontal_alignment = 1
