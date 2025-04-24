@@ -30,7 +30,7 @@ static func push_to_db(auth, collection_path : String, document_name : String, p
 			if task:
 				print("[PUSH] SUCCESS document updated successfully")
 			else:
-				print("[PUSH] FAILED to udpate document")
+				print("[PUSH] FAILED to update document")
 				return false
 		else:
 			print("[PUSH] WARNING document not found")
