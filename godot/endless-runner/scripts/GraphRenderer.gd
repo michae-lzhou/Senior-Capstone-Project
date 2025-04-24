@@ -16,7 +16,8 @@ func _ready():
 		push_warning("No data_key provided.")
 		return
 		
-	var data_array = GSession.GStats[game_num][stat_type]
+	var real_array = GSession.GStats[game_num][stat_type]
+	var data_array = real_array
 
 	for i in range(data_array.size()):
 		data_array[i] += 100
