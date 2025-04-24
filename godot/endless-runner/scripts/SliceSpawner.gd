@@ -10,6 +10,8 @@ var SPAWN_TIME_MAX = 2.0
 
 var spawn_count = 0
 const MAX_SPAWNS = 10
+var good_count = MAX_SPAWNS / 2
+var bad_count = MAX_SPAWNS - good_count
 
 func start():
 	spawn_count = 0
@@ -23,8 +25,14 @@ func spawn_loop():
 	var interval = randf_range(SPAWN_TIME_MIN, SPAWN_TIME_MAX)
 	await get_tree().create_timer(interval).timeout
 
-	var is_good = randf() < 0.6
-	var scene = good_scene if is_good else bad_scene
+	var is_good = randf() < 0.5
+	var scene
+	if (is_good and (good_count > 0)) or bad_count == 0:
+		scene = good_scene
+		good_count -= 1
+	else:
+		scene = bad_scene
+		bad_count -= 1
 	var item = scene.instantiate()
 
 	# Get screen dimensions

@@ -18,7 +18,9 @@ func _ready():
 		
 	var data_array = GSession.GStats[game_num][stat_type]
 
-	
+	for i in range(data_array.size()):
+		data_array[i] += 100
+
 	draw_axes()
 	
 	if data_array == null or typeof(data_array) != TYPE_ARRAY or data_array.size() < 1:
@@ -65,7 +67,7 @@ func get_scaled_points(data_points: Array) -> Array:
 		
 		# Calculate position based on index rather than the x value
 		var scaled_x = (float(i) / max(1.0, float(data_points.size() - 1))) * graph_width
-		var scaled_y = lerp(min_y_scale, max_y_scale, inverse_lerp(min_score, max_score, value))
+		var scaled_y = lerp(min_y_scale, max_y_scale, inverse_lerp(0, max_score, value))
 		
 		scaled_points.append(Vector2(
 			x_start + scaled_x, 
