@@ -15,6 +15,7 @@ const GOOD_HIT_REWARD = 10
 const GOOD_MISS_PENALTY = -5
 const BAD_HIT_PENALTY = -15
 const BAD_MISS_REWARD = 5
+const REACTION_REWARD_SCALE = 1
 
 var sliceable_count = 0  # Track the number of sliceable objects
 
@@ -56,7 +57,7 @@ func update_score():
 func on_good_sliced(pos: Vector2):
 	GSession.good_hits += 1
 	var reaction_time = GSession.good_reaction_time[-1]
-	var score_change = int(GOOD_HIT_REWARD / (reaction_time + 0.1))
+	var score_change = int(GOOD_HIT_REWARD / (reaction_time + (1/REACTION_REWARD_SCALE)))
 	score += score_change
 	update_score()
 	show_floating_text("+" + str(score_change), pos, Color.GREEN)
@@ -73,7 +74,7 @@ func on_good_missed():
 func on_bad_sliced(pos: Vector2):
 	GSession.bad_hits += 1
 	var reaction_time = GSession.bad_reaction_time[-1]
-	var score_change = int(BAD_HIT_PENALTY / (reaction_time + 0.1))
+	var score_change = int(BAD_HIT_PENALTY / (reaction_time + (1/REACTION_REWARD_SCALE)))
 	score += score_change
 	if score < 0:
 		score = 0

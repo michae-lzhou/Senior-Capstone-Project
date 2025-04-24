@@ -20,7 +20,7 @@ func _ready():
 		var original_width = sprite.texture.get_width()
 		var scale_factor = TARGET_WIDTH / original_width
 		sprite.scale = Vector2(scale_factor, scale_factor)
-
+	
 func load_bad_images(path: String):
 	var dir = DirAccess.open(path)
 	if dir:

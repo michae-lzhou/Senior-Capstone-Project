@@ -7,6 +7,8 @@
 radius = 58.0086
 
 [node name="GoodSlice" type="RigidBody2D"]
+collision_mask = 2
+gravity_scale = 10.0
 script = ExtResource("1_tw85h")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
