@@ -15,7 +15,7 @@ const GOOD_HIT_REWARD = 10
 const GOOD_MISS_PENALTY = -5
 const BAD_HIT_PENALTY = -15
 const BAD_MISS_REWARD = 5
-const REACTION_REWARD_SCALE = 1
+const REACTION_REWARD_SCALE = 1.0
 
 var sliceable_count = 0  # Track the number of sliceable objects
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c0nk261tmvf6m"]
+[gd_scene load_steps=21 format=3 uid="uid://c0nk261tmvf6m"]
 
 [ext_resource type="Texture2D" uid="uid://bk562ybu681k7" path="res://assets/galaxy.jpg" id="1_8spis"]
 [ext_resource type="Script" path="res://scripts/Statistics.gd" id="1_ss7q5"]
@@ -19,8 +19,13 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jor0j"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8cpex"]
-bg_color = Color(0.372549, 0.372549, 0.372549, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8v8k6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xq080"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o4nnn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r2t3d"]
 
 [node name="Statistics" type="Control"]
 layout_mode = 3
@@ -281,7 +286,7 @@ offset_right = 937.0
 offset_bottom = 49.0
 theme_override_fonts/font = ExtResource("5_gvapx")
 theme_override_font_sizes/font_size = 30
-theme_override_styles/panel = SubResource("StyleBoxFlat_8cpex")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_8v8k6")
 tab_alignment = 1
 current_tab = 0
 
@@ -325,7 +330,7 @@ metadata/_tab_index = 1
 layout_mode = 2
 
 [node name="Spacer" type="Control" parent="ScrollContainer/Control/Game 1/TabContainer/Graph/ColorRect/GraphsContainer/\'              Speed              \'/SpeedGraphLabel"]
-custom_minimum_size = Vector2(20, 0)
+custom_minimum_size = Vector2(15, 0)
 layout_mode = 2
 
 [node name="Label" type="Label" parent="ScrollContainer/Control/Game 1/TabContainer/Graph/ColorRect/GraphsContainer/\'              Speed              \'/SpeedGraphLabel"]
@@ -338,12 +343,16 @@ text = "
 
 
 Reaction
-Time
+       Time
 
 
 
 
                                                     Sessions"
+
+[node name="Spacer2" type="Control" parent="ScrollContainer/Control/Game 1/TabContainer/Graph/ColorRect/GraphsContainer/\'              Speed              \'/SpeedGraphLabel"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
 
 [node name="Control" type="Control" parent="ScrollContainer/Control/Game 1/TabContainer/Graph/ColorRect/GraphsContainer/\'              Speed              \'/SpeedGraphLabel"]
 layout_mode = 2
@@ -556,7 +565,7 @@ offset_right = 937.0
 offset_bottom = 49.0
 theme_override_fonts/font = ExtResource("5_gvapx")
 theme_override_font_sizes/font_size = 30
-theme_override_styles/panel = SubResource("StyleBoxFlat_8cpex")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_xq080")
 tab_alignment = 1
 current_tab = 0
 
@@ -600,7 +609,7 @@ metadata/_tab_index = 1
 layout_mode = 2
 
 [node name="Spacer" type="Control" parent="ScrollContainer/Control/Game 2/TabContainer/Graph/ColorRect/GraphsContainer/\'              Speed              \'/SpeedGraphLabel"]
-custom_minimum_size = Vector2(20, 0)
+custom_minimum_size = Vector2(15, 0)
 layout_mode = 2
 
 [node name="Label" type="Label" parent="ScrollContainer/Control/Game 2/TabContainer/Graph/ColorRect/GraphsContainer/\'              Speed              \'/SpeedGraphLabel"]
@@ -613,12 +622,16 @@ text = "
 
 
 Reaction
-Time
+       Time
 
 
 
 
                                                     Sessions"
+
+[node name="Spacer2" type="Control" parent="ScrollContainer/Control/Game 2/TabContainer/Graph/ColorRect/GraphsContainer/\'              Speed              \'/SpeedGraphLabel"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
 
 [node name="Control" type="Control" parent="ScrollContainer/Control/Game 2/TabContainer/Graph/ColorRect/GraphsContainer/\'              Speed              \'/SpeedGraphLabel"]
 layout_mode = 2
@@ -836,7 +849,7 @@ offset_right = 937.0
 offset_bottom = 49.0
 theme_override_fonts/font = ExtResource("5_gvapx")
 theme_override_font_sizes/font_size = 30
-theme_override_styles/panel = SubResource("StyleBoxFlat_8cpex")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_o4nnn")
 tab_alignment = 1
 current_tab = 0
 
@@ -880,7 +893,7 @@ metadata/_tab_index = 1
 layout_mode = 2
 
 [node name="Spacer" type="Control" parent="ScrollContainer/Control/Game 3/TabContainer/Graph/ColorRect/GraphsContainer/\'              Speed              \'/SpeedGraphLabel"]
-custom_minimum_size = Vector2(20, 0)
+custom_minimum_size = Vector2(15, 0)
 layout_mode = 2
 
 [node name="Label" type="Label" parent="ScrollContainer/Control/Game 3/TabContainer/Graph/ColorRect/GraphsContainer/\'              Speed              \'/SpeedGraphLabel"]
@@ -893,12 +906,16 @@ text = "
 
 
 Reaction
-Time
+       Time
 
 
 
 
                                                     Sessions"
+
+[node name="Spacer2" type="Control" parent="ScrollContainer/Control/Game 3/TabContainer/Graph/ColorRect/GraphsContainer/\'              Speed              \'/SpeedGraphLabel"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
 
 [node name="Control" type="Control" parent="ScrollContainer/Control/Game 3/TabContainer/Graph/ColorRect/GraphsContainer/\'              Speed              \'/SpeedGraphLabel"]
 layout_mode = 2
@@ -1116,7 +1133,7 @@ offset_right = 937.0
 offset_bottom = 49.0
 theme_override_fonts/font = ExtResource("5_gvapx")
 theme_override_font_sizes/font_size = 30
-theme_override_styles/panel = SubResource("StyleBoxFlat_8cpex")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_r2t3d")
 tab_alignment = 1
 current_tab = 0
 
@@ -1160,7 +1177,7 @@ metadata/_tab_index = 1
 layout_mode = 2
 
 [node name="Spacer" type="Control" parent="ScrollContainer/Control/Game 4/TabContainer/Graph/ColorRect/GraphsContainer/\'              Speed              \'/SpeedGraphLabel"]
-custom_minimum_size = Vector2(20, 0)
+custom_minimum_size = Vector2(15, 0)
 layout_mode = 2
 
 [node name="Label" type="Label" parent="ScrollContainer/Control/Game 4/TabContainer/Graph/ColorRect/GraphsContainer/\'              Speed              \'/SpeedGraphLabel"]
@@ -1173,12 +1190,16 @@ text = "
 
 
 Reaction
-Time
+       Time
 
 
 
 
                                                     Sessions"
+
+[node name="Spacer2" type="Control" parent="ScrollContainer/Control/Game 4/TabContainer/Graph/ColorRect/GraphsContainer/\'              Speed              \'/SpeedGraphLabel"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
 
 [node name="Control" type="Control" parent="ScrollContainer/Control/Game 4/TabContainer/Graph/ColorRect/GraphsContainer/\'              Speed              \'/SpeedGraphLabel"]
 layout_mode = 2
