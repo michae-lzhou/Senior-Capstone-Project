@@ -17,11 +17,11 @@ func _ready():
 		return
 		
 	var real_array : Array = GSession.GStats[game_num][stat_type]
-	var data_array = Array()
-	data_array.resize(real_array.size())
+	var data_array = real_array.duplicate()
 
-	for i in range(data_array.size()):
-		data_array[i] = real_array[i] + 100
+	if stat_type == "score":
+		for i in range(data_array.size()):
+			data_array[i] += 100
 
 	draw_axes()
 	

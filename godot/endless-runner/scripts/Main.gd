@@ -26,7 +26,7 @@ func welcome_user(auth):
 		else:
 			time_of_day = "Evening"
 			
-		$welcome_label.text = "Good " + time_of_day + ", " + username
+		$welcome_label.text = "Good " + time_of_day + ", \n" + username
 	else:
 		print("[WELCOME] failed to load username document for display")
 	print("END: [WELCOME]")

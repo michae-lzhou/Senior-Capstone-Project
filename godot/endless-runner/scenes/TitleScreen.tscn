@@ -85,9 +85,9 @@ expand_icon = true
 
 [node name="welcome_label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 39.0
+offset_left = 19.0
 offset_top = 217.0
-offset_right = 1048.0
+offset_right = 1084.0
 offset_bottom = 326.0
 theme_override_fonts/font = ExtResource("7_fantg")
 theme_override_font_sizes/font_size = 50
