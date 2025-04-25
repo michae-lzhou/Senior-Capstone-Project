@@ -556,7 +556,7 @@ layout_mode = 2
 [node name="ColorRect" type="ColorRect" parent="ScrollContainer/Control/Game 2/TabContainer/Graph"]
 custom_minimum_size = Vector2(0, 750)
 layout_mode = 2
-color = Color(0.372549, 0.372549, 0.372549, 1)
+color = Color(1, 1, 1, 0)
 
 [node name="GraphsContainer" type="TabContainer" parent="ScrollContainer/Control/Game 2/TabContainer/Graph/ColorRect"]
 layout_mode = 2
@@ -840,7 +840,7 @@ layout_mode = 2
 [node name="ColorRect" type="ColorRect" parent="ScrollContainer/Control/Game 3/TabContainer/Graph"]
 custom_minimum_size = Vector2(0, 750)
 layout_mode = 2
-color = Color(0.372549, 0.372549, 0.372549, 1)
+color = Color(0.372549, 0.372549, 0.372549, 0)
 
 [node name="GraphsContainer" type="TabContainer" parent="ScrollContainer/Control/Game 3/TabContainer/Graph/ColorRect"]
 layout_mode = 2
@@ -1124,7 +1124,7 @@ layout_mode = 2
 [node name="ColorRect" type="ColorRect" parent="ScrollContainer/Control/Game 4/TabContainer/Graph"]
 custom_minimum_size = Vector2(0, 750)
 layout_mode = 2
-color = Color(0.372549, 0.372549, 0.372549, 1)
+color = Color(0.372549, 0.372549, 0.372549, 0)
 
 [node name="GraphsContainer" type="TabContainer" parent="ScrollContainer/Control/Game 4/TabContainer/Graph/ColorRect"]
 layout_mode = 2
