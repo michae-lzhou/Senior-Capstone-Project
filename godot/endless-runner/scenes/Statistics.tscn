@@ -111,10 +111,9 @@ offset_bottom = 1258.0
 theme_override_fonts/font = ExtResource("5_gvapx")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/panel = SubResource("StyleBoxFlat_jor0j")
-current_tab = 1
+current_tab = 0
 
 [node name="Improvements" type="VBoxContainer" parent="ScrollContainer/Control/Game 1/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -250,6 +249,7 @@ text = "Advanced
 Intermediate"
 
 [node name="Graph" type="VBoxContainer" parent="ScrollContainer/Control/Game 1/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
