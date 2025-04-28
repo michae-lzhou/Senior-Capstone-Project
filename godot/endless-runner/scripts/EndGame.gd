@@ -29,7 +29,6 @@ func _ready():
 		"positive_hit_percents" = GSession.GStats[game_idx]["pos_hit"],
 		"negative_miss_percents" = GSession.GStats[game_idx]["neg_miss"]
 	}
-	
 	var res = await db_utils.push_to_db(GSession.auth_m, stats_path, "game" + str(game_idx), payload)
 	
 	if res:

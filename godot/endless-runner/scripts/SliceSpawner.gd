@@ -9,19 +9,24 @@ var SPAWN_TIME_MIN = 0.5
 var SPAWN_TIME_MAX = 2.0
 
 var spawn_count = 0
-const MAX_SPAWNS = 10
-var good_count = MAX_SPAWNS / 2
-var bad_count = MAX_SPAWNS - good_count
 
-var v_scale = 1000
-var g = 0.5
+#const MAX_SPAWNS = 10
+var max_spawns
+
+#var v0 = 1000
+#var g_scale = 0.5
+var v0
+var g_scale
 
 func start():
 	spawn_count = 0
 	spawn_loop()
 	
 func spawn_loop():
-	if spawn_count >= MAX_SPAWNS:
+	var good_count = max_spawns / 2
+	var bad_count = max_spawns - good_count
+	
+	if spawn_count >= max_spawns:
 		emit_signal("spawn_limit_reached")
 		return
 
@@ -37,7 +42,7 @@ func spawn_loop():
 		scene = bad_scene
 		bad_count -= 1
 	var item = scene.instantiate()
-	item.gravity_scale = g
+	item.gravity_scale = g_scale
 
 	# Get screen dimensions
 	var screen_size = get_viewport().get_visible_rect().size
@@ -50,13 +55,16 @@ func spawn_loop():
 	var vx: float
 	if spawn_x < screen_size.x / 2:
 		# If on the left half of the screen, only allow rightward movement
-		vx = randf_range(v_scale / 10.0, v_scale / 9.0)  # Positive X velocity
+		vx = randf_range(v0 / 10.0, v0 / 9.0)  # Positive X velocity
+		#vx = 0  # Positive X velocity
 	else:
 		# If on the right half of the screen, only allow leftward movement
-		vx = randf_range(v_scale / -10.0, v_scale / -9.0)  # Negative X velocity
+		vx = randf_range(v0 / -10.0, v0 / -9.0)  # Negative X velocity
+		#vx = 0 # Negative X velocity
 
 	# Launch upward toward the top/mid screen with a slight arc
-	var vy = -randf_range(v_scale - 100, v_scale + 100)
+	var vy = -randf_range(v0 - (v0 * 0.1), v0 + (v0 * 0.1))
+	#var vy = -v0
 	item.linear_velocity = Vector2(vx, vy)
 
 	get_parent().add_child(item)

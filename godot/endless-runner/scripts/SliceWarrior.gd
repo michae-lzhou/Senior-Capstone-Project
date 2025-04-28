@@ -1,7 +1,7 @@
 extends Node2D
 
 var score = 0
-var lives = 3
+#var lives = 3
 
 @onready var score_label = $HUD/ScoreLabel
 @onready var spawner = $Spawner
@@ -11,11 +11,31 @@ var lives = 3
 var trail_points = []
 const MAX_TRAIL_POINTS = 15
 
-const GOOD_HIT_REWARD = 10
-const GOOD_MISS_PENALTY = -5
-const BAD_HIT_PENALTY = -15
-const BAD_MISS_REWARD = 5
-const REACTION_REWARD_SCALE = 1.0
+#const level_settings : Dictionary = {1 : [20, -5, -]}
+
+# (level = 1)
+var level_idx = 0
+const NUM_SPAWNS = [20, 30, 40]
+
+const GOOD_HIT_REWARDS = [20, 27, 30]
+#const GOOD_HIT_REWARD = 20
+#const GOOD_MISS_PENALTY = -5
+const GOOD_MISS_PENALTIES = [-5, -5, -5]
+#const GOOD_MISS_PENALTY = -5
+
+const BAD_HIT_PENALTIES = [-15, -15, -15, -15]
+#const BAD_HIT_PENALTY = -15
+
+const BAD_MISS_REWARDS = [0, 0, 0, 5]
+#const BAD_MISS_REWARD = 5
+#const MULTIPLIER = [1]
+
+const G_SCALES = [0.5, 2, 5, 10]
+const v0s = [1000, 2000, 3500, 7500]
+
+#const REACTION_REWARD_SCALE = 1.0
+
+var expected_time = find_expected_time(v0s[level_idx], G_SCALES[level_idx])
 
 var sliceable_count = 0  # Track the number of sliceable objects
 
@@ -46,7 +66,11 @@ func _input(event):
 		slice_trail.points = []
 
 func _ready():
+	print("expected time:", expected_time)
 	update_score()
+	spawner.max_spawns = NUM_SPAWNS[level_idx]
+	spawner.g_scale = G_SCALES[level_idx]
+	spawner.v0 = v0s[level_idx]
 	spawner.start()
 	spawner.connect("spawn_limit_reached", Callable(self, "on_spawn_limit_reached"))
 	# Count initial sliceable objects
@@ -58,14 +82,16 @@ func update_score():
 func on_good_sliced(pos: Vector2):
 	GSession.good_hits += 1
 	var reaction_time = GSession.good_reaction_time[-1]
-	var score_change = int(GOOD_HIT_REWARD / (reaction_time + (1/REACTION_REWARD_SCALE)))
+	#var score_change = int(GOOD_HIT_REWARDS[level_idx] / (reaction_time + (1/REACTION_REWARD_SCALE)))
+#	scaled based on reaction time
+	var score_change = int((abs((expected_time - reaction_time) / (expected_time)) * GOOD_HIT_REWARDS[level_idx]) + 0.5)
 	score += score_change
 	update_score()
 	show_floating_text("+" + str(score_change), pos, Color.GREEN)
 	
 func on_good_missed():
 	GSession.good_misses += 1
-	var score_change = GOOD_MISS_PENALTY
+	var score_change = GOOD_MISS_PENALTIES[level_idx]
 	score += score_change
 	if score < 0:
 		score = 0
@@ -75,7 +101,8 @@ func on_good_missed():
 func on_bad_sliced(pos: Vector2):
 	GSession.bad_hits += 1
 	var reaction_time = GSession.bad_reaction_time[-1]
-	var score_change = int(BAD_HIT_PENALTY / (reaction_time + (1/REACTION_REWARD_SCALE)))
+	#var score_change = int(BAD_HIT_PENALTIES[level_idx] / (reaction_time + (1/REACTION_REWARD_SCALE)))
+	var score_change = BAD_HIT_PENALTIES[level_idx]
 	score += score_change
 	if score < 0:
 		score = 0
@@ -85,7 +112,7 @@ func on_bad_sliced(pos: Vector2):
 
 func on_bad_missed():
 	GSession.bad_misses += 1
-	var score_change = BAD_MISS_REWARD
+	var score_change = BAD_MISS_REWARDS[level_idx]
 	score += score_change
 	update_score()
 	show_floating_text("+" + str(score_change), Vector2(675, 100), Color.GREEN)
@@ -147,3 +174,6 @@ func count_sliceable_objects():
 	for child in get_children():
 		if child.is_in_group("sliceable"):
 			sliceable_count += 1
+			
+static func find_expected_time(v0, g_scale):
+	return (2 * v0) / (ProjectSettings.get_setting("physics/2d/default_gravity") * g_scale) 
