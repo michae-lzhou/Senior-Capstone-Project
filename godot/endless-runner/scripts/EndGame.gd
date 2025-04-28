@@ -72,7 +72,7 @@ func _load_graph_for_game(game_idx: int) -> void:
 		4:
 			graph_path = "res://scenes/G4Score.tscn"
 			score_array = GSession.GStats[4]["score"]
-			#play_again_game = "res://scenes/gmae4.tscn"
+			play_again_game = "res://scenes/ImpulseAisle.tscn"
 		_:
 			graph_path = ""  # Optional, since it's initialized above
 			score_array = []

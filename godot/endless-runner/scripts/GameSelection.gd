@@ -22,13 +22,13 @@ func _on_game2_pressed():
 func _on_game3_pressed():
 	GSession.reset()
 	GSession.game = 3
-	print("Starting Game: Impulse Aisle...")
-	get_tree().change_scene_to_file("res://scenes/ImpulseAisle.tscn")
+	print("Starting Game: Crave Catcher...")
 
 func _on_game4_pressed():
 	GSession.reset()
 	GSession.game = 4
-	print("Starting Game: [placeholder_4]...")
-	
+	print("Starting Game: Impulse Aisle...")
+	get_tree().change_scene_to_file("res://scenes/ImpulseAisle.tscn")
+		
 func _on_back_pressed():
 	get_tree().change_scene_to_file("res://scenes/TitleScreen.tscn")

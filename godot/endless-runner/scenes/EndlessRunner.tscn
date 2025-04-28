@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dfwp28jrqjqcu"]
+[gd_scene load_steps=13 format=3 uid="uid://bhn0xucgl3kdb"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_528d2"]
 [ext_resource type="Texture2D" uid="uid://0yivwdbvobt3" path="res://assets/kenney_platformer-characters/PNG/Adventurer/Poses/adventurer_back.png" id="1_tfahs"]
