@@ -18,8 +18,10 @@ var level_idx = 0
 const NUM_SPAWNS = [20, 30, 40]
 
 const GOOD_HIT_REWARDS = [20, 27, 30]
+
 #const GOOD_HIT_REWARD = 20
 #const GOOD_MISS_PENALTY = -5
+
 const GOOD_MISS_PENALTIES = [-5, -5, -5]
 #const GOOD_MISS_PENALTY = -5
 

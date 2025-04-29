@@ -53,29 +53,21 @@ func _on_playagain_pressed():
 
 func _load_graph_for_game(game_idx: int) -> void:
 	var graph_path := ""  # Use := for type inference (optional)
-	var score_array
+	var score_array = GSession.GStats[game_idx]["score"]
 
 	match game_idx:
 		1:
 			graph_path = "res://scenes/G1Score.tscn"
-			score_array = GSession.GStats[1]["score"]
 			play_again_game = "res://scenes/EndlessRunner.tscn"
 		2:
 			graph_path = "res://scenes/G2Score.tscn"
-			score_array = GSession.GStats[2]["score"]
 			play_again_game = "res://scenes/SliceWarrior.tscn"
 		3:
 			graph_path = "res://scenes/G3Score.tscn"
-			score_array = GSession.GStats[3]["score"]
 			#play_again_game = "res://scenes/game3.tscn"
 		4:
 			graph_path = "res://scenes/G4Score.tscn"
-			score_array = GSession.GStats[4]["score"]
 			play_again_game = "res://scenes/ImpulseAisle.tscn"
-		_:
-			graph_path = ""  # Optional, since it's initialized above
-			score_array = []
-			play_again_game = ""
 
 	toggle_high_score_visibility(score_array)
 
