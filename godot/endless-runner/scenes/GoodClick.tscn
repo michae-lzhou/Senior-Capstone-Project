@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3qpf3ufp415q"]
+
+[ext_resource type="Script" path="res://scripts/GoodClick.gd" id="1_w62b0"]
+[ext_resource type="Texture2D" uid="uid://b4st5lo8bgchl" path="res://assets/ChatGPT Image Apr 18, 2025, 11_34_44 AM.png" id="2_w3fgp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aldfg"]
+size = Vector2(268, 350.5)
+
+[node name="GoodClick" type="Area2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_w62b0")
+good_texture = ExtResource("2_w3fgp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2, -10)
+scale = Vector2(0.5, 0.524)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-11, 15)
+shape = SubResource("RectangleShape2D_aldfg")
+
+[connection signal="input_event" from="." to="." method="_on_item_input_event"]

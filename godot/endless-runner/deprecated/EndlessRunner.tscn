@@ -1,16 +1,16 @@
 [gd_scene load_steps=13 format=3 uid="uid://bhn0xucgl3kdb"]
 
-[ext_resource type="Script" path="res://scripts/Player.gd" id="1_528d2"]
-[ext_resource type="Texture2D" uid="uid://0yivwdbvobt3" path="res://assets/kenney_platformer-characters/PNG/Adventurer/Poses/adventurer_back.png" id="1_tfahs"]
-[ext_resource type="Texture2D" uid="uid://bk562ybu681k7" path="res://assets/galaxy.jpg" id="2_6ddmm"]
-[ext_resource type="Script" path="res://scripts/Background.gd" id="3_pj6a4"]
-[ext_resource type="Script" path="res://scripts/Spawner.gd" id="5_e53gi"]
-[ext_resource type="Script" path="res://scripts/GameManager.gd" id="6_a58wt"]
-[ext_resource type="PackedScene" uid="uid://slotggfw4v37" path="res://scenes/Obstacle.tscn" id="6_iybo3"]
-[ext_resource type="PackedScene" uid="uid://5xkv7sy2wdi3" path="res://scenes/Reward.tscn" id="7_v3w4g"]
-[ext_resource type="FontFile" uid="uid://dcbo4v5a6sqid" path="res://assets/TitanOne-Regular.ttf" id="9_2jegr"]
-[ext_resource type="Script" path="res://scripts/Label.gd" id="10_pyi12"]
-[ext_resource type="PackedScene" uid="uid://dvvlvmw86rlr5" path="res://scenes/ScoreTimerUI.tscn" id="11_2kydk"]
+[ext_resource type="Script" path="res://scripts/Player.gd" id="1_3kppw"]
+[ext_resource type="Texture2D" uid="uid://0yivwdbvobt3" path="res://assets/kenney_platformer-characters/PNG/Adventurer/Poses/adventurer_back.png" id="2_jnlyu"]
+[ext_resource type="Script" path="res://scripts/Background.gd" id="3_hpecr"]
+[ext_resource type="Texture2D" uid="uid://bk562ybu681k7" path="res://assets/galaxy.jpg" id="4_6kkpc"]
+[ext_resource type="Script" path="res://deprecated/Spawner.gd" id="5_bl1k3"]
+[ext_resource type="PackedScene" uid="uid://slotggfw4v37" path="res://scenes/Obstacle.tscn" id="6_546rk"]
+[ext_resource type="PackedScene" uid="uid://5xkv7sy2wdi3" path="res://scenes/Reward.tscn" id="7_e6d51"]
+[ext_resource type="Script" path="res://scripts/GameManager.gd" id="8_1al5t"]
+[ext_resource type="FontFile" uid="uid://dcbo4v5a6sqid" path="res://assets/TitanOne-Regular.ttf" id="9_yopaq"]
+[ext_resource type="Script" path="res://scripts/Label.gd" id="10_4ojhc"]
+[ext_resource type="PackedScene" uid="uid://dvvlvmw86rlr5" path="res://scenes/ScoreTimerUI.tscn" id="11_uh0gu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_17w65"]
 size = Vector2(112, 215)
@@ -19,38 +19,38 @@ size = Vector2(112, 215)
 position = Vector2(0, 2)
 
 [node name="Player" type="CharacterBody2D" parent="."]
-script = ExtResource("1_528d2")
+script = ExtResource("1_3kppw")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 scale = Vector2(2.5, 2.5)
-texture = ExtResource("1_tfahs")
+texture = ExtResource("2_jnlyu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(-1, 18)
 shape = SubResource("RectangleShape2D_17w65")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-script = ExtResource("3_pj6a4")
+script = ExtResource("3_hpecr")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(550, -137)
 scale = Vector2(2, 2)
-texture = ExtResource("2_6ddmm")
+texture = ExtResource("4_6kkpc")
 region_rect = Rect2(0, 0, 640, 428)
 
 [node name="Spawner" type="Node2D" parent="."]
-script = ExtResource("5_e53gi")
-obstacle_scene = ExtResource("6_iybo3")
-reward_scene = ExtResource("7_v3w4g")
+script = ExtResource("5_bl1k3")
+obstacle_scene = ExtResource("6_546rk")
+reward_scene = ExtResource("7_e6d51")
 
 [node name="HUD" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("6_a58wt")
+script = ExtResource("8_1al5t")
 
 [node name="ScoreLabel" type="Label" parent="HUD"]
 z_index = 1
@@ -59,9 +59,9 @@ offset_left = 462.0
 offset_top = 22.0
 offset_right = 668.0
 offset_bottom = 80.0
-theme_override_fonts/font = ExtResource("9_2jegr")
+theme_override_fonts/font = ExtResource("9_yopaq")
 theme_override_font_sizes/font_size = 50
-script = ExtResource("10_pyi12")
+script = ExtResource("10_4ojhc")
 
 [node name="Lane1" type="Marker2D" parent="."]
 position = Vector2(216, 950)
@@ -76,7 +76,7 @@ position = Vector2(864, 950)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ScoreTimerUI" parent="CanvasLayer" instance=ExtResource("11_2kydk")]
+[node name="ScoreTimerUI" parent="CanvasLayer" instance=ExtResource("11_uh0gu")]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5

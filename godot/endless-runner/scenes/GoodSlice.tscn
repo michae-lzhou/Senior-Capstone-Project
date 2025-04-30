@@ -1,21 +1,23 @@
 [gd_scene load_steps=4 format=3 uid="uid://bguv8g7nogoii"]
 
 [ext_resource type="Script" path="res://scripts/GoodSlice.gd" id="1_tw85h"]
-[ext_resource type="Texture2D" uid="uid://cw5tagvajfjhf" path="res://assets/fruit1/T_fruit_10.png" id="2_lyw3s"]
+[ext_resource type="Texture2D" uid="uid://cq78c71dw86yx" path="res://assets/cigarette_alt_icons/lollipop.png" id="2_rdv7h"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8ik4m"]
-radius = 58.0086
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w246w"]
+size = Vector2(140, 224)
 
 [node name="GoodSlice" type="RigidBody2D"]
 collision_mask = 2
 script = ExtResource("1_tw85h")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_lyw3s")
+position = Vector2(2, 1)
+scale = Vector2(0.75, 0.763)
+texture = ExtResource("2_rdv7h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, 26)
-shape = SubResource("CircleShape2D_8ik4m")
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_w246w")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 

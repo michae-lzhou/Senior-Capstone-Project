@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://hciikw57fpr1"]
+[gd_scene load_steps=7 format=3 uid="uid://hciikw57fpr1"]
 
 [ext_resource type="Script" path="res://scripts/impulse_aisle.gd" id="1_oqpo3"]
 [ext_resource type="Texture2D" uid="uid://ox6jv4k2fmir" path="res://assets/impulseaisle.png" id="2_1sql8"]
 [ext_resource type="Script" path="res://scripts/AisleSpawner.gd" id="3_wie54"]
-[ext_resource type="PackedScene" uid="uid://d3qpf3ufp415q" path="res://scenes/AisleItem.tscn" id="4_b4hnp"]
-[ext_resource type="Texture2D" uid="uid://b4st5lo8bgchl" path="res://assets/ChatGPT Image Apr 18, 2025, 11_34_44 AM.png" id="5_t51dy"]
-[ext_resource type="Texture2D" uid="uid://p4j1dvbbav40" path="res://assets/ChatGPT Image Apr 18, 2025, 11_41_09 AM.png" id="6_4161x"]
+[ext_resource type="PackedScene" uid="uid://d3qpf3ufp415q" path="res://scenes/GoodClick.tscn" id="4_l63sh"]
+[ext_resource type="PackedScene" uid="uid://dfn4miljh7xeb" path="res://scenes/BadClick.tscn" id="5_j6aic"]
 [ext_resource type="FontFile" uid="uid://dcbo4v5a6sqid" path="res://assets/TitanOne-Regular.ttf" id="7_ggtjw"]
 
 [node name="ImpulseAisle" type="Node2D"]
@@ -25,9 +24,8 @@ centered = false
 
 [node name="Spawner" type="Node2D" parent="."]
 script = ExtResource("3_wie54")
-item_scene = ExtResource("4_b4hnp")
-good_texture = ExtResource("5_t51dy")
-bad_texture = ExtResource("6_4161x")
+good_item_scene = ExtResource("4_l63sh")
+bad_item_scene = ExtResource("5_j6aic")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -1
