@@ -79,6 +79,7 @@ static func pull_from_db(auth, collection_path : String, document_name : String,
 # initializes session properties with user info and stats
 static func init_user_properties(auth, loading_label):
 	print("START: [INIT_SESSION_INFO] setting user info properties..")
+
 	print("[INIT_SESSION_INFO] clearing any session data")
 	GSession.wipe_session_data()
 	print("[INIT_SESSION_INFO] successfully cleared session")
@@ -151,8 +152,8 @@ static func init_user_properties(auth, loading_label):
 	loading_label.text = "Loading user game stats.."
 	var stats_path = db_utils.USER_COLLECTION + "/" + GSession.auth_m.localid + "/" + db_utils.STATS_COLLECTION
 	
-	print("[INIT_SESSION_INFO] setting game2 stats..")
 	for game_idx in range(1, (1 + GSession.num_games)):
+		print("[INIT_SESSION_INFO] setting game ", game_idx, " stats..")
 		var game_str = "game" + str(game_idx)
 		
 		var db_scores = await db_utils.pull_from_db(auth, stats_path, game_str, score_key)
@@ -162,10 +163,18 @@ static func init_user_properties(auth, loading_label):
 			GSession.GStats[game_idx]["speed"] = await db_utils.pull_from_db(auth, stats_path, game_str, speed_key)
 			GSession.GStats[game_idx]["pos_hit"] = await db_utils.pull_from_db(auth, stats_path, game_str, pos_key)
 			GSession.GStats[game_idx]["neg_miss"] = await db_utils.pull_from_db(auth, stats_path, game_str, neg_key)
-			print("[INIT_SESSION_INFO] sucessfully set game2 stats")
+			print("[INIT_SESSION_INFO] sucessfully set game ", game_idx, " stats")
+			
+			GSession.GStats[game_idx]["score_rating"] = GSession.calc_rating(GSession.GStats[game_idx]["score"])
+			print("[INIT_SESSION_INFO] sucessfully set score rating")
+			
+			GSession.GStats[game_idx]["speed_rating"] = GSession.calc_rating(GSession.GStats[game_idx]["speed"])
+			print("[INIT_SESSION_INFO] sucessfully set speed rating")
 		else:
-			print("[INIT_SESSION_INFO] no ", game_str, " stats found in database, did not set")
+			print("[INIT_SESSION_INFO] no game ", game_idx, " stats found in database, did not set")
+	
+	
 	loading_label.text = "Done!"
-	GSession.print_G2()
+	print(GSession.GStats)
 	
 	print("END: [INIT_SESSION_INFO]")

@@ -15,25 +15,25 @@ const MAX_TRAIL_POINTS = 15
 
 # (level = 1)
 var level_idx = 0
-const NUM_SPAWNS = [20, 30, 40]
+const NUM_SPAWNS = [20, 30, 40, 40, 40]
 
-const GOOD_HIT_REWARDS = [20, 27, 30]
+const GOOD_HIT_REWARDS = [20, 27, 30, 40, 50]
 
 #const GOOD_HIT_REWARD = 20
 #const GOOD_MISS_PENALTY = -5
 
-const GOOD_MISS_PENALTIES = [-5, -5, -5]
+const GOOD_MISS_PENALTIES = [-5, -5, -5, -5, -5]
 #const GOOD_MISS_PENALTY = -5
 
-const BAD_HIT_PENALTIES = [-15, -15, -15, -15]
+const BAD_HIT_PENALTIES = [-15, -15, -15, -15, -15]
 #const BAD_HIT_PENALTY = -15
 
-const BAD_MISS_REWARDS = [0, 0, 0, 5]
+const BAD_MISS_REWARDS = [0, 0, 0, 5, 5]
 #const BAD_MISS_REWARD = 5
 #const MULTIPLIER = [1]
 
-const G_SCALES = [0.5, 2, 5, 10]
-const v0s = [1000, 2000, 3500, 7500]
+const G_SCALES = [0.5, 2, 3, 5, 10]
+const v0s = [1000, 2000, 2750, 3500, 7500]
 
 #const REACTION_REWARD_SCALE = 1.0
 

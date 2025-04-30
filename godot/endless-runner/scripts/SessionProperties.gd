@@ -13,7 +13,11 @@ var email: String = ""
 var member_since: String = ""
 var streak : int = 1
 
-# game data
+# elo weighting
+var recent = 0.7
+var global = 1 - recent
+
+# game data (transient)
 var good_misses: float = 0.0
 var bad_misses: float = 0.0
 var good_hits: float = 0.0
@@ -26,32 +30,41 @@ var session_score: int = 0
 var game: int = 0
 var salient_idx = 0
 
-var GStats = {
-	1 : {
-		 "score":    [],
-		 "speed":    [],
-		 "pos_hit":  [],
-		 "neg_miss": []
-		},
-	2 : {
-		 "score":    [],
-		 "speed":    [],
-		 "pos_hit":  [],
-		 "neg_miss": []
-		},
-	3 : {
-		 "score":    [],
-		 "speed":    [],
-		 "pos_hit":  [],
-		 "neg_miss": []
-		},
-	4 : {
-		 "score":    [],
-		 "speed":    [],
-		 "pos_hit":  [],
-		 "neg_miss": []
-		}
-}
+# user stats (persistent, stored in db)
+var 	GStats = {
+		1 : {
+			 "score":    [],
+			 "speed":    [],
+			 "pos_hit":  [],
+			 "neg_miss": [],
+			 "score_rating": 0.0,
+			 "speed_rating" : 0.0
+			},
+		2 : {
+			 "score":    [],
+			 "speed":    [],
+			 "pos_hit":  [],
+			 "neg_miss": [],
+			 "score_rating": 0.0,
+			 "speed_rating" : 0.0
+			},
+		3 : {
+			 "score":    [],
+			 "speed":    [],
+			 "pos_hit":  [],
+			 "neg_miss": [],
+			 "score_rating": 0.0,
+			 "speed_rating" : 0.0
+			},
+		4 : {
+			 "score":    [],
+			 "speed":    [],
+			 "pos_hit":  [],
+			 "neg_miss": [],
+			 "score_rating": 0.0,
+			 "speed_rating" : 0.0
+			}
+	}
 
 # resets game session relevant information
 func reset():
@@ -66,13 +79,6 @@ func reset():
 	session_score = 0
 	#game = 0
 
-# purely for debugging purposes
-func print_G2():
-	print("Scores:", GStats[2]["score"])
-	print("Speed:", GStats[2]["speed"])
-	print("Pos hit:", GStats[2]["pos_hit"])
-	print("Neg missed:", GStats[2]["neg_miss"])
-	
 func print_stats():
 	print("Good Hits:", good_hits)
 	print("Bad Hits:", bad_hits)
@@ -104,28 +110,63 @@ func wipe_session_data():
 	salient_idx = 0
 
 	GStats = {
-	1 : {
-		 "score":    [],
-		 "speed":    [],
-		 "pos_hit":  [],
-		 "neg_miss": []
-		},
-	2 : {
-		 "score":    [],
-		 "speed":    [],
-		 "pos_hit":  [],
-		 "neg_miss": []
-		},
-	3 : {
-		 "score":    [],
-		 "speed":    [],
-		 "pos_hit":  [],
-		 "neg_miss": []
-		},
-	4 : {
-		 "score":    [],
-		 "speed":    [],
-		 "pos_hit":  [],
-		 "neg_miss": []
-		}
+		1 : {
+			 "score":    [],
+			 "speed":    [],
+			 "pos_hit":  [],
+			 "neg_miss": [],
+			 "score_rating": 0.0,
+			 "speed_rating" : 0.0
+			},
+		2 : {
+			 "score":    [],
+			 "speed":    [],
+			 "pos_hit":  [],
+			 "neg_miss": [],
+			 "score_rating": 0.0,
+			 "speed_rating" : 0.0
+			},
+		3 : {
+			 "score":    [],
+			 "speed":    [],
+			 "pos_hit":  [],
+			 "neg_miss": [],
+			 "score_rating": 0.0,
+			 "speed_rating" : 0.0
+			},
+		4 : {
+			 "score":    [],
+			 "speed":    [],
+			 "pos_hit":  [],
+			 "neg_miss": [],
+			 "score_rating": 0.0,
+			 "speed_rating" : 0.0
+			}
 	}
+
+func calc_rating(data : Array, num_recent = 3, weight_recent = 0.7):
+	if data.size() < 1:
+		print("[RATING CALC] No Scores in data array")
+		return 0.0
+	
+	var score_total = 0.0
+	for score in data:
+		score_total += score
+	var total_avg = score_total / float(data.size())
+	print("[RATING CALC] total average:", total_avg)
+	
+	var score_recent = 0.0
+	num_recent = min(num_recent, data.size())
+	var recent_data = data.slice(-num_recent)
+	
+	for score in recent_data:
+		score_recent += score
+		
+	var recent_avg = score_recent / float(num_recent)
+	print("[RATING CALC] recent average:", recent_avg)
+	
+	var weight_total = 1 - weight_recent
+	var weighted_avg = (total_avg * weight_total) + (recent_avg * weight_recent)
+	print("[RATING CALC] weighted average:", weighted_avg)
+	
+	return weighted_avg
