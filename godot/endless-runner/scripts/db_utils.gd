@@ -161,7 +161,7 @@ static func init_user_properties(auth, loading_label):
 		if db_scores:
 			GSession.GStats[game_idx]["score"] = db_scores
 			
-			var react_times = await db_utils.pull_from_db(auth, stats_path, game_str, pos_key)
+			var react_times = await db_utils.pull_from_db(auth, stats_path, game_str, speed_key)
 			GSession.GStats[game_idx]["speed"] = react_times
 			GSession.GStats[game_idx]["pos_hit"] = await db_utils.pull_from_db(auth, stats_path, game_str, pos_key)
 			GSession.GStats[game_idx]["neg_miss"] = await db_utils.pull_from_db(auth, stats_path, game_str, neg_key)
