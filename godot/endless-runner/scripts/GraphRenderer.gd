@@ -16,12 +16,7 @@ func _ready():
 		push_warning("No data_key provided.")
 		return
 		
-	var real_array : Array = GSession.GStats[game_num][stat_type]
-	var data_array = real_array.duplicate()
-
-	if stat_type == "score":
-		for i in range(data_array.size()):
-			data_array[i] += 100
+	var data_array : Array = GSession.GStats[game_num][stat_type]
 
 	draw_axes()
 	

@@ -13,18 +13,23 @@ var spawn_count = 0
 #const MAX_SPAWNS = 10
 var max_spawns
 
+var good_count
+var bad_count
+
 #var v0 = 1000
 #var g_scale = 0.5
 var v0
 var g_scale
 
 func start():
+	good_count = max_spawns / 2
+	bad_count = max_spawns - good_count
+	
 	spawn_count = 0
 	spawn_loop()
 	
 func spawn_loop():
-	var good_count = max_spawns / 2
-	var bad_count = max_spawns - good_count
+
 	
 	if spawn_count >= max_spawns:
 		emit_signal("spawn_limit_reached")
@@ -63,7 +68,7 @@ func spawn_loop():
 		#vx = 0 # Negative X velocity
 
 	# Launch upward toward the top/mid screen with a slight arc
-	var vy = -randf_range(v0 - (v0 * 0.1), v0 + (v0 * 0.1))
+	var vy = -randf_range(v0 - (v0 * 0.05), v0 + (v0 * 0.05))
 	#var vy = -v0
 	item.linear_velocity = Vector2(vx, vy)
 

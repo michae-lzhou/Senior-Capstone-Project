@@ -23,7 +23,7 @@ func _ready() -> void:
 	var rank_idx = GSession.GStats[game_idx]["rank"]
 	var rank_name = GSession.rank_names[rank_idx]
 	
-	$rank_label.text = "Rank: " + str(rank_name)
+	$rank_label.text = "Rank " + str(rank_idx + 1)  + ": " + str(rank_name)
 	
 	score_fill = float(GSession.GStats[game_idx]["score_rating"]) / GSession.rank_partitions[game_idx][0]
 	

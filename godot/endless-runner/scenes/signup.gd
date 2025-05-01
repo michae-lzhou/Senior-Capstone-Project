@@ -35,18 +35,11 @@ func _on_register_button_pressed():
 
 func _on_signup_succeeded(auth):
 	print("[SIGNUP] SUCCESS")
-	
-	#print("[SIGNUP] SENDING VERIFICATION EMAIL")
-	#var sent = Firebase.Auth.send_account_verification_email()
-	#if sent:
-		#print ("[SIGNUP] SENT VERFICATION EMAIL")
-	#else:
-		#print("[SIGNUP] ERROR SENDING VERFICATION EMAIL")
 		
 	var email = $email_ledit.text.strip_edges()
 	var username = $name_ledit.text.strip_edges()
 	$register_success_label.text = "Account Created!"
-	$email_success_label.text = "Your login email is: " + email
+	#$email_success_label.text = "Your login email is: " + email
 	
 	$email_ledit.text = ""
 	$name_ledit.text = ""
@@ -70,6 +63,8 @@ func _on_signup_succeeded(auth):
 	else:
 		print("[SIGNUP] username not updated. Please update in menus")
 		$username_success_label.text = "Warning: we ran into an issue creating your username. \n Please update it in user settings after logging in."
+	
+	get_tree().change_scene_to_file("res://scenes/Login.tscn")
 	
 func _on_signup_failed(error_code, message):
 	$email_ledit.text = ""

@@ -14,12 +14,12 @@ var member_since: String = ""
 var streak : int = 1
 
 # rating weighting
-var recent = 0.7
-var global = 1 - recent
+var weight_recent = 0.6
+var weight_top = 0.3
 
 # ranks: each rank is (max_rating/num_ranks) rating apart
 var rank_partitions = {
-#	game_idx : [max rating, num of ranks]
+#	game_idx : [max rating, num of ranks before top rank]
 	1 : [500, 5],
 	2 : [500, 5],
 	3 : [500, 5],
@@ -29,6 +29,7 @@ var rank_partitions = {
 var rank_names = ["Novice", "Intermediate", "Proficient", "Advanced", "Expert", "👑 Master 👑"]
 
 # the slowest reaction time one can have for each game (time item stays on screen at lowest difficulty)
+# only used for statistics bar graph visual, no score importance
 var max_react_times = {
 	1 : 5.0,
 	2 : 5.0,
@@ -217,12 +218,12 @@ func get_rank(score_rating, game_idx):
 
 # updates user's game rating and rank. uses GStats
 func update_rating(game_idx):
-	var score_rating = calc_rating(GStats[game_idx]["score"])
-	var avg_react_time = calc_rating(GStats[game_idx]["speed"], 3, 0.5, 0.0)
 	
+	var score_rating = calc_rating(GStats[game_idx]["score"])
 	GSession.GStats[game_idx]["score_rating"] = score_rating
 	print("[UPDATE RATING] sucessfully updated score rating")
 	
+	var avg_react_time = calc_rating(GStats[game_idx]["speed"], 3, 0.5, 0.0)
 	GSession.GStats[game_idx]["avg_react_time"] = avg_react_time
 	print("[UPDATE RATING] sucessfully updated average speed")
 	

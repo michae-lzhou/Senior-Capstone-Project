@@ -1,5 +1,6 @@
 extends Node2D
 
+var game_idx = 2
 var score = 0
 #var lives = 3
 
@@ -11,33 +12,28 @@ var score = 0
 var trail_points = []
 const MAX_TRAIL_POINTS = 15
 
-#const level_settings : Dictionary = {1 : [20, -5, -]}
+# used to scale difficulty
+var rank_idx : int
 
-# (level = 1)
-var level_idx = 0
+# expected time item is in the air, used to award points proportional on reaction speed
+var expected_time : float
+
+# configs for each rank: array idx corresponds to rank
 const NUM_SPAWNS = [20, 30, 40, 40, 40]
 
+# good hit reward = (4 * next rank score) / num_spwans
+# this ensures a player may rank up given they hit every positive item at its peak on average, and miss every salient
 const GOOD_HIT_REWARDS = [20, 27, 30, 40, 50]
 
-#const GOOD_HIT_REWARD = 20
-#const GOOD_MISS_PENALTY = -5
-
+# good miss, bad hit/miss tweaked per level based on intended difficulty
 const GOOD_MISS_PENALTIES = [-5, -5, -5, -5, -5]
-#const GOOD_MISS_PENALTY = -5
+const BAD_HIT_PENALTIES = [-15, -15, -20, -30, -30]
+const BAD_MISS_REWARDS = [1, 2, 3, 3, 3]
 
-const BAD_HIT_PENALTIES = [-15, -15, -15, -15, -15]
-#const BAD_HIT_PENALTY = -15
+# configures level difficulty - higher gravity affords less air time
+const G_SCALES = [0.5, 3, 5, 10, 15]
+const v0s = [1250, 2750, 3500, 5000, 6500]
 
-const BAD_MISS_REWARDS = [0, 0, 0, 5, 5]
-#const BAD_MISS_REWARD = 5
-#const MULTIPLIER = [1]
-
-const G_SCALES = [0.5, 2, 3, 5, 10]
-const v0s = [1000, 2000, 2750, 3500, 5000]
-
-#const REACTION_REWARD_SCALE = 1.0
-
-var expected_time = find_expected_time(v0s[level_idx], G_SCALES[level_idx])
 
 var sliceable_count = 0  # Track the number of sliceable objects
 
@@ -68,11 +64,19 @@ func _input(event):
 		slice_trail.points = []
 
 func _ready():
-	print("expected time:", expected_time)
+	# if they are at the highest rank (eg 500+ rating), there is no level so floor to previous rank
+	rank_idx = min(GSession.GStats[game_idx]["rank"], GSession.rank_partitions[game_idx][1] - 1)
+	
+	# slight buffer for expected time	
+	expected_time = find_expected_time(v0s[rank_idx], G_SCALES[rank_idx]) + 0.5
+	print("expected time: ", expected_time)
+	
+	print("Start: [SLICE WARRIOR]")
+	print("[SLICE WARRIOR] playing at difficulty: ", rank_idx)
 	update_score()
-	spawner.max_spawns = NUM_SPAWNS[level_idx]
-	spawner.g_scale = G_SCALES[level_idx]
-	spawner.v0 = v0s[level_idx]
+	spawner.max_spawns = NUM_SPAWNS[rank_idx]
+	spawner.g_scale = G_SCALES[rank_idx]
+	spawner.v0 = v0s[rank_idx]
 	spawner.start()
 	spawner.connect("spawn_limit_reached", Callable(self, "on_spawn_limit_reached"))
 	# Count initial sliceable objects
@@ -86,14 +90,14 @@ func on_good_sliced(pos: Vector2):
 	var reaction_time = GSession.good_reaction_time[-1]
 	#var score_change = int(GOOD_HIT_REWARDS[level_idx] / (reaction_time + (1/REACTION_REWARD_SCALE)))
 #	scaled based on reaction time
-	var score_change = int((abs((expected_time - reaction_time) / (expected_time)) * GOOD_HIT_REWARDS[level_idx]) + 0.5)
+	var score_change = int((abs((expected_time - reaction_time) / (expected_time)) * GOOD_HIT_REWARDS[rank_idx]) + 0.5)
 	score += score_change
 	update_score()
 	show_floating_text("+" + str(score_change), pos, Color.GREEN)
 	
 func on_good_missed():
 	GSession.good_misses += 1
-	var score_change = GOOD_MISS_PENALTIES[level_idx]
+	var score_change = GOOD_MISS_PENALTIES[rank_idx]
 	score += score_change
 	if score < 0:
 		score = 0
@@ -104,7 +108,7 @@ func on_bad_sliced(pos: Vector2):
 	GSession.bad_hits += 1
 	var reaction_time = GSession.bad_reaction_time[-1]
 	#var score_change = int(BAD_HIT_PENALTIES[level_idx] / (reaction_time + (1/REACTION_REWARD_SCALE)))
-	var score_change = BAD_HIT_PENALTIES[level_idx]
+	var score_change = BAD_HIT_PENALTIES[rank_idx]
 	score += score_change
 	if score < 0:
 		score = 0
@@ -114,7 +118,7 @@ func on_bad_sliced(pos: Vector2):
 
 func on_bad_missed():
 	GSession.bad_misses += 1
-	var score_change = BAD_MISS_REWARDS[level_idx]
+	var score_change = BAD_MISS_REWARDS[rank_idx]
 	score += score_change
 	update_score()
 	show_floating_text("+" + str(score_change), Vector2(675, 100), Color.GREEN)
@@ -162,10 +166,10 @@ func end_game():
 	
 	GSession.good_hit_percent = pos_hit_percent
 	GSession.bad_miss_percent = neg_miss_percent
-	GSession.GStats[2]["score"].append(score)
-	GSession.GStats[2]["speed"].append(speed_avg)
-	GSession.GStats[2]["pos_hit"].append(pos_hit_percent)
-	GSession.GStats[2]["neg_miss"].append(neg_miss_percent)
+	GSession.GStats[game_idx]["score"].append(score)
+	GSession.GStats[game_idx]["speed"].append(speed_avg)
+	GSession.GStats[game_idx]["pos_hit"].append(pos_hit_percent)
+	GSession.GStats[game_idx]["neg_miss"].append(neg_miss_percent)
 	GSession.print_stats()
 	get_tree().change_scene_to_file("res://scenes/EndGame.tscn")
 
