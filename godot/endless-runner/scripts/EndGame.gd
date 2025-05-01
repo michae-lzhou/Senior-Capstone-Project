@@ -36,8 +36,12 @@ func _ready():
 	else:
 		print("[GAME END] FAILED to upload results to cloud")
 	
-	print("END: [GAME END]")
 	$save_status_label.text = "Saved to cloud!"
+	
+#	Updating rating
+	print("[GAME END] updating rating..")
+	GSession.update_rating(game_idx)
+	print("END: [GAME END]")
 	
 func _on_back_pressed():
 	GSession.reset()

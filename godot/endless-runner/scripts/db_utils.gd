@@ -160,20 +160,32 @@ static func init_user_properties(auth, loading_label):
 	
 		if db_scores:
 			GSession.GStats[game_idx]["score"] = db_scores
-			GSession.GStats[game_idx]["speed"] = await db_utils.pull_from_db(auth, stats_path, game_str, speed_key)
+			
+			var react_times = await db_utils.pull_from_db(auth, stats_path, game_str, pos_key)
+			GSession.GStats[game_idx]["speed"] = react_times
 			GSession.GStats[game_idx]["pos_hit"] = await db_utils.pull_from_db(auth, stats_path, game_str, pos_key)
 			GSession.GStats[game_idx]["neg_miss"] = await db_utils.pull_from_db(auth, stats_path, game_str, neg_key)
 			print("[INIT_SESSION_INFO] sucessfully set game ", game_idx, " stats")
 			
-			GSession.GStats[game_idx]["score_rating"] = GSession.calc_rating(GSession.GStats[game_idx]["score"])
-			print("[INIT_SESSION_INFO] sucessfully set score rating")
+			GSession.update_rating(game_idx)
+			print("[INIT_SESSION_INFO] sucessfully set game ", game_idx, " rating and rank")
 			
-			GSession.GStats[game_idx]["speed_rating"] = GSession.calc_rating(GSession.GStats[game_idx]["speed"])
-			print("[INIT_SESSION_INFO] sucessfully set speed rating")
+			#
+			#var score_rating = GSession.calc_rating(db_scores, 3, 0.5, 0.3)
+			#var avg_react_time = GSession.calc_rating(react_times, 3, 0.5, 0.0)
+			#
+			#GSession.GStats[game_idx]["score_rating"] = score_rating
+			#print("[INIT_SESSION_INFO] sucessfully set score rating")
+			#
+			#GSession.GStats[game_idx]["avg_react_time"] = avg_react_time
+			#print("[INIT_SESSION_INFO] sucessfully set speed rating")
+			#
+			#GSession.GStats[game_idx]["rank"] = GSession.get_rank(score_rating, game_idx)
+			#print("[INIT_SESSION_INFO] sucessfully set rank")
 		else:
 			print("[INIT_SESSION_INFO] no game ", game_idx, " stats found in database, did not set")
-	
-	
+		
+		
 	loading_label.text = "Done!"
 	print(GSession.GStats)
 	

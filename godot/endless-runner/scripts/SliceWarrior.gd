@@ -33,7 +33,7 @@ const BAD_MISS_REWARDS = [0, 0, 0, 5, 5]
 #const MULTIPLIER = [1]
 
 const G_SCALES = [0.5, 2, 3, 5, 10]
-const v0s = [1000, 2000, 2750, 3500, 7500]
+const v0s = [1000, 2000, 2750, 3500, 5000]
 
 #const REACTION_REWARD_SCALE = 1.0
 
