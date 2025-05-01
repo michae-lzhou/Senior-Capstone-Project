@@ -87,7 +87,7 @@ offset_bottom = 1754.0
 horizontal_scroll_mode = 0
 
 [node name="Control" type="Control" parent="ScrollContainer"]
-custom_minimum_size = Vector2(1090, 5000)
+custom_minimum_size = Vector2(1090, 3600)
 layout_mode = 2
 
 [node name="Game 1" type="Label" parent="ScrollContainer/Control"]
@@ -972,6 +972,7 @@ anchors_preset = 0
 offset_bottom = 35.0
 
 [node name="Game 4" type="Label" parent="ScrollContainer/Control"]
+visible = false
 layout_mode = 0
 offset_left = 24.0
 offset_top = 3654.0
