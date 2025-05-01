@@ -62,16 +62,16 @@ func _load_graph_for_game(game_idx: int) -> void:
 	match game_idx:
 		1:
 			graph_path = "res://scenes/G1Score.tscn"
-			play_again_game = "res://scenes/EndlessRunner.tscn"
+			play_again_game = "res://scenes/SnapJudgement.tscn"
 		2:
 			graph_path = "res://scenes/G2Score.tscn"
 			play_again_game = "res://scenes/SliceWarrior.tscn"
 		3:
 			graph_path = "res://scenes/G3Score.tscn"
-			#play_again_game = "res://scenes/game3.tscn"
-		4:
-			graph_path = "res://scenes/G4Score.tscn"
 			play_again_game = "res://scenes/ImpulseAisle.tscn"
+		#4:
+			#graph_path = "res://scenes/G4Score.tscn"
+			#play_again_game = "res://scenes/ImpulseAisle.tscn"
 
 	toggle_high_score_visibility(score_array)
 

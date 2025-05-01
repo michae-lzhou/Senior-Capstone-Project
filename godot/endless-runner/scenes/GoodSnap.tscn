@@ -1,11 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgd30ehoen2uy"]
+[gd_scene load_steps=2 format=3 uid="uid://5k8podery8re"]
 
 [ext_resource type="Script" path="res://scripts/GoodSnap.gd" id="1_ior8n"]
-[ext_resource type="Texture2D" uid="uid://cq78c71dw86yx" path="res://assets/cigarette_alt_icons/lollipop.png" id="2_l341a"]
 
 [node name="GoodSnap" type="Node2D"]
 script = ExtResource("1_ior8n")
-good_texture = ExtResource("2_l341a")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-2, -10)
