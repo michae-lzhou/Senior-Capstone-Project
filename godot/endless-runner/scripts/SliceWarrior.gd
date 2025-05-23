@@ -2,7 +2,6 @@ extends Node2D
 
 var game_idx = 2
 var score = 0
-#var lives = 3
 
 @onready var score_label = $HUD/ScoreLabel
 @onready var spawner = $Spawner
@@ -12,7 +11,7 @@ var score = 0
 var trail_points = []
 const MAX_TRAIL_POINTS = 15
 
-# used to scale difficulty
+# used to scale difficulty, populated from db
 var rank_idx : int
 
 # expected time item is in the air, used to award points proportional on reaction speed

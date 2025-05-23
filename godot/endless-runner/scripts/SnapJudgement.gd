@@ -1,5 +1,7 @@
 extends Node2D
 
+var game_idx = 1
+
 @export var good_item_scene: PackedScene
 @export var bad_item_scene: PackedScene
 
@@ -12,7 +14,8 @@ extends Node2D
 @onready var floating_text_scene := preload("res://scenes/FloatingText.tscn")
 
 # Game configuration
-var game_idx = 1
+# keep level_idx at 0, as reducing item lifespan causes possible bugs atm
+# we achieve accurate reaction speed readings regardless
 var level_idx = 0
 const NUM_SPAWNS = [20, 30, 40, 40, 40]
 const GOOD_HIT_REWARDS = [20, 27, 30, 40, 50]
