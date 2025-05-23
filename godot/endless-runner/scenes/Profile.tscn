@@ -64,6 +64,89 @@ offset_right = 1090.0
 offset_bottom = 1928.0
 color = Color(0.787759, 0.787759, 0.787759, 1)
 
+[node name="Accessibility" type="VBoxContainer" parent="TabBackground"]
+visible = false
+layout_mode = 2
+offset_left = 79.0
+offset_top = 226.0
+offset_right = 824.0
+offset_bottom = 495.0
+script = ExtResource("11_vpjd4")
+sprite_on = ExtResource("12_exrod")
+sprite_off = ExtResource("13_1aga0")
+
+[node name="Spacer" type="Control" parent="TabBackground/Accessibility"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+
+[node name="Colorblind Field" type="HBoxContainer" parent="TabBackground/Accessibility"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="TabBackground/Accessibility/Colorblind Field"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="Colorblind" type="Label" parent="TabBackground/Accessibility/Colorblind Field"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_cehmr")
+theme_override_font_sizes/font_size = 40
+text = "Colorblind       "
+
+[node name="Spacer2" type="Control" parent="TabBackground/Accessibility/Colorblind Field"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="ColorblindButton" type="TextureButton" parent="TabBackground/Accessibility/Colorblind Field"]
+layout_mode = 2
+
+[node name="Spacer2" type="Control" parent="TabBackground/Accessibility"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+
+[node name="Music Field" type="HBoxContainer" parent="TabBackground/Accessibility"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="TabBackground/Accessibility/Music Field"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="Music" type="Label" parent="TabBackground/Accessibility/Music Field"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_cehmr")
+theme_override_font_sizes/font_size = 40
+text = "Music                     "
+
+[node name="Spacer2" type="Control" parent="TabBackground/Accessibility/Music Field"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="MusicButton" type="TextureButton" parent="TabBackground/Accessibility/Music Field"]
+layout_mode = 2
+
+[node name="Spacer3" type="Control" parent="TabBackground/Accessibility"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+
+[node name="Sound Effect Field" type="HBoxContainer" parent="TabBackground/Accessibility"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="TabBackground/Accessibility/Sound Effect Field"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="SoundEffect" type="Label" parent="TabBackground/Accessibility/Sound Effect Field"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_cehmr")
+theme_override_font_sizes/font_size = 40
+text = "Sound Effect "
+
+[node name="Spacer2" type="Control" parent="TabBackground/Accessibility/Sound Effect Field"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="SoundEffectButton" type="TextureButton" parent="TabBackground/Accessibility/Sound Effect Field"]
+layout_mode = 2
+
 [node name="TabContainer" type="TabContainer" parent="."]
 layout_mode = 0
 offset_left = 79.0
@@ -240,83 +323,3 @@ expand_mode = 2
 [node name="ControlRightButton" type="Button" parent="TabContainer/Configuration/ControlBox/HBoxContainer"]
 layout_mode = 2
 theme_override_icons/icon = ExtResource("10_keusy")
-
-[node name="Accessibility" type="VBoxContainer" parent="TabContainer"]
-visible = false
-layout_mode = 2
-script = ExtResource("11_vpjd4")
-sprite_on = ExtResource("12_exrod")
-sprite_off = ExtResource("13_1aga0")
-metadata/_tab_index = 2
-
-[node name="Spacer" type="Control" parent="TabContainer/Accessibility"]
-custom_minimum_size = Vector2(0, 35)
-layout_mode = 2
-
-[node name="Colorblind Field" type="HBoxContainer" parent="TabContainer/Accessibility"]
-layout_mode = 2
-
-[node name="Spacer" type="Control" parent="TabContainer/Accessibility/Colorblind Field"]
-custom_minimum_size = Vector2(50, 0)
-layout_mode = 2
-
-[node name="Colorblind" type="Label" parent="TabContainer/Accessibility/Colorblind Field"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("5_cehmr")
-theme_override_font_sizes/font_size = 40
-text = "Colorblind       "
-
-[node name="Spacer2" type="Control" parent="TabContainer/Accessibility/Colorblind Field"]
-custom_minimum_size = Vector2(400, 0)
-layout_mode = 2
-
-[node name="ColorblindButton" type="TextureButton" parent="TabContainer/Accessibility/Colorblind Field"]
-layout_mode = 2
-
-[node name="Spacer2" type="Control" parent="TabContainer/Accessibility"]
-custom_minimum_size = Vector2(0, 35)
-layout_mode = 2
-
-[node name="Music Field" type="HBoxContainer" parent="TabContainer/Accessibility"]
-layout_mode = 2
-
-[node name="Spacer" type="Control" parent="TabContainer/Accessibility/Music Field"]
-custom_minimum_size = Vector2(50, 0)
-layout_mode = 2
-
-[node name="Music" type="Label" parent="TabContainer/Accessibility/Music Field"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("5_cehmr")
-theme_override_font_sizes/font_size = 40
-text = "Music                     "
-
-[node name="Spacer2" type="Control" parent="TabContainer/Accessibility/Music Field"]
-custom_minimum_size = Vector2(400, 0)
-layout_mode = 2
-
-[node name="MusicButton" type="TextureButton" parent="TabContainer/Accessibility/Music Field"]
-layout_mode = 2
-
-[node name="Spacer3" type="Control" parent="TabContainer/Accessibility"]
-custom_minimum_size = Vector2(0, 35)
-layout_mode = 2
-
-[node name="Sound Effect Field" type="HBoxContainer" parent="TabContainer/Accessibility"]
-layout_mode = 2
-
-[node name="Spacer" type="Control" parent="TabContainer/Accessibility/Sound Effect Field"]
-custom_minimum_size = Vector2(50, 0)
-layout_mode = 2
-
-[node name="SoundEffect" type="Label" parent="TabContainer/Accessibility/Sound Effect Field"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("5_cehmr")
-theme_override_font_sizes/font_size = 40
-text = "Sound Effect "
-
-[node name="Spacer2" type="Control" parent="TabContainer/Accessibility/Sound Effect Field"]
-custom_minimum_size = Vector2(400, 0)
-layout_mode = 2
-
-[node name="SoundEffectButton" type="TextureButton" parent="TabContainer/Accessibility/Sound Effect Field"]
-layout_mode = 2
