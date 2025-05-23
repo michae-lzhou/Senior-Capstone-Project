@@ -21,10 +21,14 @@ var spawn_count: int = 0
 const score_change_label = Vector2(650, 100)
 
 var game_idx = 1
+
 var level_idx = 0
-const NUM_SPAWNS = [20, 30, 40, 40, 40]
+
 var good_count
 var bad_count
+
+const NUM_SPAWNS = [20, 30, 40, 40, 40]
+
 const GOOD_HIT_REWARDS = [20, 27, 30, 40, 50]
 const GOOD_MISS_PENALTIES = [-15, -15, -15, -15, -15]
 
@@ -32,7 +36,7 @@ const BAD_HIT_PENALTIES = [-15, -15, -15, -15, -15]
 const BAD_MISS_REWARDS = [20, 27, 30, 40, 50]
 
 const LIFESPAN = [5, 4, 3, 2, 1]
-var expected_time: float = LIFESPAN[level_idx] / 2
+var expected_time: float = LIFESPAN[level_idx]
 
 func _ready():
 	good_count = NUM_SPAWNS[level_idx] / 2

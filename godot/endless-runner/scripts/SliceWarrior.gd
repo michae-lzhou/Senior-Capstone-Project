@@ -31,9 +31,8 @@ const BAD_HIT_PENALTIES = [-15, -15, -20, -30, -30]
 const BAD_MISS_REWARDS = [1, 2, 3, 3, 3]
 
 # configures level difficulty - higher gravity affords less air time
-const G_SCALES = [0.5, 3, 5, 10, 15]
-const v0s = [1250, 2750, 3500, 5000, 6500]
-
+const G_SCALES = [2, 5, 7.5, 10, 15]
+const v0s = [2250, 3500, 4250, 5000, 6500]
 
 var sliceable_count = 0  # Track the number of sliceable objects
 
@@ -67,10 +66,8 @@ func _ready():
 	# if they are at the highest rank (eg 500+ rating), there is no level so floor to previous rank
 	rank_idx = min(GSession.GStats[game_idx]["rank"], GSession.rank_partitions[game_idx][1] - 1)
 	
-	# slight buffer for expected time	
-	expected_time = find_expected_time(v0s[rank_idx], G_SCALES[rank_idx]) + 0.5
+	expected_time = find_expected_time(v0s[rank_idx], G_SCALES[rank_idx])
 	print("expected time: ", expected_time)
-	
 	print("Start: [SLICE WARRIOR]")
 	print("[SLICE WARRIOR] playing at difficulty: ", rank_idx)
 	update_score()

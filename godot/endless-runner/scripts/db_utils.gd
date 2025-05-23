@@ -97,7 +97,7 @@ static func init_user_properties(auth, loading_label):
 	var payload = {"last_login" : curr_login}
 	var day_s = 86400
 	
-#	time threshold for streak expiration (in days)
+#	time threshold for streak expiration (in days). default 48 hours
 	var streak_thresh = 2
 	if prev_login and streak:
 		print("[INIT_SESSION_INFO] calculating current streak")

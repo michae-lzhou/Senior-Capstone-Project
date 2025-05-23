@@ -4,10 +4,6 @@ extends Control
 var play_again_game
 
 func _ready():
-	$BackButton.pressed.connect(_on_back_pressed)
-	$StatsButton.pressed.connect(_on_statistics_pressed)
-	$PlayAgainButton.pressed.connect(_on_playagain_pressed)
-
 	# Set the score label text
 	$Score.text = "%d" % GSession.session_score
 	
@@ -42,6 +38,10 @@ func _ready():
 	print("[GAME END] updating rating..")
 	GSession.update_rating(game_idx)
 	print("END: [GAME END]")
+	
+	$BackButton.pressed.connect(_on_back_pressed)
+	$StatsButton.pressed.connect(_on_statistics_pressed)
+	$PlayAgainButton.pressed.connect(_on_playagain_pressed)
 	
 func _on_back_pressed():
 	GSession.reset()
