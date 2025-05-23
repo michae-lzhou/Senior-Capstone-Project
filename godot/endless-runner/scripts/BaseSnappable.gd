@@ -18,7 +18,7 @@ func get_reaction_time() -> float:
 	return (Time.get_ticks_msec() / 1000.0) - spawn_time
 
 func animate_exit(direction: String) -> Tween:
-	var end_y: float = -200.0 if (direction == "push") else get_viewport_rect().size.y + 200.0
+	var end_y: float = -500.0 if (direction == "push") else get_viewport_rect().size.y + 500.0
 	var tween := create_tween()
 	tween.tween_property(self, "position", Vector2(position.x, end_y), 0.4)
 	tween.set_trans(Tween.TRANS_BACK)

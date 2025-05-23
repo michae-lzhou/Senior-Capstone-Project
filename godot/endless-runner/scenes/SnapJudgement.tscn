@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://qgo0r6baw8hk" path="res://assets/shuffleboard.png" id="1_1il1u"]
 [ext_resource type="Script" path="res://scripts/SnapJudgement.gd" id="1_5b7f8"]
 [ext_resource type="PackedScene" uid="uid://5k8podery8re" path="res://scenes/GoodSnap.tscn" id="2_o8tkd"]
-[ext_resource type="PackedScene" uid="uid://d5bk1j8vxyn" path="res://scenes/BadSnap.tscn" id="3_ql5s6"]
+[ext_resource type="PackedScene" path="res://scenes/BadSnap.tscn" id="3_ql5s6"]
 [ext_resource type="Texture2D" uid="uid://e83f20qukcuv" path="res://assets/Arrow.png" id="6_5tob5"]
 [ext_resource type="FontFile" uid="uid://dcbo4v5a6sqid" path="res://assets/TitanOne-Regular.ttf" id="8_fhdgj"]
 
