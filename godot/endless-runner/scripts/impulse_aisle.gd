@@ -1,31 +1,35 @@
 extends Node2D
 
-@export var scroll_speed := 500.0
+#@export var scroll_speed := 540.0
 @onready var bg1: Sprite2D = $BG1
 @onready var bg2: Sprite2D = $BG2
-@onready var game_timer = $GameTimer
+@onready var game_timer = $GameTimer 
+@onready var time_remaining = $GameTimer.wait_time 
 @onready var timer_label = $HUD/TimerLabel
 @onready var score_label = $HUD/ScoreLabel  # Add this to your scene
 @onready var floating_text_scene := preload("res://scenes/FloatingText.tscn")
 
 var game_idx = 3
 var score = 0
-var time_remaining: float = 60.0
 var texture_width: float
 
 # used to scale difficulty
 var rank_idx : int
+var expected_time : float
 
+var scroll_speed = 540
 # configs for each rank: array idx corresponds to rank
-const GOOD_HIT_REWARDS = [10, 15, 20, 25, 30]
+const GOOD_HIT_REWARDS = [14, 27, 40, 54, 67]
 const GOOD_MISS_PENALTIES = [-5, -7, -10, -12, -15]
-const BAD_HIT_PENALTIES = [-10, -15, -20, -25, -30]
-const BAD_MISS_REWARDS = [0, 0, 0, 0, 0]  # No reward for missing bad items in this game
+const BAD_HIT_PENALTIES = [-15, -15, -20, -30, -30]
+const BAD_MISS_REWARDS = [0, 0, 0, 5, 5] 
+const SCROLL_SPEEDS = [550, 650, 750, 850, 950]
 
 func _ready():
 	# Initialize rank based on player's current rating
 	rank_idx = min(GSession.GStats[game_idx]["rank"], GSession.rank_partitions[game_idx][1] - 1)
-	
+	expected_time = find_expected_time(SCROLL_SPEEDS[rank_idx])
+
 	print("Start: [IMPULSE AISLE]")
 	print("[IMPULSE AISLE] playing at difficulty: ", rank_idx)
 	
@@ -42,7 +46,7 @@ func _ready():
 
 func _process(delta):
 	# Scrolling background logic
-	var move_amount = scroll_speed * delta
+	var move_amount = SCROLL_SPEEDS[rank_idx] * delta
 	bg1.position.x -= move_amount
 	bg2.position.x -= move_amount
 	
@@ -83,10 +87,11 @@ func on_good_clicked(pos: Vector2):
 	GSession.good_hits += 1
 	
 	# Calculate reaction time (you'll need to implement timing logic)
-	var reaction_time = calculate_reaction_time()  # Implement this based on when item appeared
+	var reaction_time = GSession.good_reaction_time[-1]  # Implement this based on when item appeared
 	GSession.good_reaction_time.append(reaction_time)
 	
-	var score_change = GOOD_HIT_REWARDS[rank_idx]
+	var score_change = int((abs((expected_time - reaction_time) / (expected_time)) * GOOD_HIT_REWARDS[rank_idx]) + 0.5)
+
 	score += score_change
 	update_score()
 	show_floating_text("+" + str(score_change), pos, Color.GREEN)
@@ -96,7 +101,7 @@ func on_bad_clicked(pos: Vector2):
 	GSession.bad_hits += 1
 	
 	# Calculate reaction time
-	var reaction_time = calculate_reaction_time()  # Implement this based on when item appeared
+	var reaction_time = GSession.bad_reaction_time[-1]  # Implement this based on when item appeared
 	GSession.bad_reaction_time.append(reaction_time)
 	
 	var score_change = BAD_HIT_PENALTIES[rank_idx]
@@ -130,12 +135,6 @@ func show_floating_text(text: String, pos: Vector2, color: Color):
 	label.position = pos
 	label.modulate = color
 	add_child(label)
-
-func calculate_reaction_time() -> float:
-	# Implement this based on your game's timing mechanics
-	# This should return the time between when an item appeared and when it was clicked
-	# For now, returning a placeholder value
-	return randf_range(0.2, 1.0)  # Replace with actual timing logic
 
 func _on_game_timer_timeout():
 	print("TIME'S UP!")
@@ -180,3 +179,6 @@ func end_game():
 	
 	# Transition to end game scene
 	get_tree().change_scene_to_file("res://scenes/EndGame.tscn")
+
+static func find_expected_time(scroll_speed):
+	return 1080.0 / scroll_speed

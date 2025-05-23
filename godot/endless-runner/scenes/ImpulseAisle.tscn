@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scripts/impulse_aisle.gd" id="1_oqpo3"]
 [ext_resource type="Texture2D" uid="uid://ox6jv4k2fmir" path="res://assets/impulseaisle.png" id="2_1sql8"]
 [ext_resource type="Script" path="res://scripts/AisleSpawner.gd" id="3_wie54"]
-[ext_resource type="PackedScene" path="res://scenes/GoodClick.tscn" id="4_l63sh"]
-[ext_resource type="PackedScene" path="res://scenes/BadClick.tscn" id="5_j6aic"]
+[ext_resource type="PackedScene" uid="uid://d3qpf3ufp415q" path="res://scenes/GoodClick.tscn" id="4_l63sh"]
+[ext_resource type="PackedScene" uid="uid://dfn4miljh7xeb" path="res://scenes/BadClick.tscn" id="5_j6aic"]
 [ext_resource type="FontFile" uid="uid://dcbo4v5a6sqid" path="res://assets/TitanOne-Regular.ttf" id="7_ggtjw"]
 
 [node name="ImpulseAisle" type="Node2D"]
@@ -37,7 +37,7 @@ mouse_filter = 2
 color = Color(0.639216, 0.6, 0.505882, 1)
 
 [node name="GameTimer" type="Timer" parent="."]
-wait_time = 60.0
+wait_time = 30.0
 one_shot = true
 autostart = true
 

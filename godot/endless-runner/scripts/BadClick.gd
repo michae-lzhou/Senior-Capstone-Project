@@ -2,7 +2,7 @@ extends "res://scripts/BaseClickable.gd"
 
 var bad_images: Array = []
 @onready var sprite: Sprite2D = $Sprite2D
-const TARGET_WIDTH = 400.0
+const TARGET_WIDTH = 500.0
 
 func _ready():
 	super._ready()
