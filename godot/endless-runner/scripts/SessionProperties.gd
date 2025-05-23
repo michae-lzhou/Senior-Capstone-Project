@@ -13,7 +13,7 @@ var email: String = ""
 var member_since: String = ""
 var streak : int = 1
 
-# rating weighting
+# rating weighting (remainder weights global scores)
 var weight_recent = 0.6
 var weight_top = 0.3
 

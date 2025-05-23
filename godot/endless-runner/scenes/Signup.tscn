@@ -120,6 +120,6 @@ offset_right = 904.0
 offset_bottom = 1410.0
 theme_override_font_sizes/font_size = 30
 
-[connection signal="pressed" from="RegisterButton" to="." method="_on_submit_button_pressed"]
 [connection signal="pressed" from="RegisterButton" to="." method="_on_register_button_pressed"]
+[connection signal="pressed" from="RegisterButton" to="." method="_on_submit_button_pressed"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
