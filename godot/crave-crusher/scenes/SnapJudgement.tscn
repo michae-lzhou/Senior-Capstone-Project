@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=3 uid="uid://bfph654k3nusb"]
+
+[ext_resource type="Texture2D" uid="uid://qgo0r6baw8hk" path="res://assets/shuffleboard.png" id="1_1il1u"]
+[ext_resource type="Script" path="res://scripts/SnapJudgement.gd" id="1_5b7f8"]
+[ext_resource type="PackedScene" uid="uid://5k8podery8re" path="res://scenes/GoodSnap.tscn" id="2_o8tkd"]
+[ext_resource type="PackedScene" uid="uid://d5bk1j8vxyn" path="res://scenes/BadSnap.tscn" id="3_ql5s6"]
+[ext_resource type="Texture2D" uid="uid://e83f20qukcuv" path="res://assets/Arrow.png" id="6_5tob5"]
+[ext_resource type="FontFile" uid="uid://dcbo4v5a6sqid" path="res://assets/TitanOne-Regular.ttf" id="8_fhdgj"]
+
+[node name="SnapJudgement" type="Node2D"]
+script = ExtResource("1_5b7f8")
+good_item_scene = ExtResource("2_o8tkd")
+bad_item_scene = ExtResource("3_ql5s6")
+
+[node name="Shuffleboard" type="Sprite2D" parent="."]
+position = Vector2(535, 971)
+scale = Vector2(1.19336, 1.28255)
+texture = ExtResource("1_1il1u")
+
+[node name="Temptation" type="Sprite2D" parent="."]
+position = Vector2(514, 922)
+
+[node name="ResultLabel" type="Label" parent="."]
+offset_left = 406.0
+offset_top = 666.0
+offset_right = 645.0
+offset_bottom = 805.0
+theme_override_fonts/font = ExtResource("8_fhdgj")
+theme_override_font_sizes/font_size = 80
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HUD" type="Node2D" parent="."]
+
+[node name="SwipeDownLabel" type="Label" parent="HUD"]
+z_index = 1
+offset_left = 348.0
+offset_top = 1225.0
+offset_right = 712.0
+offset_bottom = 1353.0
+theme_override_fonts/font = ExtResource("8_fhdgj")
+theme_override_font_sizes/font_size = 50
+text = "PULL IN
+GOOD ITEMS"
+horizontal_alignment = 1
+
+[node name="SwipeUpLabel" type="Label" parent="HUD"]
+z_index = 1
+offset_left = 351.0
+offset_top = 601.0
+offset_right = 715.0
+offset_bottom = 729.0
+theme_override_fonts/font = ExtResource("8_fhdgj")
+theme_override_font_sizes/font_size = 50
+text = "SWIPE AWAY 
+BAD ITEMS"
+horizontal_alignment = 1
+
+[node name="ArrowUp" type="Sprite2D" parent="HUD"]
+position = Vector2(533, 531)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("6_5tob5")
+
+[node name="ArrowDown" type="Sprite2D" parent="HUD"]
+position = Vector2(530, 1379)
+rotation = -3.14159
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("6_5tob5")
+
+[node name="ScoreLabel" type="Label" parent="HUD"]
+offset_right = 1081.0
+offset_bottom = 180.0
+theme_override_fonts/font = ExtResource("8_fhdgj")
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 1
+vertical_alignment = 1

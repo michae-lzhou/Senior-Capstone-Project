@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://d5bk1j8vxyn"]
+
+[ext_resource type="Script" path="res://scripts/BadSnap.gd" id="1_egyqh"]
+[ext_resource type="Texture2D" uid="uid://b7yx2xdd3767s" path="res://assets/cigarette_icons/malboro.png" id="2_bxinm"]
+
+[node name="BadSnap" type="Node2D"]
+scale = Vector2(0.75, 0.75)
+script = ExtResource("1_egyqh")
+bad_texture = ExtResource("2_bxinm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2, -11)
+scale = Vector2(0.75, 0.778)

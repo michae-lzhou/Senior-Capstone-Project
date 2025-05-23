@@ -1,0 +1,157 @@
+[gd_scene load_steps=9 format=3 uid="uid://daqr7b8yk3pul"]
+
+[ext_resource type="Script" path="res://scripts/EndGame.gd" id="1_40fhf"]
+[ext_resource type="Texture2D" uid="uid://bk562ybu681k7" path="res://assets/galaxy.jpg" id="2_ksfgo"]
+[ext_resource type="FontFile" uid="uid://d153mdm4tperu" path="res://assets/Rubik_Distressed/RubikDistressed-Regular.ttf" id="3_n2l25"]
+[ext_resource type="FontFile" uid="uid://dcbo4v5a6sqid" path="res://assets/TitanOne-Regular.ttf" id="4_a78sa"]
+[ext_resource type="Texture2D" uid="uid://3hcxqwu5dyjt" path="res://assets/kenney_game-icons/PNG/White/2x/buttonStart.png" id="4_vhc2c"]
+[ext_resource type="Texture2D" uid="uid://c5dcqjkd3g730" path="res://assets/kenney_game-icons/PNG/White/1x/leaderboardsComplex.png" id="5_0ranw"]
+[ext_resource type="Texture2D" uid="uid://c34w3kxvgnb5g" path="res://assets/kenney_game-icons/PNG/White/2x/exitLeft.png" id="6_yxo5a"]
+[ext_resource type="Texture2D" uid="uid://xcygoqcmxb1l" path="res://assets/kenney_game-icons/PNG/White/2x/return.png" id="7_lm5s1"]
+
+[node name="EndGame" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1080.0
+offset_bottom = -1920.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_40fhf")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1090.0
+offset_bottom = 1928.0
+texture = ExtResource("2_ksfgo")
+
+[node name="Score" type="Label" parent="."]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 110.0
+offset_right = 1068.0
+offset_bottom = 587.0
+theme_override_fonts/font = ExtResource("3_n2l25")
+theme_override_font_sizes/font_size = 150
+text = "score"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="High_Score" type="Label" parent="."]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 496.0
+offset_right = 944.0
+offset_bottom = 556.0
+theme_override_fonts/font = ExtResource("3_n2l25")
+theme_override_font_sizes/font_size = 50
+text = "New High Score!!!"
+horizontal_alignment = 1
+
+[node name="Accuracy" type="Label" parent="."]
+layout_mode = 0
+offset_left = 151.0
+offset_top = 454.0
+offset_right = 1196.0
+offset_bottom = 931.0
+theme_override_fonts/font = ExtResource("4_a78sa")
+theme_override_font_sizes/font_size = 35
+text = "Alternatives Hit:                                       xxx%
+Temptations Avoided:                           xxx%"
+vertical_alignment = 1
+
+[node name="StatsButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 905.0
+offset_top = 14.0
+offset_right = 1063.0
+offset_bottom = 205.0
+icon = ExtResource("5_0ranw")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_top = -64.0
+offset_right = 633.0
+offset_bottom = 1322.0
+
+[node name="Spacer" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 900)
+layout_mode = 2
+
+[node name="ScoreGraphLabels" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="VBoxContainer/ScoreGraphLabels"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ScoreGraphLabels"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "
+
+
+
+
+
+Score
+
+
+
+
+
+                                                    Sessions"
+
+[node name="GraphHolder" type="Node2D" parent="VBoxContainer/ScoreGraphLabels"]
+position = Vector2(630, 0)
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 26.0
+offset_right = 197.0
+offset_bottom = 191.0
+theme_override_font_sizes/font_size = 50
+theme_override_icons/icon = ExtResource("4_vhc2c")
+icon = ExtResource("6_yxo5a")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="PlayAgainButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 350.0
+offset_top = 1445.0
+offset_right = 741.0
+offset_bottom = 1736.0
+theme_override_font_sizes/font_size = 50
+theme_override_icons/icon = ExtResource("4_vhc2c")
+icon = ExtResource("7_lm5s1")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Play Again" type="Label" parent="."]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 1720.0
+offset_right = 944.0
+offset_bottom = 1780.0
+theme_override_fonts/font = ExtResource("3_n2l25")
+theme_override_font_sizes/font_size = 50
+text = "Play Again"
+horizontal_alignment = 1
+
+[node name="save_status_label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 59.0
+offset_right = 932.0
+offset_bottom = 168.0
+theme_override_font_sizes/font_size = 45
+horizontal_alignment = 1
+vertical_alignment = 1
